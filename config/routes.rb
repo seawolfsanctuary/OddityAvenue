@@ -1,4 +1,10 @@
 OddityAvenue::Application.routes.draw do
+
+  get "contact" => "static_pages#contact"
+  post "make_contact" => "static_pages#make_contact"
+
+  get "about" => "static_pages#about"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +54,7 @@ OddityAvenue::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

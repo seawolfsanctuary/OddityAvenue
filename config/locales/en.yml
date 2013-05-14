@@ -2,4 +2,15 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  app_name: "OddityAvenue"
+  metadata:
+    copyright: "OddityAvenue, seawolfsanctuary"
+    author: "seawolfsanctuary"
+    description: "OddityAvenue"
+  page_titles:
+    home: "Home"
+    about: "About Me"
+    for_sale: "For Sale"
+    portfolio: "Past Work"
+    blog: "Blog"
+    contact: "Contact Me"
