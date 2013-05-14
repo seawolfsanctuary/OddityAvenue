@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>OddityAvenue</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= I18n.t('app_name') -%></title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= I18n.t('metadata.description') -%>">
+    <meta name="author" content="<%= I18n.t('metadata.author') -%>">
 
-<%= yield %>
+    <!-- Le styles -->
+    <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap-page-style", :media => "all" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
 
-</body>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons --> <!--
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png"> -->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <!--li class="nav-header">Sidebar</li-->
+              <li class="active"><%= link_to I18n.t('page_titles.home'), root_path -%></li>
+              <li><%= link_to I18n.t('page_titles.about'), about_path -%></li>
+              <li class="disabled"><%= link_to I18n.t('page_titles.for_sale'), root_path -%></li>
+              <li class="disabled"><%= link_to I18n.t('page_titles.portfolio'), root_path -%></li>
+              <li class="disabled"><%= link_to I18n.t('page_titles.blog'), root_path -%></li>
+              <li><%= link_to I18n.t('page_titles.contact'), contact_path -%></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= yield %>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p id="copyright">&copy; <%= I18n.t('metadata.copyright') -%> <%= Time.now.year -%></p>
+        <p id="commit">...</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery" %>
+  </body>
 </html>

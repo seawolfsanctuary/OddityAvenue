@@ -11,3 +11,21 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+footer p {
+  color: gray;
+  font-size: x-small;
+}
+
+p#copyright {
+  float:left;
+}
+
+p#commit {
+  float: right;
+}
