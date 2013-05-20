@@ -14,3 +14,7 @@ en:
     portfolio: "Past Work"
     blog: "Blog"
     contact: "Contact Me"
+  contact:
+    success: "Your message has been sent successfully."
+    failures:
+      missing_info: "Please complete all the information required."
