@@ -47,12 +47,16 @@ describe StaticPagesController do
   end
 
   describe "POST #make_contact" do
-    pending
+    pending "should check for errors"
+    pending "should send the message when there are no errors"
+    pending "should not sent the message but display the errors when there are errors"
   end
 
-  describe "GET #validate_contact" do
+  describe "#contact_errors" do
     it "should be private" do
-      lambda { get :validate_contact }.should raise_error(ActionController::RoutingError)
+      lambda { get :contact_errors }.should raise_error(ActionController::RoutingError)
     end
+
+    pending "should add an error when any of the fields are blank"
   end
 end
