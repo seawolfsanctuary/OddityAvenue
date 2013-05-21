@@ -57,6 +57,10 @@ input.button {
   text-align: right;
 }
 
+#portfolio-gallery div {
+  margin: 2em;
+}
+
 footer p {
   color: gray;
   font-size: x-small;

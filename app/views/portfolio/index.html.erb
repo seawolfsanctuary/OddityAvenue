@@ -1,0 +1,11 @@
+<h2><%= I18n.t('page_titles.portfolio') -%></h2>
+
+<div id="portfolio-gallery" class="span12">
+<%- @items.each do |i| -%>
+  <div class="span3">
+    <%= image_tag "portfolio/" + i.thumbnail_filename, class: "span"  %>
+    <p>Title: <%= i.title -%></p>
+    <p>Description: <%= i.description -%></p>
+  </div>
+<%- end -%>
+</div>
