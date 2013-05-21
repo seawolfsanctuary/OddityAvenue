@@ -14,12 +14,7 @@ class StaticPagesController < ApplicationController
       send_message!
       flash[:info] = I18n.t('contact.success')
     else
-      flash[:error] = "<ul>"
-      errors.each do |e|
-        flash[:error] += "<li>#{e}</li>"
-      end
-      flash[:error] += "</ul>"
-      flash[:error] = flash[:error].html_safe
+      flash[:error] = errors
     end
     redirect_to :contact
   end

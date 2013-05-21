@@ -4,13 +4,15 @@
 
 <%- if flash[:error].present? -%>
   <div id="form_errors">
-    <p><%= flash[:error] -%></p>
+    <ul class="text-error"><%- flash[:error].each do |e| %>
+      <li><%= e -%></li>
+    <%- end -%></ul>
   </div>
 <%- end -%>
 
 <%- if flash[:info].present? -%>
   <div id="form_info">
-    <p><%= flash[:info] -%></p>
+    <p class="text-success"><%= flash[:info] -%></p>
   </div>
 <%- end -%>
 

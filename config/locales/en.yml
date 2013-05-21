@@ -15,6 +15,6 @@ en:
     blog: "Blog"
     contact: "Contact Me"
   contact:
-    success: "Your message has been sent successfully."
+    success: "Your message has been sent, thankyou!"
     failures:
       missing_info: "Please complete all the information required."
