@@ -1,0 +1,11 @@
+<h2><%= I18n.t('page_titles.portfolio') -%> - <%= @item.title -%></h2>
+
+<div id="portfolio-item" class="span12">
+  <div id="portfolio-images" class="span12">
+    <%= image_tag "portfolio/" + @item.image_filename_1, class: "portfolio-image span3"  %>
+    <%= image_tag "portfolio/" + @item.image_filename_2, class: "portfolio-image span3"  %>
+    <%= image_tag "portfolio/" + @item.image_filename_3, class: "portfolio-image span3"  %>
+  </div>
+
+  <p>Description: <%= @item.description -%></p>
+</div>

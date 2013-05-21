@@ -57,8 +57,14 @@ input.button {
   text-align: right;
 }
 
-#portfolio-gallery div {
-  margin: 2em;
+@media (min-width: 767px) {
+  #portfolio-gallery div {
+    margin: 2em;
+  }
+
+  #portfolio-images img {
+    margin: 2em;
+  }
 }
 
 footer p {
