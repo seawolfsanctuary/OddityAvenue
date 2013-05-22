@@ -16,8 +16,17 @@ body {
   background-image: url('/assets/logo_bg.png');
   padding-left: 0;
   padding-right: 0;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: solid black 5px;
 }
+
+@media (min-width: 767px) {
+  #header {
+    margin-right: -19px;
+  }
+}
+
 #logo {
   height: 125px;
   background-image: url('/assets/logo.png');
