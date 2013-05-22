@@ -40,11 +40,20 @@ body {
   background-position: right;
 }
 
+h1, h2, h3, h4, h5, h6, .sidebar-nav ul li a {
+  font-variant: small-caps;
+}
+
 .sidebar-nav {
   background: white;
   border: none;
 }
 
+@media (min-width: 767px) {
+  .content {
+    padding-left: 5%;
+  }
+}
 .sidebar-nav ul li {
   padding-top: 0.3em;
   padding-bottom: 0.3em;
@@ -55,7 +64,6 @@ body {
   color: white;
   text-shadow: none;
   text-align: center;
-  font-variant: small-caps;
 }
 .sidebar-nav ul li.active a, .sidebar-nav ul li.active a:hover, .sidebar-nav ul li a:hover {
   border: 1px solid red;
@@ -94,6 +102,13 @@ input.button {
     margin: 2em;
   }
 }
+
+div#portfolio-thumb img {
+  width: inherit;
+  border: 1px solid black;
+}
+@media (min-width: 767px) { div#portfolio-thumb img { margin: 0 10%; } }
+@media (max-width: 767px) { div#portfolio-thumb img { width: 100%; } }
 
 footer p {
   color: gray;
