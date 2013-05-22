@@ -33,20 +33,20 @@
         <div id="sublogo" class="span6 pull-right hidden-phone"></div>
       </div>
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
+        <div class="span2">
+          <div class="sidebar-nav">
             <ul class="nav nav-list">
               <!--li class="nav-header">Sidebar</li-->
-              <li class="<%= "active"  if active_action?("static_pages", "home")    -%>"><%= link_to '<i class="icon-home"></i> '.html_safe + I18n.t('page_titles.home'), root_path -%></li>
-              <li class="<%= "active"  if active_action?("static_pages", "about")   -%>"><%= link_to '<i class="icon-user"></i> '.html_safe + I18n.t('page_titles.about'), about_path -%></li>
-              <li class="<%= "active " if active_action?("shop")                    -%>disabled"><%= link_to '<i class="icon-tag"></i> '.html_safe + I18n.t('page_titles.for_sale'), root_path -%></li>
-              <li class="<%= "active " if active_action?("portfolio")               -%>"><%= link_to '<i class="icon-th"></i> '.html_safe + I18n.t('page_titles.portfolio'), portfolio_index_path -%></li>
-              <li class="<%= "active " if active_action?("blog")                    -%>disabled"><%= link_to '<i class="icon-pencil"></i> ' .html_safe + I18n.t('page_titles.blog'), root_path -%></li>
-              <li class="<%= "active"  if active_action?("static_pages", "contact") -%>"><%= link_to '<i class="icon-envelope"></i> '.html_safe + I18n.t('page_titles.contact'), contact_path -%></li>
+              <li class="<%= "active"  if active_action?("static_pages", "home")    -%>"><%= link_to I18n.t('page_titles.home'), root_path -%></li>
+              <li class="<%= "active"  if active_action?("static_pages", "about")   -%>"><%= link_to I18n.t('page_titles.about'), about_path -%></li>
+              <li class="<%= "active " if active_action?("shop")                    -%>disabled"><%= link_to I18n.t('page_titles.for_sale'), root_path -%></li>
+              <li class="<%= "active " if active_action?("portfolio")               -%>"><%= link_to I18n.t('page_titles.portfolio'), portfolio_index_path -%></li>
+              <li class="<%= "active " if active_action?("blog")                    -%>disabled"><%= link_to  I18n.t('page_titles.blog'), root_path -%></li>
+              <li class="<%= "active"  if active_action?("static_pages", "contact") -%>"><%= link_to I18n.t('page_titles.contact'), contact_path -%></li>
             </ul>
-          </div><!--/.well -->
+          </div>
         </div><!--/span-->
-        <div class="content span9">
+        <div class="content span9 offset1">
           <%= yield %>
         </div><!--/span-->
       </div><!--/row-->

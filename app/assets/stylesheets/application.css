@@ -40,6 +40,34 @@ body {
   background-position: right;
 }
 
+.sidebar-nav {
+  background: white;
+  border: none;
+}
+
+.sidebar-nav ul li {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+.sidebar-nav ul li a {
+  border: 1px solid white;
+  background-color: red;
+  color: white;
+  text-shadow: none;
+  text-align: center;
+  font-variant: small-caps;
+}
+.sidebar-nav ul li.active a, .sidebar-nav ul li.active a:hover, .sidebar-nav ul li a:hover {
+  border: 1px solid red;
+  background: white;
+  color: red ! important;
+}
+
+.sidebar-nav ul li.disabled a, .sidebar-nav ul li.disabled a:hover {
+  background: red;
+  color: black;
+}
+
 div#form_info p, div#form_errors p {
   border: solid 1px;
   width: auto;
