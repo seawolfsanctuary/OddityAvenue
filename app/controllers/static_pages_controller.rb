@@ -1,11 +1,11 @@
 class StaticPagesController < ApplicationController
   def home
-    @body_text = StaticContent.load(:home, :text)
+    @body_text = StaticContent.load("home", "text")
   end
 
   def contact
-    @contact_email = StaticContent.load(:contact, :email)
-    @body_text = StaticContent.load(:contact, :text)
+    @contact_email = StaticContent.load("contact", "email")
+    @body_text = StaticContent.load("contact", "text")
   end
 
   def make_contact
@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @body_text = StaticContent.load(:about, :text)
+    @body_text = StaticContent.load("about", "text")
   end
 
   private
