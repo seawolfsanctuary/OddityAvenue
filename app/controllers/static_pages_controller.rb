@@ -3,6 +3,10 @@ class StaticPagesController < ApplicationController
     @body_text = StaticContent.load("home", "text")
   end
 
+  def about
+    @body_text = StaticContent.load("about", "text")
+  end
+
   def contact
     @contact_email = StaticContent.load("contact", "email")
     @body_text = StaticContent.load("contact", "text")
@@ -17,10 +21,6 @@ class StaticPagesController < ApplicationController
       flash[:error] = errors
     end
     redirect_to :contact
-  end
-
-  def about
-    @body_text = StaticContent.load("about", "text")
   end
 
   private

@@ -18,3 +18,12 @@ en:
     success: "Your message has been sent, thankyou!"
     failures:
       missing_info: "Please complete all the information required."
+  admin:
+    create_successful: "Successfully create %{page} content."
+    create_failed: "Unable to create %{page} content."
+    update_successful: "Successfully updated %{page} content."
+    update_failed: "Unable to update %{page} content."
+    page_titles:
+      home: "Editing: Home"
+      about: "Editing: About"
+      contact: "Editing: Contact"

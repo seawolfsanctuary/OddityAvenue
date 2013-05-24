@@ -7,6 +7,15 @@ OddityAvenue::Application.routes.draw do
 
   resources :portfolio
 
+  namespace :admin do
+    get  "content/home",    controller: :static_pages, action: :edit_home
+    post "content/home",    controller: :static_pages, action: :update_home
+    get  "content/about",   controller: :static_pages, action: :edit_about
+    post "content/about",   controller: :static_pages, action: :update_about
+    get  "content/contact", controller: :static_pages, action: :edit_contact
+    post "content/contact", controller: :static_pages, action: :update_contact
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
