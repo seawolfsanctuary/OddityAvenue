@@ -7,6 +7,8 @@ OddityAvenue::Application.routes.draw do
 
   resources :portfolio
 
+  devise_for :users, :class_name => "Admin::User"
+  get "admin" => "application#admin"
   namespace :admin do
     get  "content/home",    controller: :static_pages, action: :edit_home
     post "content/home",    controller: :static_pages, action: :update_home

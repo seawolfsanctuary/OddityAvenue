@@ -34,14 +34,8 @@
       <div class="row-fluid">
         <div class="span2">
           <div class="sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="<%= "active"  if active_action?("static_pages", "home")    -%>"><%= link_to I18n.t('page_titles.home'), root_path -%></li>
-              <li class="<%= "active"  if active_action?("static_pages", "about")   -%>"><%= link_to I18n.t('page_titles.about'), about_path -%></li>
-              <li class="<%= "active " if active_action?("shop")                    -%>disabled"><%= link_to I18n.t('page_titles.for_sale'), root_path -%></li>
-              <li class="<%= "active " if active_action?("portfolio")               -%>"><%= link_to I18n.t('page_titles.portfolio'), portfolio_index_path -%></li>
-              <li class="<%= "active " if active_action?("blog")                    -%>disabled"><%= link_to  I18n.t('page_titles.blog'), root_path -%></li>
-              <li class="<%= "active"  if active_action?("static_pages", "contact") -%>"><%= link_to I18n.t('page_titles.contact'), contact_path -%></li>
-            </ul>
+<%= render :partial => "layouts/public_links" -%>
+<%= render :partial => "layouts/admin_links" if user_signed_in? -%>
           </div>
         </div>
         <div class="content span10">

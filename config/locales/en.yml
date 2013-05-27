@@ -1,6 +1,3 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   app_name: "OddityAvenue"
   metadata:
@@ -19,9 +16,8 @@ en:
     failures:
       missing_info: "Please complete all the information required."
   admin:
-    create_successful: "Successfully create %{page} content."
+    create_successful: "Successfully created %{page} content."
     create_failed: "Unable to create %{page} content."
     update_successful: "Successfully updated %{page} content."
     update_failed: "Unable to update %{page} content."
-    page_editing: "Editing - "
-    page_titles:
+    page_editing: "Edit - "
