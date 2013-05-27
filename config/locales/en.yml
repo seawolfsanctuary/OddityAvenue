@@ -23,7 +23,5 @@ en:
     create_failed: "Unable to create %{page} content."
     update_successful: "Successfully updated %{page} content."
     update_failed: "Unable to update %{page} content."
+    page_editing: "Editing - "
     page_titles:
-      home: "Editing: Home"
-      about: "Editing: About"
-      contact: "Editing: Contact"
