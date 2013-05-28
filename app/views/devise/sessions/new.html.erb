@@ -1,11 +1,4 @@
-<h2>Sign in</h2>
-<% if flash[:alert] %>
-  <div class="error"><%= flash[:alert] %></div>
-<% end %>
-<% if flash[:info] %>
-  <div class="info"><%= flash[:info] %></div>
-<% end %>
-
+<%- content_for :title do -%>Sign in<%- end -%>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>

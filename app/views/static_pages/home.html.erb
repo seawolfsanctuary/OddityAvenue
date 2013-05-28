@@ -1,2 +1,2 @@
-<h2><%= I18n.t('app_name') -%></h2>
+<%- content_for :title do I18n.t('app_name') end -%>
 <%= raw(@body_text) -%>

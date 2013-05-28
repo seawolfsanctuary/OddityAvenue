@@ -1,4 +1,4 @@
-<h2><%= I18n.t('page_titles.portfolio') -%></h2>
+<%- content_for :title do I18n.t('page_titles.portfolio') end -%>
 
 <div id="portfolio-gallery" class="span12">
 <%- @items.each do |i| -%>

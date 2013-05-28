@@ -1,10 +1,4 @@
-<h2><%= I18n.t('admin.page_editing') -%><%= I18n.t('page_titles.home') -%></h2>
-<% if flash[:errors] %>
-  <div class><%= flash[:error] %></div>
-<% end %>
-<% if flash[:info] %>
-  <div class="info"><%= flash[:info] %></div>
-<% end %>
+<%- content_for :title do I18n.t('admin.page_editing') + I18n.t('page_titles.home') end -%>
 <%= form_tag admin_content_home_path do %>
   <%= text_area_tag :content, @body_text, { class: "tinymce span11", rows: 20 } %>
   <%= submit_tag "Save", class: "span3" %>

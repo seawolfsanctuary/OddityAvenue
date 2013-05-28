@@ -39,6 +39,11 @@
           </div>
         </div>
         <div class="content span10">
+          <h2><%= yield :title %></h2>
+          <%- if flash[:error]  -%><div class="error"><%= flash[:error]  %></div><%- end -%>
+          <%- if flash[:alert]  -%><div class="error"><%= flash[:alert]  %></div><%- end -%>
+          <%- if flash[:notice] -%><div class="info "><%= flash[:notice] %></div><%- end -%>
+          <%- if flash[:info]   -%><div class="info "><%= flash[:info]   %></div><%- end -%>
           <%= yield %>
         </div>
       </div>

@@ -1,4 +1,4 @@
-<h2><%= @item.title -%></h2>
+<%- content_for :title do @item.title end -%>
 
 <div id="portfolio-item" class="span11">
   <div id="portfolio-images" class="span12">

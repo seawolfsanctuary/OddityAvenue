@@ -101,6 +101,11 @@ div.error, div.info {
 div.error { color: red;   }
 div.info  { color: green; }
 
+div#error_explanation h2 {
+  font-variant: inherit;
+  font-size: 100%;
+}
+
 @media (min-width: 767px) {
   #portfolio-gallery div {
     margin: 2em;
