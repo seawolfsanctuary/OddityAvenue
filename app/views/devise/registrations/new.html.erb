@@ -1,6 +1,6 @@
 <%- content_for :title do -%>Sign up<%- end -%>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => eval(resource_name.to_s + "_registration_path")) do |f| %>
   <div class="error">
     <%= devise_error_messages! %>
   </div>
