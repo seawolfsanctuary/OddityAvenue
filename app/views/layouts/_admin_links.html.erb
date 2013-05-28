@@ -1,10 +1,10 @@
             <ul class="nav nav-list">
-              <li class="active"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-              <li class="active"><%= link_to('Change Password', edit_user_registration_path) %></li>
               <li class="<%= "active"  if active_action?("static_pages", "edit_home")    -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.home'), admin_content_home_path -%></li>
               <li class="<%= "active"  if active_action?("static_pages", "edit_about")   -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.about'), admin_content_about_path -%></li>
               <li class="<%= "active " if active_action?("shop")                         -%>disabled"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.for_sale'), "#" -%></li>
               <li class="<%= "active " if active_action?("portfolio")                    -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.portfolio'), portfolio_index_path -%></li>
               <li class="<%= "active " if active_action?("blog")                         -%>disabled"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.blog'), "#" -%></li>
               <li class="<%= "active"  if active_action?("static_pages", "edit_contact") -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.contact'), admin_content_contact_path -%></li>
+              <li class="active"><%= link_to('Change Password', edit_user_registration_path) %></li>
+              <li class="active"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             </ul>

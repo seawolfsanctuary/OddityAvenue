@@ -34,8 +34,7 @@
       <div class="row-fluid">
         <div class="span2">
           <div class="sidebar-nav">
-<%= render :partial => "layouts/public_links" -%>
-<%= render :partial => "layouts/admin_links" if user_signed_in? -%>
+<%= render :partial => (user_signed_in? ? "layouts/admin_links" : "layouts/public_links") -%>
           </div>
         </div>
         <div class="content span10">
