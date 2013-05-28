@@ -95,6 +95,12 @@ input.button {
   text-align: right;
 }
 
+div.error, div.info {
+  margin-bottom: 1em;
+}
+div.error { color: red;   }
+div.info  { color: green; }
+
 @media (min-width: 767px) {
   #portfolio-gallery div {
     margin: 2em;
