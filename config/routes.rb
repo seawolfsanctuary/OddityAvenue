@@ -7,7 +7,11 @@ OddityAvenue::Application.routes.draw do
 
   resources :portfolio
 
-  devise_for :users, :class_name => "Admin::User"
+  if Admin::User.count < 1
+    devise_for :users, :class_name => "Admin::User"
+  else
+    devise_for :users, :class_name => "Admin::User", :skip => [:registrations]
+  end
   get "admin" => "application#admin"
   namespace :admin do
     get  "content/home",    controller: :static_pages, action: :edit_home
