@@ -38,3 +38,5 @@ RSpec.configure do |config|
 
   config.render_views
 end
+
+FactoryGirl.find_definitions
