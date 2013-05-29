@@ -3,7 +3,6 @@ class Admin::StaticPagesController < ApplicationController
 
   def edit_home
     @body_text = StaticContent.load("home", "text")
-    flash = {}
   end
 
   def update_home
@@ -34,7 +33,6 @@ class Admin::StaticPagesController < ApplicationController
 
   def edit_about
     @body_text = StaticContent.load("about", "text")
-    flash = {}
   end
 
   def update_about
@@ -66,7 +64,6 @@ class Admin::StaticPagesController < ApplicationController
   def edit_contact
     @email_address = StaticContent.load("contact", "email")
     @body_text = StaticContent.load("contact", "text")
-    flash = {}
   end
 
   def update_contact
