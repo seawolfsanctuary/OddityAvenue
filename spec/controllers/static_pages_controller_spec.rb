@@ -49,7 +49,7 @@ describe StaticPagesController do
   describe "POST #make_contact" do
     pending "should check for errors"
     pending "should send the message when there are no errors"
-    pending "should not sent the message but display the errors when there are errors"
+    pending "should not send the message but display the errors when there are errors"
   end
 
   describe "#contact_errors" do
