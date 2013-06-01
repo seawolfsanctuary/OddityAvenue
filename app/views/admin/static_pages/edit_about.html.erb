@@ -1,4 +1,4 @@
-<%- content_for :title do I18n.t('admin.page_editing') + I18n.t('page_titles.about') end -%>
+<h2><%= t('admin.page_editing') + I18n.t('page_titles.about') -%></h2>
 <%= form_tag admin_content_about_path do %>
   <%= text_area_tag :content, @body_text, class: "tinymce span11", rows: 20 %>
   <%= submit_tag "Save", class: "span3" %>

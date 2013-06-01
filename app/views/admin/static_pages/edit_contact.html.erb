@@ -1,4 +1,4 @@
-<%- content_for :title do I18n.t('admin.page_editing') + I18n.t('page_titles.contact') end -%>
+<h2><%= t('admin.page_editing') + I18n.t('page_titles.contact') -%></h2>
 <%= form_tag admin_content_contact_path do %>
   <div class="input-prepend">
     <span class="add-on"><i class="icon-envelope"></i></span>
