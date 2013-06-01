@@ -58,6 +58,10 @@
 
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "jquery" %>
-    <%= javascript_include_tag "tinymce-jquery" if controller.controller_path.starts_with?("admin") %>
+    <%- if controller.controller_path.starts_with?("admin") -%>
+      <%= javascript_include_tag "tinymce-jquery" -%>
+      <%= tinymce_assets -%>
+      <%= tinymce -%>
+    <%- end -%>
   </body>
 </html>
