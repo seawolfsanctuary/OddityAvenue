@@ -36,5 +36,13 @@ OddityAvenue::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Devise
+  config.assets.initialize_on_precompile = false
+
+  ### Mail settings
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.smtp_settings = { :domain => 'localhost:3000' }
+
+  # Disable delivery errors, bad email addresses will be ignored
+  config.action_mailer.raise_delivery_errors = false
 end

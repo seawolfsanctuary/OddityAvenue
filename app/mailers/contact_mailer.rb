@@ -1,6 +1,4 @@
 class ContactMailer < ActionMailer::Base
-  default from: "webmaster@#{Rails.configuration.action_mailer.smtp_settings[:domain] || 'oddityavenue.com'}"
-
   def contact_email message, name, email, subject
     @env = Rails.configuration.action_mailer.smtp_settings[:domain] || 'oddityavenue.com'
     @time = Time.now.strftime("%d/%m/%Y %H:%M")
