@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   def make_contact
     errors = contact_errors
     if errors.empty?
-      send_message!
+      send_message! params[:message].to_s, params[:name].to_s, params[:email].to_s, params[:subject].to_s
       flash[:info] = I18n.t('contact.success')
     else
       flash[:error] = errors
@@ -35,6 +35,7 @@ class StaticPagesController < ApplicationController
     return errors
   end
 
-  def send_message!
+  def send_message! message, name, email, subject
+    ContactMailer.contact_email(message, name, email, subject).deliver
   end
 end
