@@ -126,4 +126,8 @@ div#portfolio-thumb img {
 footer p {
   color: gray;
   font-size: x-small;
+  float: left;
+}
+footer p#env {
+  float: right;
 }

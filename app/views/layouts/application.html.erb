@@ -52,6 +52,7 @@
 
       <footer>
         <p id="copyright">&copy; <%= I18n.t('metadata.copyright') -%> <%= Time.now.year -%></p>
+        <%- if ENV['RAILS_ENV'] != 'production' -%><p id="env"><%= ENV['RACK_ENV'] %>:<%= ENV['RAILS_ENV'] %></p><%- end -%>
       </footer>
 
     </div>
