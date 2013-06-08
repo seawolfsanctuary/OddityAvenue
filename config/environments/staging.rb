@@ -31,7 +31,7 @@ OddityAvenue::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -67,13 +67,13 @@ OddityAvenue::Application.configure do
 
   ### Mail settings
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'oddityavenue.com' }
+  config.action_mailer.default_url_options = { :host => 'oddityavenue-test.herokuapp.com' }
   config.action_mailer.smtp_settings = {
     :port           => '25',
     :address        => ENV['POSTMARK_SMTP_SERVER'],
     :user_name      => ENV['POSTMARK_API_KEY'],
     :password       => ENV['POSTMARK_API_KEY'],
-    :domain         => 'oddityavenue.com'
+    :domain         => 'oddityavenue-test.herokuapp.com'
     :authentication => :plain,
   }
 
