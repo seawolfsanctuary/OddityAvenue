@@ -5,9 +5,14 @@
   </head>
   <body>
     <p>The following message was sent from the Contact page of <%= @env %> at <%= @time %>.</p>
-    <hr /><p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr />
+    <p><strong>From:</strong> <%= @from_name %> <i><%= @from_email %></i></p>
+    <p><strong>Subject:</strong> <%= @subject %></p>
+    <hr />
     <pre><%= @message %></pre>
-    <p>&nbsp;</p></hr>
-    <p>The OddityAvenue E-Mail Robot</p>
+    <hr />
+    <p>&nbsp;</p>
+    <p><i>The OddityAvenue E-Mail Robot</i></p>
   </body>
 </html>
