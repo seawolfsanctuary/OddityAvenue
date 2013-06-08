@@ -73,8 +73,8 @@ OddityAvenue::Application.configure do
     :address        => ENV['POSTMARK_SMTP_SERVER'],
     :user_name      => ENV['POSTMARK_API_KEY'],
     :password       => ENV['POSTMARK_API_KEY'],
-    :domain         => 'oddityavenue-test.herokuapp.com'
-    :authentication => :plain,
+    :domain         => 'oddityavenue-test.herokuapp.com',
+    :authentication => :plain
   }
 
   # Disable delivery errors, bad email addresses will be ignored
