@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
   end
 
   def make_contact
-    errors = contact_errors
+    errors = contact_errors(params)
     if errors.empty?
       send_message! params[:message].to_s, params[:name].to_s, params[:email].to_s, params[:subject].to_s
       flash[:info] = I18n.t('contact.success')
@@ -25,12 +25,12 @@ class StaticPagesController < ApplicationController
 
   private
 
-  def contact_errors
+  def contact_errors(p)
     errors = []
     [:name, :email, :subject, :message].each do |i|
-      errors << "Please fill in the #{i.to_s} field." if params[i].blank?
+      errors << "Please fill in the #{i.to_s} field." if p[i].blank?
     end
-    errors << "The e-mail address supplied doesn't look right. It must be like name@domain.tld" unless params[:email] =~ /(.*)@(.*)\.(.*)/
+    errors << "The e-mail address supplied doesn't look right. It must be like name@domain.tld" unless p[:email] =~ /(.*)@(.*)\.(.*)/
 
     return errors
   end

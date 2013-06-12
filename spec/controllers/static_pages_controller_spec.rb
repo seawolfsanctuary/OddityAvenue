@@ -47,9 +47,33 @@ describe StaticPagesController do
   end
 
   describe "POST #make_contact" do
-    pending "should check for errors"
-    pending "should send the message when there are no errors"
-    pending "should not send the message but display the errors when there are errors"
+    it "should check for errors" do
+      controller.should_receive(:contact_errors).once.and_return([])
+      post :make_contact, {
+        :name => "Mr. Smith", :email => "mr@smith.com",
+        :message => "Hello!"
+      }
+    end
+
+    it "should send the message when there are no errors" do
+      controller.should_receive(:contact_errors).once.and_return([])
+      controller.should_receive(:send_message!).once.and_return(true)
+      post :make_contact, {
+        :name => "Mr. Smith", :email => "mr@smith.com",
+        :message => "Hello!"
+      }
+    end
+
+    it "should not send the message but display the errors when there are errors" do
+      controller.should_receive(:contact_errors).once.and_return(["No e-mail address"])
+      controller.should_not_receive(:send_message!)
+      ContactMailer.should_not_receive(:contact_email)
+      post :make_contact, {
+        :name => "Mr. Smith", # :email => "mr@smith.com",
+        :message => "Hello!"
+      }
+      flash[:error].should be_include("No e-mail address")
+    end
   end
 
   describe "#contact_errors" do
@@ -57,6 +81,35 @@ describe StaticPagesController do
       lambda { get :contact_errors }.should raise_error(ActionController::RoutingError)
     end
 
-    pending "should add an error when any of the fields are blank"
+    context "should add an error when any of the fields are blank" do
+      before(:each) do
+        @p = {:name => "name", :email => "name@domain.tld", :subject => "subject", :message => "message"}
+      end
+
+      it "name" do
+        @p[:name] = ""
+        controller.send(:contact_errors, @p).should have(1).item
+      end
+
+      it "subject" do
+        @p[:subject] = ""
+        controller.send(:contact_errors, @p).should have(1).item
+      end
+
+      it "email (format and presence)" do
+        @p[:email] = ""
+        controller.send(:contact_errors, @p).should have(2).items
+      end
+
+      it "email (format)" do
+        @p[:email] = "hello"
+        controller.send(:contact_errors, @p).should have(1).item
+      end
+
+      it "message" do
+        @p[:message] = ""
+        controller.send(:contact_errors, @p).should have(1).item
+      end
+    end
   end
 end
