@@ -176,9 +176,73 @@ describe Admin::StaticPagesController do
         c.body.should == "Newer Content"
       end
 
-      pending "should show a message about successfully updating both the body text and email"
-      pending "should show a message about failure to update either the body text and email"
-      pending "should show a message about failure to update body the body text and email"
+      it "should show a message about successfully updating both the body text and email" do
+        StaticContent.delete_all
+        post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
+        post :update_contact, { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
+      end
+
+      context "creation failures" do
+        before :each do
+          StaticContent.delete_all
+          StaticContent.stub(:save).with(false)
+          StaticContent.any_instance.stub(:save).and_return(false)
+        end
+        after :each do
+          StaticContent.any_instance.unstub(:save)
+          StaticContent.unstub(:save)
+        end
+
+        it "should show a message when either the body text and email" do
+          post :update_contact, { "email_address" => "user" , "content" => "New Content" }
+          flash[:error].should == "Unable to create contact content."
+
+          post :update_contact, { "email_address" => "user@site.com" , "content" => "" }
+          flash[:error].should == "Unable to create contact content."
+        end
+
+        it "should show a message when both the body text and email" do
+          post :update_contact, { "email_address" => "user" , "content" => "" }
+          flash[:error].should == "Unable to create contact content."
+        end
+      end
+
+      context "updating failures" do
+        before :each do
+          StaticContent.delete_all
+        end
+
+        it "should show a message when either the body text and email" do
+          post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
+          flash[:error].should_not == "Unable to create contact content."
+
+          StaticContent.stub(:save).with(false)
+          StaticContent.any_instance.stub(:save).and_return(false)
+
+          post :update_contact, { "email_address" => "user" , "content" => "New Content" }
+          flash[:error].should == "Unable to update contact content."
+
+          post :update_contact, { "email_address" => "user@site.com" , "content" => "" }
+          flash[:error].should == "Unable to update contact content."
+
+          StaticContent.any_instance.unstub(:save)
+          StaticContent.unstub(:save)
+        end
+
+        it "should show a message when both the body text and email" do
+          post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
+          flash[:error].should_not == "Unable to create contact content."
+
+          StaticContent.stub(:save).with(false)
+          StaticContent.any_instance.stub(:save).and_return(false)
+
+          post :update_contact, { "email_address" => "user" , "content" => "" }
+          flash[:error].should == "Unable to update contact content."
+
+          StaticContent.any_instance.unstub(:save)
+          StaticContent.unstub(:save)
+        end
+      end
     end
   end
 end
