@@ -16,7 +16,7 @@ describe ContactMailer do
   end
 
   it "should have a sender e-mail address" do
-    @email.from.should == "webmaster@seawolfsanctuary.com"
+    @email.from.should == [ "webmaster@seawolfsanctuary.com" ]
   end
 
   it "should have the correct subject" do
