@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>OddityAvenue</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= I18n.t('app_name') -%></title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= I18n.t('metadata.description') -%>">
+    <meta name="author" content="<%= I18n.t('metadata.author') -%>">
 
-<%= yield %>
+    <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap-page-style", :media => "all" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
 
-</body>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons --> <!--
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png"> -->
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="header" class="row">
+        <div id="logo" class="span3 visible-desktop"></div>
+        <div id="logo" class="span4 visible-tablet visible-phone"></div>
+        <div id="sublogo" class="span6 pull-right hidden-phone"></div>
+      </div>
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="sidebar-nav">
+<%= render :partial => (user_signed_in? ? "layouts/admin_links" : "layouts/public_links") -%>
+          </div>
+        </div>
+        <div class="content span10">
+          <%- if content_for?(:title) -%><h2><%= yield :title %></h2><%- end -%>
+          <%- if flash[:error]  -%><div class="error"><%= flash[:error]  %></div><%- end -%>
+          <%- if flash[:alert]  -%><div class="error"><%= flash[:alert]  %></div><%- end -%>
+          <%- if flash[:notice] -%><div class="info "><%= flash[:notice] %></div><%- end -%>
+          <%- if flash[:info]   -%><div class="info "><%= flash[:info]   %></div><%- end -%>
+          <%- flash.discard -%>
+          <%= yield %>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p id="copyright">&copy; <%= I18n.t('metadata.copyright') -%> <%= Time.now.year -%></p>
+        <%- if ENV['RAILS_ENV'] != 'production' -%><p id="env"><%= ENV['RACK_ENV'] %>:<%= ENV['RAILS_ENV'] %></p><%- end -%>
+      </footer>
+
+    </div>
+
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery" %>
+    <%- if controller.controller_path.starts_with?("admin") -%>
+      <%= javascript_include_tag "tinymce-jquery" -%>
+      <%= tinymce_assets -%>
+      <%= tinymce -%>
+    <%- end -%>
+  </body>
 </html>

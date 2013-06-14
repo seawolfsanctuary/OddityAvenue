@@ -1,13 +1,133 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_self
  *= require_tree .
  */
+
+body {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.container {
+  max-width: 720px;
+}
+
+#header {
+  /* background-image: url('/assets/logo_bg.png'); */
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: solid black 5px;
+}
+
+@media (min-width: 767px) {
+  #header {
+    margin-right: -19px;
+  }
+}
+
+#logo {
+  height: 125px;
+  background-image: url('/assets/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#sublogo {
+  height: 125px;
+  background-image: url('/assets/logo_right.png');
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+h1, h2, h3, h4, h5, h6, .sidebar-nav ul li a {
+  font-variant: small-caps;
+}
+
+.sidebar-nav {
+  background: white;
+  border: none;
+}
+
+@media (min-width: 767px) {
+  .content {
+    padding-left: 5%;
+  }
+}
+
+.sidebar-nav ul li {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+.sidebar-nav ul li a {
+  border: 1px solid white;
+  background-color: red;
+  color: white;
+  text-shadow: none;
+  text-align: center;
+}
+.sidebar-nav ul li.active a, .sidebar-nav ul li.active a:hover, .sidebar-nav ul li a:hover {
+  border: 1px solid red;
+  background: white;
+  color: red ! important;
+  text-shadow: none;
+}
+
+.sidebar-nav ul li.disabled a, .sidebar-nav ul li.disabled a:hover {
+  background: red;
+  color: black;
+}
+
+div#form_info p, div#form_errors p {
+  border: solid 1px;
+  width: auto;
+}
+div#form_info p {
+  border-color: green;
+  color: green;
+}
+div#form_errors p {
+  border-color: red;
+  color: red;
+}
+
+input.button {
+  text-align: right;
+}
+
+div.error, div.info {
+  margin-bottom: 1em;
+}
+div.error { color: red;   }
+div.info  { color: green; }
+
+div#error_explanation h2 {
+  font-variant: inherit;
+  font-size: 100%;
+}
+
+@media (min-width: 767px) {
+  #portfolio-gallery div {
+    margin: 2em;
+  }
+
+  #portfolio-images img {
+    margin: 2em;
+  }
+}
+
+div#portfolio-thumb img {
+  width: inherit;
+  border: 1px solid black;
+}
+@media (min-width: 767px) { div#portfolio-thumb img { margin: 0 10%; } }
+@media (max-width: 767px) { div#portfolio-thumb img { width: 100%; } }
+
+footer p {
+  color: gray;
+  font-size: x-small;
+  float: left;
+}
+footer p#env {
+  float: right;
+}

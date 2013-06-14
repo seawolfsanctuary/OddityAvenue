@@ -1,4 +1,28 @@
 OddityAvenue::Application.routes.draw do
+
+  get "contact" => "static_pages#contact"
+  post "make_contact" => "static_pages#make_contact"
+
+  get "about" => "static_pages#about"
+
+  resources :portfolio
+
+  devise_for :users, :class_name => "Admin::User", :skip => [:registrations]
+    as :user do
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      put 'users' => 'devise/registrations#update', :as => 'user_registration'
+    end
+
+  get "admin" => "application#admin"
+  namespace :admin do
+    get  "content/home",    controller: :static_pages, action: :edit_home
+    post "content/home",    controller: :static_pages, action: :update_home
+    get  "content/about",   controller: :static_pages, action: :edit_about
+    post "content/about",   controller: :static_pages, action: :update_about
+    get  "content/contact", controller: :static_pages, action: :edit_contact
+    post "content/contact", controller: :static_pages, action: :update_contact
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +72,7 @@ OddityAvenue::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

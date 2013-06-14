@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>The following message was sent from the Contact page of <%= @env %> at <%= @time %>.</p>
+    <p>&nbsp;</p>
+    <hr />
+    <p><strong>From:</strong> <%= @from_name %> <i><%= @from_email %></i></p>
+    <p><strong>Subject:</strong> <%= @subject %></p>
+    <hr />
+    <pre><%= @message %></pre>
+    <hr />
+    <p>&nbsp;</p>
+    <p><i>The OddityAvenue E-Mail Robot</i></p>
+  </body>
+</html>

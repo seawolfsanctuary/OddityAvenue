@@ -5,8 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-
+gem 'pg', '0.15.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,10 +19,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.2.1'
+gem 'tinymce-rails', '~> 3.5.8.2'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'devise', '2.2.4'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -38,6 +37,6 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :test do
-  gem "rspec-rails", "~> 2.13.1"
-  gem "factory_girl", "~> 4.2.0"
+  gem 'rspec-rails', '~> 2.13.1'
+  gem 'factory_girl', '~> 4.2.0'
 end

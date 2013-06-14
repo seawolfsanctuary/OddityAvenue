@@ -1,0 +1,10 @@
+<%- content_for :title do @item.title end -%>
+
+<div id="portfolio-item" class="span11">
+  <div id="portfolio-images" class="span12">
+    <%= image_tag "portfolio/" + @item.image_filename_1, class: "portfolio-image span3"  %>
+    <%= image_tag "portfolio/" + @item.image_filename_2, class: "portfolio-image span3"  %>
+    <%= image_tag "portfolio/" + @item.image_filename_3, class: "portfolio-image span3"  %>
+  </div>
+  <p><%= @item.description -%></p>
+</div>

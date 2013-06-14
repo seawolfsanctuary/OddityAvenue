@@ -1,5 +1,23 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  app_name: "OddityAvenue"
+  metadata:
+    copyright: "OddityAvenue, seawolfsanctuary"
+    author: "seawolfsanctuary"
+    description: "OddityAvenue"
+  page_titles:
+    home: "Home"
+    about: "About Me"
+    for_sale: "For Sale"
+    portfolio: "Past Work"
+    blog: "Blog"
+    contact: "Contact Me"
+  contact:
+    success: "Your message has been sent, thankyou!"
+    failures:
+      missing_info: "Please complete all the information required."
+  admin:
+    create_successful: "Successfully created %{page} content."
+    create_failed: "Unable to create %{page} content."
+    update_successful: "Successfully updated %{page} content."
+    update_failed: "Unable to update %{page} content."
+    page_editing: "Edit - "

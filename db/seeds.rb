@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+u = Admin::User.new
+u.email = "webmaster@#{Rails.configuration.action_mailer.default_url_options[:host]}"
+u.password = "@hangeMe!"
+u.save
