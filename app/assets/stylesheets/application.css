@@ -13,7 +13,7 @@ body {
 }
 
 #header {
-  /* background-image: url('/assets/logo_bg.png'); */
+  /* background-image: url('/assets/header/logo_bg.png'); */
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 1em;
@@ -29,13 +29,13 @@ body {
 
 #logo {
   height: 125px;
-  background-image: url('/assets/logo.png');
+  background-image: url('/assets/header/logo.png');
   background-repeat: no-repeat;
   background-position: center;
 }
 #sublogo {
   height: 125px;
-  background-image: url('/assets/logo_right.png');
+  background-image: url('/assets/header/logo_right.png');
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -105,24 +105,6 @@ div#error_explanation h2 {
   font-variant: inherit;
   font-size: 100%;
 }
-
-@media (min-width: 767px) {
-  #portfolio-gallery div {
-    margin: 2em;
-  }
-
-  #portfolio-images img {
-    margin: 2em;
-  }
-}
-
-div#portfolio-thumb img {
-  width: inherit;
-  border: 1px solid black;
-}
-@media (min-width: 767px) { div#portfolio-thumb img { margin: 0 10%; } }
-@media (max-width: 767px) { div#portfolio-thumb img { width: 100%; } }
-
 footer p {
   color: gray;
   font-size: x-small;
