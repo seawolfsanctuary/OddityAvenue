@@ -6,11 +6,15 @@
 body {
   padding-top: 20px;
   padding-bottom: 0;
+  background-color: black;
 }
 
 .container {
   max-width: 720px;
 }
+
+
+/* Header */
 
 #header {
   /* background-image: url('/assets/header/logo_bg.png'); */
@@ -45,7 +49,9 @@ h1, h2, h3, h4, h5, h6, .sidebar-nav ul li a {
 }
 
 .sidebar-nav {
-  background: white;
+  background-image: url('/assets/sidebar/background.png');
+  background-position: bottom-middle;
+  background-repeat: none;
   border: none;
 }
 
@@ -72,10 +78,18 @@ h1, h2, h3, h4, h5, h6, .sidebar-nav ul li a {
   color: red ! important;
   text-shadow: none;
 }
-
 .sidebar-nav ul li.disabled a, .sidebar-nav ul li.disabled a:hover {
   background: red;
   color: black;
+}
+
+
+/* Content */
+
+.content {
+  background-image: url('/assets/background.png');
+  background-repeat: none;
+  background-position: center;
 }
 
 div#form_info p, div#form_errors p {
@@ -105,6 +119,10 @@ div#error_explanation h2 {
   font-variant: inherit;
   font-size: 100%;
 }
+
+
+/* Footer */
+
 footer p {
   color: gray;
   font-size: x-small;
