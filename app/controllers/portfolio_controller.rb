@@ -1,7 +1,6 @@
 class PortfolioController < ApplicationController
   def index
-    @items = []
-    5.times { @items << PortfolioItem.new }
+    @items = PortfolioItem.all
   end
 
   def show
