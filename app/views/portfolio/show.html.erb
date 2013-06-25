@@ -1,10 +1,14 @@
 <%- content_for :title do @item.title end -%>
 
 <div id="portfolio-item" class="span11">
-  <div id="portfolio-images" class="span12">
-    <%= image_tag "portfolio/" + @item.image_filename_1, class: "portfolio-image span3"  %>
-    <%= image_tag "portfolio/" + @item.image_filename_2, class: "portfolio-image span3"  %>
-    <%= image_tag "portfolio/" + @item.image_filename_3, class: "portfolio-image span3"  %>
+  <div class="span12">
+    <%= image_tag "portfolio/" + @item.thumbnail_filename.to_s, { alt: "Thumbnail", class: "span3" } %>
   </div>
-  <p><%= @item.description -%></p>
+
+  <div id="portfolio-images" class="span12">
+    <%= image_tag "portfolio/" + @item.image_filename_1.to_s, { alt: "Image 1", class: "portfolio-image span3" } %>
+    <%= image_tag "portfolio/" + @item.image_filename_2.to_s, { alt: "Image 2", class: "portfolio-image span3" } %>
+    <%= image_tag "portfolio/" + @item.image_filename_3.to_s, { alt: "Image 3", class: "portfolio-image span3" } %>
+  </div>
+  <p><%= @item.description %></p>
 </div>

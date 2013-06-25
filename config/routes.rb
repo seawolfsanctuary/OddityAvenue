@@ -21,6 +21,8 @@ OddityAvenue::Application.routes.draw do
     post "content/about",   controller: :static_pages, action: :update_about
     get  "content/contact", controller: :static_pages, action: :edit_contact
     post "content/contact", controller: :static_pages, action: :update_contact
+
+    resources :portfolio
   end
 
   # The priority is based upon order of creation:

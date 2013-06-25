@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PortfolioController do
+describe Admin::PortfolioController do
   context "GET index" do
     before(:all) do
       PortfolioItem.delete_all
@@ -22,5 +22,17 @@ describe PortfolioController do
 
   context "GET show" do
     pending "should load the given PortfolioItem"
+  end
+
+  context "GET edit" do
+    pending "should load the given PortfolioItem"
+  end
+
+  context "POST update" do
+    pending "should update the given PortfolioItem with the given values"
+  end
+
+  context "POST delete" do
+    pending "should delete the given PortfolioItem"
   end
 end

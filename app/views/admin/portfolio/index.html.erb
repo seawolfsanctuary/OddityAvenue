@@ -1,0 +1,29 @@
+<%- content_for :title do I18n.t('page_titles.portfolio') end -%>
+
+<table id="portfolio-admin" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= I18n.t('admin.portfolio.id') %></th>
+      <th><%= I18n.t('admin.portfolio.title') %></th>
+      <th><%= I18n.t('admin.portfolio.description') %></th>
+      <th><%= I18n.t('admin.portfolio.images_count') %></th>
+      <th><%= I18n.t('admin.page_actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%- @items.each do |i| -%>
+    <tr>
+      <td><%= image_tag asset_path("portfolio/" + i.thumbnail_filename.to_s), { alt: i.id.to_s, class: "span2" } %></td>
+      <td><%= truncate(i.title, length: 50) %></td>
+      <td><%= truncate(i.description, length: 50) %></td>
+      <td><%= i.images_count %></td>
+      <td>
+        <%= link_to I18n.t('admin.portfolio.edit'),   edit_admin_portfolio_path(i.id), { class: "btn btn-primary", type: "button" } %>
+        <%= link_to I18n.t('admin.portfolio.destroy'), admin_portfolio_path(i.id), { class: "btn btn-primary", type: "button", method: :delete } %>
+      </td>
+    </tr>
+  <%- end -%>
+  </tbody>
+</table>
+
+<%= link_to I18n.t('admin.portfolio.create'), new_admin_portfolio_path, { class: "btn btn-primary", type: "button" } %>

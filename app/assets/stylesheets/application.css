@@ -123,6 +123,11 @@ div#portfolio-thumb img {
 @media (min-width: 767px) { div#portfolio-thumb img { margin: 0 10%; } }
 @media (max-width: 767px) { div#portfolio-thumb img { width: 100%; } }
 
+table#portfolio-admin thead tr th:last-child,
+table#portfolio-admin tbody tr td:last-child {
+  text-align: right;
+}
+
 footer p {
   color: gray;
   font-size: x-small;

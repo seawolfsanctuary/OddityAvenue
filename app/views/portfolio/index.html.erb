@@ -3,7 +3,7 @@
 <div id="portfolio-gallery" class="span12">
 <%- @items.each do |i| -%>
   <div id="portfolio-thumb" class="span3">
-    <%= link_to image_tag(asset_path("portfolio/" + i.thumbnail_filename)), portfolio_path(i.id) %>
+    <%= link_to image_tag(asset_path("portfolio/" + i.thumbnail_filename.to_s)), portfolio_path(i.id) %>
     <p><%= i.title -%></p>
   </div>
 <%- end -%>

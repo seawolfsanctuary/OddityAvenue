@@ -6,7 +6,4 @@ class PortfolioController < ApplicationController
   def show
     @item = PortfolioItem.new
   end
-
-  def edit
-  end
 end
