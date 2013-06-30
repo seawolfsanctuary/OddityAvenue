@@ -4,6 +4,6 @@ class PortfolioController < ApplicationController
   end
 
   def show
-    @item = PortfolioItem.new
+    @item = PortfolioItem.find(params[:id])
   end
 end

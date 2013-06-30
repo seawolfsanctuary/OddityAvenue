@@ -18,7 +18,7 @@
       <td><%= truncate(i.description, length: 50) %></td>
       <td><%= i.images_count %></td>
       <td>
-        <%= link_to I18n.t('admin.portfolio.edit'),   edit_admin_portfolio_path(i.id), { class: "btn btn-primary", type: "button" } %>
+        <%= link_to I18n.t('admin.portfolio.edit'), edit_admin_portfolio_path(i.id), { class: "btn btn-primary", type: "button" } %>
         <%= link_to I18n.t('admin.portfolio.destroy'), admin_portfolio_path(i.id), { class: "btn btn-primary", type: "button", method: :delete } %>
       </td>
     </tr>

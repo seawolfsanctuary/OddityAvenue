@@ -106,6 +106,11 @@ div#error_explanation h2 {
   font-size: 100%;
 }
 
+@media (max-width: 767px) {
+  #portfolio-images img {
+    padding-bottom: 2em;
+  }
+}
 @media (min-width: 767px) {
   #portfolio-gallery div {
     margin: 2em;
@@ -117,15 +122,19 @@ div#error_explanation h2 {
 }
 
 div#portfolio-thumb img {
-  width: inherit;
+  height: auto;
   border: 1px solid black;
 }
-@media (min-width: 767px) { div#portfolio-thumb img { margin: 0 10%; } }
-@media (max-width: 767px) { div#portfolio-thumb img { width: 100%; } }
 
 table#portfolio-admin thead tr th:last-child,
 table#portfolio-admin tbody tr td:last-child {
   text-align: right;
+}
+@media (max-width: 767px) {
+  table#portfolio-admin tbody tr td img { width: 45px; }
+}
+@media (min-width: 767px) {
+  table#portfolio-admin tbody tr td img { width: 60px; }
 }
 
 footer p {

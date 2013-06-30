@@ -1,14 +1,13 @@
 <%- content_for :title do @item.title end -%>
 
 <div id="portfolio-item" class="span11">
-  <div class="span12">
-    <%= image_tag "portfolio/" + @item.thumbnail_filename.to_s, { alt: "Thumbnail", class: "span3" } %>
+  <div id="portfolio-images" class="span12">
+    <%= image_tag asset_path("portfolio/" + @item.image_filename_1.to_s), { alt: "Image 1", class: "span2" } if @item.image_filename_1.present? %>
+    <%= image_tag asset_path("portfolio/" + @item.image_filename_2.to_s), { alt: "Image 2", class: "span2" } if @item.image_filename_2.present? %>
+    <%= image_tag asset_path("portfolio/" + @item.image_filename_3.to_s), { alt: "Image 3", class: "span2" } if @item.image_filename_3.present? %>
   </div>
 
-  <div id="portfolio-images" class="span12">
-    <%= image_tag "portfolio/" + @item.image_filename_1.to_s, { alt: "Image 1", class: "portfolio-image span3" } %>
-    <%= image_tag "portfolio/" + @item.image_filename_2.to_s, { alt: "Image 2", class: "portfolio-image span3" } %>
-    <%= image_tag "portfolio/" + @item.image_filename_3.to_s, { alt: "Image 3", class: "portfolio-image span3" } %>
+  <div class="span12">
+    <p><%= @item.description %></p>
   </div>
-  <p><%= @item.description %></p>
 </div>
