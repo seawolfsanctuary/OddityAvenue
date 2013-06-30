@@ -17,6 +17,16 @@
   <%= i.label :image_filename_3 %>
   <%= i.text_field :image_filename_3 %>
 
+  <label>
+    <%= i.check_box :for_sale %>
+    <%= t('activerecord.attributes.portfolio_item.for_sale') %>
+  </label>
+
+  <label>
+    <%= i.check_box :hidden %>
+    <%= t('activerecord.attributes.portfolio_item.hidden') %>
+  </label>
+
   <br />
   <%= submit_tag I18n.t('admin.portfolio.' + action), { class: "btn btn-success" } %>
 <%- end -%>

@@ -1,7 +1,7 @@
 class PortfolioItem  < ActiveRecord::Base
   attr_accessible :title, :description,
       :image_filename_1, :image_filename_2, :image_filename_3,
-      :thumbnail_filename
+      :thumbnail_filename, :for_sale, :hidden
 
   def images_count
     count = 0

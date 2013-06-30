@@ -9,5 +9,8 @@ FactoryGirl.define do
     sequence(:image_filename_3) { |i| "#{i}-3.jpg" }
 
     sequence(:thumbnail_filename) { |i| "#{i}_thumb.jpg" }
+
+    for_sale false
+    hidden   false
   end
 end

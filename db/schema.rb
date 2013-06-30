@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625153413) do
+ActiveRecord::Schema.define(:version => 20130630142120) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -32,12 +32,14 @@ ActiveRecord::Schema.define(:version => 20130625153413) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "portfolio_items", :force => true do |t|
-    t.string "title"
-    t.text   "description"
-    t.string "image_filename_1"
-    t.string "image_filename_2"
-    t.string "image_filename_3"
-    t.string "thumbnail_filename"
+    t.string  "title"
+    t.text    "description"
+    t.string  "image_filename_1"
+    t.string  "image_filename_2"
+    t.string  "image_filename_3"
+    t.string  "thumbnail_filename"
+    t.boolean "for_sale",           :default => true
+    t.boolean "hidden",             :default => false
   end
 
   create_table "static_contents", :force => true do |t|

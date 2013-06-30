@@ -62,24 +62,22 @@ describe Admin::PortfolioController do
 
     before(:each) do
       PortfolioItem.delete_all
-      @item = FactoryGirl.create(:portfolio_item)
+      @item = FactoryGirl.create(:portfolio_item, title: "Item 1", for_sale:  true, hidden: false)
       @item_id = @item.id
     end
 
     context "GET index" do
-      it "should load all the PortfolioItems" do
-        @all_items = []
-        4.times do
-         @all_items << FactoryGirl.create(:portfolio_item)
-        end
+      it "should load all the PortfolioItems that are not for sale but are visible" do
+        FactoryGirl.create :portfolio_item, title: "Item 2", for_sale:  true, hidden: true
+        FactoryGirl.create :portfolio_item, title: "Item 3", for_sale: false, hidden: false
+        FactoryGirl.create :portfolio_item, title: "Item 4", for_sale: false, hidden: true
+        FactoryGirl.create :portfolio_item, title: "Item 5", for_sale: false, hidden: false
 
         get 'index'
         response.status.should == 200
-        assigns[:items].collect(&:class).should == [
-          PortfolioItem, PortfolioItem,
-          PortfolioItem, PortfolioItem,
-          PortfolioItem
-        ]
+
+        assigns[:items].collect(&:class).should == [ PortfolioItem, PortfolioItem ]
+        assigns[:items].collect(&:title).should == [ "Item 3", "Item 5" ]
       end
     end
 

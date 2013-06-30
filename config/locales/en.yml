@@ -34,3 +34,8 @@ en:
       edit: "Edit Item"
       update: "Update Item"
       destroy: "Remove Item"
+  activerecord:
+    attributes:
+      portfolio_item:
+        for_sale: "For Sale"
+        hidden: "Hidden"

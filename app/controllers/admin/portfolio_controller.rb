@@ -2,7 +2,7 @@ class Admin::PortfolioController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @items = PortfolioItem.all
+    @items = PortfolioItem.where(for_sale: false, hidden: false)
   end
 
   def new

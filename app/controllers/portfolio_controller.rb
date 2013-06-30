@@ -1,6 +1,6 @@
 class PortfolioController < ApplicationController
   def index
-    @items = PortfolioItem.all
+    @items = PortfolioItem.where(for_sale: false, hidden: false)
   end
 
   def show
