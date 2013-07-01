@@ -4,6 +4,8 @@ class AddPortfolioItems < ActiveRecord::Migration
     %w{title description image_filename_1 image_filename_2 image_filename_3 thumbnail_filename}.each do |c|
       add_column :portfolio_items, c.to_sym, (c == "description" ? :text : :string )
     end
+
+    add_column :portfolio_items, :enabled, :boolean, default: true
   end
 
   def down

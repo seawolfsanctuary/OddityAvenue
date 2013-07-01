@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630142120) do
+ActiveRecord::Schema.define(:version => 20130630164712) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,8 +38,19 @@ ActiveRecord::Schema.define(:version => 20130630142120) do
     t.string  "image_filename_2"
     t.string  "image_filename_3"
     t.string  "thumbnail_filename"
-    t.boolean "for_sale",           :default => true
-    t.boolean "hidden",             :default => false
+    t.boolean "enabled",            :default => true
+  end
+
+  create_table "shop_items", :force => true do |t|
+    t.string  "title"
+    t.text    "description"
+    t.string  "image_filename_1"
+    t.string  "image_filename_2"
+    t.string  "image_filename_3"
+    t.string  "thumbnail_filename"
+    t.boolean "enabled",            :default => true
+    t.integer "quantity",           :default => 1
+    t.float   "price",              :default => 0.0
   end
 
   create_table "static_contents", :force => true do |t|

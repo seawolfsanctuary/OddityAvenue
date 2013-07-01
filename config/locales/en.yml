@@ -7,7 +7,7 @@ en:
   page_titles:
     home: "Home"
     about: "About Me"
-    for_sale: "For Sale"
+    shop: "For Sale"
     portfolio: "Past Work"
     blog: "Blog"
     contact: "Contact Me"
@@ -34,8 +34,20 @@ en:
       edit: "Edit Item"
       update: "Update Item"
       destroy: "Remove Item"
+    shop:
+      id: "ID"
+      title: "Name"
+      description: "Description"
+      images_count: "Images"
+      create: "Add Item"
+      edit: "Edit Item"
+      update: "Update Item"
+      destroy: "Remove Item"
   activerecord:
     attributes:
       portfolio_item:
+        for_sale: "For Sale"
+        hidden: "Hidden"
+      shop_item:
         for_sale: "For Sale"
         hidden: "Hidden"
