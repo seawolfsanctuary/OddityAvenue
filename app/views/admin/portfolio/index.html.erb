@@ -12,7 +12,7 @@
   </thead>
   <tbody>
   <%- @items.each do |i| -%>
-    <tr>
+    <tr class="<%= "disabled" unless i.enabled %>">
       <td><%= image_tag asset_path("portfolio/" + i.thumbnail_filename.to_s), { alt: i.id.to_s, class: "span2" } %></td>
       <td><%= truncate(i.title, length: 50) %></td>
       <td><%= truncate(i.description, length: 50) %></td>
