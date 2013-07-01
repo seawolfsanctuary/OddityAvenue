@@ -5,5 +5,6 @@ class PortfolioController < ApplicationController
 
   def show
     @item = PortfolioItem.find(params[:id])
+    raise ActionController::RoutingError.new('Not Found') unless @item.enabled
   end
 end
