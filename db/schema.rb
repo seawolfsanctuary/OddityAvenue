@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630164712) do
+ActiveRecord::Schema.define(:version => 20130703062423) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(:version => 20130630164712) do
     t.string  "image_filename_2"
     t.string  "image_filename_3"
     t.string  "thumbnail_filename"
-    t.boolean "enabled",            :default => true
-    t.integer "quantity",           :default => 1
-    t.float   "price",              :default => 0.0
+    t.boolean "enabled",                                          :default => true
+    t.integer "quantity",                                         :default => 1
+    t.decimal "price",              :precision => 8, :scale => 2, :default => 0.0
   end
 
   create_table "static_contents", :force => true do |t|
