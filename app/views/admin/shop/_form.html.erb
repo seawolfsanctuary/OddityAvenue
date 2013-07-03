@@ -23,10 +23,12 @@
   <%= i.label :price %>
   <%= i.text_field :price %>
 
-  <label>
+  <br /><br />
+
+  <div>
     <%= i.check_box :enabled %>
-    <%= t('activerecord.attributes.shop_item.enabled') %>
-  </label>
+    <%= i.label :enabled %>
+  </div>
 
   <br />
   <%= submit_tag I18n.t('admin.shop.' + action), { class: "btn btn-success" } %>

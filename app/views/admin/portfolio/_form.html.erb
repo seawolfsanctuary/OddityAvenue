@@ -17,10 +17,12 @@
   <%= i.label :image_filename_3 %>
   <%= i.text_field :image_filename_3 %>
 
-  <label>
+  <br /><br />
+
+  <div>
     <%= i.check_box :enabled %>
-    <%= t('activerecord.attributes.portfolio_item.enabled') %>
-  </label>
+    <%= i.label :enabled %>
+  </div>
 
   <br />
   <%= submit_tag I18n.t('admin.portfolio.' + action), { class: "btn btn-success" } %>
