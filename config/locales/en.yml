@@ -30,24 +30,16 @@ en:
       title: "Name"
       description: "Description"
       images_count: "Images"
-      create: "Add Item"
-      edit: "Edit Item"
-      update: "Update Item"
-      destroy: "Remove Item"
+      create: "Add"
+      edit: "Edit"
+      update: "Update"
+      destroy: "Remove"
     shop:
       id: "ID"
       title: "Name"
       description: "Description"
       images_count: "Images"
-      create: "Add Item"
-      edit: "Edit Item"
-      update: "Update Item"
-      destroy: "Remove Item"
-  activerecord:
-    attributes:
-      portfolio_item:
-        for_sale: "For Sale"
-        hidden: "Hidden"
-      shop_item:
-        for_sale: "For Sale"
-        hidden: "Hidden"
+      create: "Add"
+      edit: "Edit"
+      update: "Update"
+      destroy: "Remove"
