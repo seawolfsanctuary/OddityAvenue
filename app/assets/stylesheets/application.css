@@ -129,6 +129,17 @@ input[type="checkbox"] {
 div#portfolio-thumb img {
   height: auto;
   border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+div#portfolio-images img {
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+span.item-price {
+  font-style: italic;
+  float: right;
 }
 
 table#portfolio-admin thead tr th:last-child,

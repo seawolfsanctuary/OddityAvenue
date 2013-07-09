@@ -1,12 +1,12 @@
 class PriceValidator < ActiveModel::Validator
   def validate(record)
-    record.errors[:price] << 'cannot be less than zero' unless record.price >= 0.00
+    record.errors[:price] << 'cannot be less than zero' unless record[:price] >= 0.00
   end
 end
 
 class QuantityValidator < ActiveModel::Validator
   def validate(record)
-    record.errors[:quantity] << 'cannot be less than zero' unless record.quantity >= 0
+    record.errors[:quantity] << 'cannot be less than zero' unless record[:quantity] >= 0
   end
 end
 
@@ -20,4 +20,8 @@ class ShopItem < ActiveRecord::Base
 
   validates_with PriceValidator
   validates_with QuantityValidator
+
+  def price
+    return "&pound;#{"%.2f" % self[:price]}".html_safe
+  end
 end
