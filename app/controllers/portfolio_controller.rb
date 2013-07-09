@@ -1,6 +1,6 @@
 class PortfolioController < ApplicationController
   def index
-    @items = PortfolioItem.where(enabled: true)
+    @items = PortfolioItem.where(enabled: true).order("id")
   end
 
   def show

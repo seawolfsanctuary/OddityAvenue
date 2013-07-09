@@ -1,6 +1,6 @@
 class ShopController < ApplicationController
   def index
-    @items = ShopItem.where(enabled: true)
+    @items = ShopItem.where(enabled: true).order("id")
   end
 
   def show

@@ -2,7 +2,7 @@ class Admin::ShopController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @items = ShopItem.all
+    @items = ShopItem.order("id")
   end
 
   def new

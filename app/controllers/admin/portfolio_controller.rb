@@ -2,7 +2,7 @@ class Admin::PortfolioController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @items = PortfolioItem.all
+    @items = PortfolioItem.order("id")
   end
 
   def new
