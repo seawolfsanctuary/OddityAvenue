@@ -15,17 +15,18 @@
   }
 }
 
-div#form_info p, div#form_errors p {
-  border: solid 1px;
+div#form_info p, div#form_errors p, div.info, div.error {
+  border: solid 1px white;
+  color: white;
   width: auto;
 }
-div#form_info p {
-  border-color: green;
-  color: green;
+div#form_info p, div.info {
+  border-color: palegreen;
+  color: palegreen ! important;
 }
-div#form_errors p {
+div#form_errors p, div.error {
   border-color: red;
-  color: red;
+  color: red ! important;
 }
 
 input.button {
@@ -33,10 +34,9 @@ input.button {
 }
 
 div.error, div.info {
+  padding: 0.5em;
   margin-bottom: 1em;
 }
-div.error { color: red;   }
-div.info  { color: green; }
 
 div#error_explanation h2 {
   font-variant: inherit;
