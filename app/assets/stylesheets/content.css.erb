@@ -1,0 +1,43 @@
+.content {
+  /* background-image: url(<%= asset_path('background.png') %>); */
+  background-repeat: none;
+  background-position: center;
+}
+@media (min-width: 767px) {
+  .content {
+    padding-left: 5%;
+  }
+}
+
+div#form_info p, div#form_errors p {
+  border: solid 1px;
+  width: auto;
+}
+div#form_info p {
+  border-color: green;
+  color: green;
+}
+div#form_errors p {
+  border-color: red;
+  color: red;
+}
+
+input.button {
+  text-align: right;
+}
+
+div.error, div.info {
+  margin-bottom: 1em;
+}
+div.error { color: red;   }
+div.info  { color: green; }
+
+div#error_explanation h2 {
+  font-variant: inherit;
+  font-size: 100%;
+}
+
+input[type="checkbox"] {
+  float: left;
+  margin-right: 1em;
+}

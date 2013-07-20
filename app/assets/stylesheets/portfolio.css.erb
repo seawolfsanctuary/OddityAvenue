@@ -1,0 +1,61 @@
+@media (min-width: 767px) {
+  #portfolio-gallery div {
+    margin: 2em;
+  }
+
+  #portfolio-images img {
+    margin: 2em;
+  }
+}
+
+div#portfolio-thumb img {
+  width: inherit;
+  border: 1px solid black;
+}
+
+@media (max-width: 767px) {
+  #portfolio-images img {
+    padding-bottom: 2em;
+  }
+}
+@media (min-width: 767px) {
+  #portfolio-gallery div {
+    margin: 2em;
+  }
+
+  #portfolio-images img {
+    margin: 2em;
+  }
+}
+
+div#portfolio-thumb img {
+  height: auto;
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+div#portfolio-images img {
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+span.item-price {
+  font-style: italic;
+  float: right;
+}
+
+table#portfolio-admin thead tr th:last-child,
+table#portfolio-admin tbody tr td:last-child {
+  text-align: right;
+}
+@media (max-width: 767px) {
+  table#portfolio-admin tbody tr td img { width: 45px; }
+}
+@media (min-width: 767px) {
+  table#portfolio-admin tbody tr td img { width: 60px; }
+}
+
+table#portfolio-admin tbody tr.disabled {
+  color: #999999;
+  background-color: #cccccc;
+}
