@@ -1,27 +1,24 @@
 #header {
-  background-image: url('/assets/header/background.png');
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 1em;
-  margin-bottom: 1em;
+  background-image: url(<%= asset_path('header/background.png') %>);
+  background-size: cover;
+  background-position: center center;
+  margin-top:       0;
+  margin-right: -19px;
+  margin-left:  -19px;
+  margin-bottom:  1em;
+  padding:      1em 0;
   border-bottom: solid black 5px;
-}
-
-@media (min-width: 767px) {
-  #header {
-    margin-right: -19px;
-  }
 }
 
 #logo {
   height: 125px;
-  background-image: url('/assets/header/logo.png');
+  background-image: url(<%= asset_path('header/logo.png') %>);
   background-repeat: no-repeat;
   background-position: center;
 }
 #sublogo {
   height: 125px;
-  background-image: url('/assets/header/logo_right.png');
+  background-image: url(<%= asset_path('header/logo_right.png') %>);
   background-repeat: no-repeat;
   background-position: right;
 }
