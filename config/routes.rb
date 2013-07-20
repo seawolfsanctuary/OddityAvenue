@@ -6,6 +6,7 @@ OddityAvenue::Application.routes.draw do
   get "about" => "static_pages#about"
 
   resources :portfolio
+  resources :shop
 
   devise_for :users, :class_name => "Admin::User", :skip => [:registrations]
     as :user do
@@ -21,6 +22,9 @@ OddityAvenue::Application.routes.draw do
     post "content/about",   controller: :static_pages, action: :update_about
     get  "content/contact", controller: :static_pages, action: :edit_contact
     post "content/contact", controller: :static_pages, action: :update_contact
+
+    resources :portfolio
+    resources :shop
   end
 
   # The priority is based upon order of creation:

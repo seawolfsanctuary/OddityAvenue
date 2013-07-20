@@ -1,0 +1,30 @@
+<%= form_for @item, url: {action: action} do |i| %>
+  <%= i.label :title %>
+  <%= i.text_field :title %>
+
+  <%= i.label :description %>
+  <%= i.text_field :description %>
+
+  <%= i.label :thumbnail_filename %>
+  <%= i.text_field :thumbnail_filename %>
+
+  <%= i.label :image_filename_1 %>
+  <%= i.text_field :image_filename_1 %>
+
+  <%= i.label :image_filename_2 %>
+  <%= i.text_field :image_filename_2 %>
+
+  <%= i.label :image_filename_3 %>
+  <%= i.text_field :image_filename_3 %>
+
+  <br /><br />
+
+  <div>
+    <%= i.check_box :enabled %>
+    <%= i.label :enabled %>
+  </div>
+
+  <br />
+  <%= submit_tag I18n.t('admin.portfolio.' + action), { class: "btn btn-success" } %>
+<%- end -%>
+

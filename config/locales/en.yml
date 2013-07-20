@@ -7,10 +7,12 @@ en:
   page_titles:
     home: "Home"
     about: "About Me"
-    for_sale: "For Sale"
+    shop: "For Sale"
     portfolio: "Past Work"
     blog: "Blog"
     contact: "Contact Me"
+  shop:
+    quantity_available: "%{q} available, "
   contact:
     success: "Your message has been sent, thankyou!"
     failures:
@@ -20,4 +22,26 @@ en:
     create_failed: "Unable to create %{page} content."
     update_successful: "Successfully updated %{page} content."
     update_failed: "Unable to update %{page} content."
+    delete_successful: "Successfully removed %{page} content."
+    delete_failed: "Unable to remove %{page} content."
+    page_adding: "Add - "
     page_editing: "Edit - "
+    page_actions: "Actions"
+    portfolio:
+      id: "ID"
+      title: "Name"
+      description: "Description"
+      images_count: "Images"
+      create: "Add"
+      edit: "Edit"
+      update: "Update"
+      destroy: "Remove"
+    shop:
+      id: "ID"
+      title: "Name"
+      description: "Description"
+      images_count: "Images"
+      create: "Add"
+      edit: "Edit"
+      update: "Update"
+      destroy: "Remove"

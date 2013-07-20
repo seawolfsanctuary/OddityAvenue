@@ -1,13 +1,10 @@
 class PortfolioController < ApplicationController
   def index
-    @items = []
-    5.times { @items << PortfolioItem.new }
+    @items = PortfolioItem.where(enabled: true).order("id")
   end
 
   def show
-    @item = PortfolioItem.new
-  end
-
-  def edit
+    @item = PortfolioItem.find(params[:id])
+    raise ActionController::RoutingError.new('Not Found') unless @item.enabled
   end
 end
