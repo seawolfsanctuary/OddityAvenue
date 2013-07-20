@@ -32,7 +32,7 @@
         <div id="sublogo" class="span6 pull-right hidden-phone"></div>
       </div>
       <div class="row-fluid">
-        <div class="span2">
+        <div id="sidebar" class="span2">
           <div class="sidebar-nav">
 <%= render :partial => (user_signed_in? ? "layouts/admin_links" : "layouts/public_links") -%>
           </div>
