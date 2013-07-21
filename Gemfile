@@ -40,3 +40,7 @@ group :test do
   gem 'rspec-rails', '~> 2.13.1'
   gem 'factory_girl', '~> 4.2.0'
 end
+
+group :staging, :production do
+  gem 'newrelic_rpm'
+end
