@@ -15,7 +15,7 @@
     <tr class="<%= "disabled" unless i.enabled %>">
       <td><%= image_tag i.thumbnail_filename.to_s, { alt: i.id.to_s, class: "span2" } %></td>
       <td><%= truncate(i.title, length: 50) %></td>
-      <td><%= truncate(i.description, length: 50) %></td>
+      <td><%= truncate(strip_tags(i.description), length: 50) %></td>
       <td><%= i.images_count %></td>
       <td>
         <%= link_to I18n.t('admin.portfolio.edit'), edit_admin_portfolio_path(i.id), { class: "btn btn-primary", type: "button" } %>
