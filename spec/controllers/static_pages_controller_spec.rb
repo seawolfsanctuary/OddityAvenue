@@ -112,4 +112,23 @@ describe StaticPagesController do
       end
     end
   end
+
+  context "#present_errors" do
+    it "should return nil when there are no errors" do
+      controller.send(:present_errors).should be_nil
+      controller.send(:present_errors, []).should be_nil
+    end
+
+    it "should present one error in a HTML list" do
+      controller.send(:present_errors, ["123"]).should == "<ul><li>123</li></ul>"
+    end
+
+    it "should present more than one error in a HTML list" do
+      controller.send(:present_errors, ["123", "456", "789"]).should == "<ul><li>123</li><li>456</li><li>789</li></ul>"
+    end
+
+    it "should escape HTML in the error content" do
+      controller.send(:present_errors, ["<p>Boo!</p>"]).should == "<ul><li>&lt;p&gt;Boo!&lt;/p&gt;</li></ul>"
+    end
+  end
 end
