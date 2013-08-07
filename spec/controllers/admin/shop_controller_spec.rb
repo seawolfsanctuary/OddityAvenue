@@ -40,7 +40,6 @@ describe Admin::ShopController do
       it "should redirect to the login page" do
         post 'update', id: @item.id
         response.should redirect_to new_user_session_path
-        ShopItem.find(@item.id).should == @item
       end
     end
 
@@ -48,7 +47,6 @@ describe Admin::ShopController do
       it "should redirect to the login page" do
         delete 'destroy', id: @item.id
         response.should redirect_to new_user_session_path
-        ShopItem.find(@item.id).should == @item
       end
     end
   end
@@ -136,6 +134,31 @@ describe Admin::ShopController do
         lambda { ShopItem.find(@item_id) }.should_not raise_error(ActiveRecord::RecordNotFound)
         delete 'destroy', id: @item_id
         lambda { ShopItem.find(@item_id) }.should     raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "POST update_delivery_opts" do
+      it "should create delivery options when none exist" do
+        StaticContent.delete_all
+        post :update_delivery_opts, { "delivery_opts" => "New Content" }
+        flash[:info].should == "Successfully created delivery content."
+        c = StaticContent.last
+        c.page.should == "shop"
+        c.part.should == "delivery_opts"
+        c.body.should == "New Content"
+        response.should redirect_to(admin_shop_index_path)
+      end
+
+      it "should update delivery options when some exist" do
+        StaticContent.delete_all
+        post :update_delivery_opts, { "delivery_opts" => "New Content" }
+        post :update_delivery_opts, { "delivery_opts" => "Newer Content" }
+        flash[:info].should == "Successfully updated delivery content."
+        c = StaticContent.last
+        c.page.should == "shop"
+        c.part.should == "delivery_opts"
+        c.body.should == "Newer Content"
+        response.should redirect_to(admin_shop_index_path)
       end
     end
   end

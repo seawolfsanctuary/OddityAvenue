@@ -12,6 +12,7 @@ en:
     blog: "Blog"
     contact: "Contact Me"
   shop:
+    delivery_opts: "Delivery Options"
     quantity_available: "%{q} available, "
   contact:
     success: "Your message has been sent, thankyou!"
@@ -47,3 +48,4 @@ en:
       edit: "Edit"
       update: "Update"
       destroy: "Remove"
+      update_delivery_opts: "Update Delivery Options"

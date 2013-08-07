@@ -27,3 +27,10 @@
 </table>
 
 <%= link_to I18n.t('admin.shop.create'), new_admin_shop_path, { class: "btn btn-primary", type: "button" } %>
+
+<%= form_tag admin_shop_update_delivery_opts_path, id: "delivery-opts-admin" do %>
+  <h3><%= I18n.t('shop.delivery_opts') %></h3>
+  <%= text_area_tag :delivery_opts, @delivery_opts, class: "tinymce" %>
+  <br />
+  <%= submit_tag I18n.t('admin.shop.update_delivery_opts'), { class: "btn btn-success" } %>
+<%- end -%>

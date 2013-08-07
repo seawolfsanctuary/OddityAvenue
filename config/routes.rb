@@ -24,7 +24,9 @@ OddityAvenue::Application.routes.draw do
     post "content/contact", controller: :static_pages, action: :update_contact
 
     resources :portfolio
+
     resources :shop
+    post "shop/update_delivery_opts", controller: :shop, action: :update_delivery_opts
   end
 
   # The priority is based upon order of creation:

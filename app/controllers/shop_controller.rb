@@ -1,6 +1,7 @@
 class ShopController < ApplicationController
   def index
     @items = ShopItem.where(enabled: true).order("id")
+    @delivery_opts = StaticContent.load("shop", "delivery_opts")
   end
 
   def show
