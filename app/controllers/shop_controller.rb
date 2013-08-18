@@ -1,6 +1,10 @@
 class ShopController < ApplicationController
   def index
-    @items = ShopItem.where(enabled: true).order("id")
+    if params[:tag]
+      @items = ShopItem.tagged_with(params[:tag]).where(enabled: true).order("id")
+    else
+      @items = ShopItem.where(enabled: true).order("id")
+    end
   end
 
   def show

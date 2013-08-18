@@ -6,7 +6,9 @@ OddityAvenue::Application.routes.draw do
   get "about" => "static_pages#about"
 
   resources :portfolio
+    get 'portfolio/tagged/:tag',  to: 'portfolio#index',  as: :portfolio_item_tag
   resources :shop
+    get 'shop/tagged/:tag',       to: 'shop#index',       as: :shop_item_tag
 
   devise_for :users, :class_name => "Admin::User", :skip => [:registrations]
     as :user do

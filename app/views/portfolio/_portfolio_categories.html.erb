@@ -1,7 +1,7 @@
   <%- categories = PortfolioItem.category_counts ; if categories.present? -%>
     <ul>
     <%- categories.each do |c| -%>
-      <li><%= c.name %></li>
+      <li><%= link_to c.name, portfolio_item_tag_path(URI::escape(c.name)) %></li>
     <%- end -%>
     </ul>
   <%- end -%>
