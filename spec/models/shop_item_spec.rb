@@ -5,7 +5,7 @@ describe ShopItem do
     it "should have inherited various attributes" do
       %w{ title description
           image_filename_1 image_filename_2 image_filename_3
-          thumbnail_filename enabled
+          thumbnail_filename categories enabled
       }.each do |a|
         ShopItem.new.should respond_to("#{a}".to_sym)
         ShopItem.new.should respond_to("#{a}=".to_sym)
