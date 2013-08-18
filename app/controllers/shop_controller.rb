@@ -1,7 +1,7 @@
 class ShopController < ApplicationController
   def index
-    if params[:tag]
-      @items = ShopItem.tagged_with(params[:tag]).where(enabled: true).order("id")
+    if params[:category]
+      @items = ShopItem.tagged_with(params[:category]).where(enabled: true).order("id")
     else
       @items = ShopItem.where(enabled: true).order("id")
     end

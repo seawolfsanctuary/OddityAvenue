@@ -1,4 +1,4 @@
-<%- content_for :title do params[:tag].present? ? I18n.t('page_titles.shop_tagged', :tag => params[:tag].capitalize) : I18n.t('page_titles.shop') end -%>
+<%- content_for :title do params[:category].present? ? I18n.t('page_titles.shop_category', :category => params[:category].capitalize) : I18n.t('page_titles.shop') end -%>
 
 <div id="portfolio-gallery" class="span12">
 <%- if @items.present? -%>
@@ -9,6 +9,6 @@
     </div>
   <%- end -%>
 <%- else -%>
-  <p><%= I18n.t('shop.none_found_tagged') %></p>
+  <p><%= I18n.t('shop.none_found_category') %></p>
 <%- end -%>
 </div>

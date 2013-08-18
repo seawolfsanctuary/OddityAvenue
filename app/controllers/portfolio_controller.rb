@@ -1,7 +1,7 @@
 class PortfolioController < ApplicationController
   def index
-    if params[:tag]
-      @items = PortfolioItem.tagged_with(params[:tag]).where(enabled: true).order("id")
+    if params[:category]
+      @items = PortfolioItem.tagged_with(params[:category]).where(enabled: true).order("id")
     else
       @items = PortfolioItem.where(enabled: true).order("id")
     end
