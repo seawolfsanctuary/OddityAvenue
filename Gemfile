@@ -24,6 +24,8 @@ gem 'tinymce-rails', '~> 3.5.8.2'
 
 gem 'devise', '2.2.4'
 
+gem 'acts-as-taggable-on', '2.4.1'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
