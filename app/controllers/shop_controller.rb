@@ -1,7 +1,12 @@
 class ShopController < ApplicationController
   def index
-    @items = ShopItem.where(enabled: true).order("id")
     @delivery_opts = StaticContent.load("shop", "delivery_opts")
+
+    if params[:category]
+      @items = ShopItem.tagged_with(params[:category]).where(enabled: true).order("id")
+    else
+      @items = ShopItem.where(enabled: true).order("id")
+    end
   end
 
   def show
