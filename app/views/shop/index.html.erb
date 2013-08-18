@@ -1,10 +1,14 @@
-<%- content_for :title do I18n.t('page_titles.shop') end -%>
+<%- content_for :title do params[:tag].present? ? I18n.t('page_titles.shop_tagged', :tag => params[:tag].capitalize) : I18n.t('page_titles.shop') end -%>
 
 <div id="portfolio-gallery" class="span12">
-<%- @items.each do |i| -%>
-  <div id="portfolio-thumb" class="span3">
-    <%= link_to image_tag(i.thumbnail_filename.to_s), shop_path(i.id) %>
-    <p><%= i.title -%><span class="item-price"><%= t('shop.quantity_available', :q => i.quantity) if i.quantity > 1 %><%= i.price %></span></p>
-  </div>
+<%- if @items.present? -%>
+  <%- @items.each do |i| -%>
+    <div id="portfolio-thumb" class="span3">
+      <%= link_to image_tag(i.thumbnail_filename.to_s), shop_path(i.id) %>
+      <p><%= i.title -%><span class="item-price"><%= t('shop.quantity_available', :q => i.quantity) if i.quantity > 1 %><%= i.price %></span></p>
+    </div>
+  <%- end -%>
+<%- else -%>
+  <p><%= I18n.t('shop.none_found_tagged') %></p>
 <%- end -%>
 </div>

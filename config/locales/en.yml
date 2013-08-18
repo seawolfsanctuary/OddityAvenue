@@ -8,11 +8,18 @@ en:
     home: "Home"
     about: "About Me"
     shop: "For Sale"
+    shop_tagged: "For Sale - %{tag}"
+    portfolio_tagged: "Past Work - %{tag}"
     portfolio: "Past Work"
     blog: "Blog"
     contact: "Contact Me"
+  portfolio:
+    none_found: "Sorry, no items were found."
+    none_found_tagged: "Sorry, no items were found in that category."
   shop:
     quantity_available: "%{q} available, "
+    none_found: "Sorry, no items were found."
+    none_found_tagged: "Sorry, no items were found in that category."
   contact:
     success: "Your message has been sent, thankyou!"
     failures:
