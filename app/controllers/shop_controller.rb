@@ -1,9 +1,19 @@
 class ShopController < ApplicationController
   def index
     if params[:category]
-      @items = ShopItem.tagged_with(params[:category]).where(enabled: true).order("id")
+      @items  = []
+      @titles = []
+      ShopItem.tagged_with(params[:category]).where(enabled: true).order("id").each do |i|
+        @items  << i
+        @titles << i.title
+      end
     else
-      @items = ShopItem.where(enabled: true).order("id")
+      @items =  []
+      @titles = []
+      ShopItem.category_counts.each do |c|
+        @items  << ShopItem.tagged_with(c.name).select(&:enabled).first
+        @titles << c
+      end
     end
   end
 

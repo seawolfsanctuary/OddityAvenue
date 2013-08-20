@@ -1,0 +1,14 @@
+<%- content_for :title do I18n.t('page_titles.shop') end -%>
+
+<div id="portfolio-gallery" class="span12">
+<%- if @items.present? -%>
+  <%- @items.each_with_index do |item, index| -%>
+    <div id="portfolio-thumb" class="span3">
+      <%= link_to image_tag(item.thumbnail_filename.to_s), shop_item_category_path(URI::escape(@titles.at(index).to_s)) %>
+      <p><%= @titles.at(index).to_s.capitalize -%></p>
+    </div>
+  <%- end -%>
+<%- else -%>
+  <p><%= I18n.t('shop.none_found') %></p>
+<%- end -%>
+</div>

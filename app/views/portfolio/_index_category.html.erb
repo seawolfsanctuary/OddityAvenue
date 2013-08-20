@@ -1,0 +1,14 @@
+<%- content_for :title do I18n.t('page_titles.portfolio_category', :category => params[:category].capitalize) end -%>
+
+<div id="portfolio-gallery" class="span12">
+<%- if @items.present? -%>
+  <%- @items.each do |i| -%>
+    <div id="portfolio-thumb" class="span3">
+      <%= link_to image_tag(i.thumbnail_filename.to_s), portfolio_path(i.id) %>
+      <p><%= i.title -%></p>
+    </div>
+  <%- end -%>
+<%- else -%>
+  <p><%= I18n.t('portfolio.none_found_category') %></p>
+<%- end -%>
+</div>
