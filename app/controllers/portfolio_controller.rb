@@ -1,9 +1,19 @@
 class PortfolioController < ApplicationController
   def index
     if params[:category]
-      @items = PortfolioItem.tagged_with(params[:category]).where(enabled: true).order("id")
+      @items  = []
+      @titles = []
+      PortfolioItem.tagged_with(params[:category]).where(enabled: true).order("id").each do |i|
+        @items  << i
+        @titles << i.title
+      end
     else
-      @items = PortfolioItem.where(enabled: true).order("id")
+      @items =  []
+      @titles = []
+      PortfolioItem.where(enabled:true).collect(&:categories).reject(&:blank?).flatten.collect(&:name).uniq.sort.each do |c|
+        @items  << PortfolioItem.tagged_with(c).select(&:enabled).first
+        @titles << c
+      end
     end
   end
 
