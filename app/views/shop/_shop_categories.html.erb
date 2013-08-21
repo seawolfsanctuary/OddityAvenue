@@ -1,6 +1,6 @@
-  <%- categories = ShopItem.category_counts ; if categories.present? -%>
+  <%- categories = ShopItem.where(enabled:true).collect(&:categories).reject(&:blank?).flatten.uniq.sort ; if categories.present? -%>
     <ul>
-    <%- categories.sort.each do |c| -%>
+    <%- categories.each do |c| -%>
       <li><%= link_to c.name, shop_item_category_path(URI::escape(c.name)) %></li>
     <%- end -%>
     </ul>

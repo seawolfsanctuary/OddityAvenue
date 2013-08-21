@@ -1,6 +1,6 @@
-  <%- categories = PortfolioItem.category_counts ; if categories.present? -%>
+  <%- categories = PortfolioItem.where(enabled:true).collect(&:categories).reject(&:blank?).flatten.uniq.sort ; if categories.present? -%>
     <ul>
-    <%- categories.sort.each do |c| -%>
+    <%- categories.each do |c| -%>
       <li><%= link_to c.name, portfolio_item_category_path(URI::escape(c.name)) %></li>
     <%- end -%>
     </ul>
