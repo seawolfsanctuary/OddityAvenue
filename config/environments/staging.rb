@@ -62,9 +62,6 @@ OddityAvenue::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Devise
-  config.assets.initialize_on_precompile = false
-
   ### Mail settings
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'oddityavenue-test.herokuapp.com' }
