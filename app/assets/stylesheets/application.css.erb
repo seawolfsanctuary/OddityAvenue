@@ -6,13 +6,8 @@
 body {
   padding-top: 0;
   padding-bottom: 0;
-  background: #770000;
-  background: -webkit-radial-gradient(top center, #990000, #660000, #220000);
-  background:    -moz-radial-gradient(top center, #990000, #660000, #220000);
-  background:     -ms-radial-gradient(top center, #990000, #660000, #220000);
-  background:      -o-radial-gradient(top center, #990000, #660000, #220000);
-  background:         radial-gradient(top center, #990000, #660000, #220000);
   color: white;
+  background-color: #770000;
 }
 
 hr {
@@ -28,8 +23,9 @@ hr {
   img { max-width: 100%; }
 
   body {
-    /* background-image: url(<%= asset_path('background.jpg') %>); */
-    background-repeat: repeat-both;
-    background-position: center;
+    background-image: url(<%= asset_path('gradient.png') %>);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-position: top center;
   }
 }
