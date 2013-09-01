@@ -15,7 +15,7 @@
     <tr class="<%= "disabled" unless i.enabled %>">
       <td><%= image_tag i.thumbnail_filename.to_s, { alt: i.id.to_s, class: "span2" } %></td>
       <td><%= truncate(i.title, length: 50) %></td>
-      <td><%= truncate(i.description, length: 50) %></td>
+      <td><%= truncate(strip_tags(i.description), length: 50) %></td>
       <td><%= i.images_count %></td>
       <td>
         <%= link_to I18n.t('admin.shop.edit'), edit_admin_shop_path(i.id), { class: "btn btn-primary", type: "button" } %>
@@ -27,3 +27,10 @@
 </table>
 
 <%= link_to I18n.t('admin.shop.create'), new_admin_shop_path, { class: "btn btn-primary", type: "button" } %>
+
+<%= form_tag admin_shop_update_delivery_opts_path, id: "delivery-opts-admin" do %>
+  <h3><%= I18n.t('shop.delivery_opts') %></h3>
+  <%= text_area_tag :delivery_opts, @delivery_opts, class: "tinymce" %>
+  <br />
+  <%= submit_tag I18n.t('admin.shop.update_delivery_opts'), { class: "btn btn-success" } %>
+<%- end -%>

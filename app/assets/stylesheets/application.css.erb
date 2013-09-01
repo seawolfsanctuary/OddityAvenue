@@ -1,0 +1,31 @@
+/*
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  padding-top: 0;
+  padding-bottom: 0;
+  color: white;
+  background-color: #770000;
+}
+
+hr {
+  color: grey;
+  border-color: grey;
+  background-color: grey;
+}
+
+@media (max-width: 767px) {
+  img { max-width: 90%; }
+}
+@media (min-width: 767px) {
+  img { max-width: 100%; }
+
+  body {
+    background-image: url(<%= asset_path('gradient.png') %>);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-position: top center;
+  }
+}

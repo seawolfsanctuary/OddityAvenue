@@ -18,20 +18,32 @@ class StaticPagesController < ApplicationController
       send_message! params[:message].to_s, params[:name].to_s, params[:email].to_s, params[:subject].to_s
       flash[:info] = I18n.t('contact.success')
     else
-      flash[:error] = errors
+      flash[:error] = present_errors(errors)
     end
+
     redirect_to :contact
   end
 
   private
 
-  def contact_errors(p)
+  def contact_errors p
     errors = []
     [:name, :email, :subject, :message].each do |i|
-      errors << "Please fill in the #{i.to_s} field." if p[i].blank?
+      errors << I18n.t('contact.failures.blank_field' , i: i.to_s) if p[i].blank?
     end
-    errors << "The e-mail address supplied doesn't look right. It must be like name@domain.tld" unless p[:email] =~ /(.*)@(.*)\.(.*)/
+    errors << I18n.t('contact.failures.email_invalid') unless p[:email] =~ /(.*)@(.*)\.(.*)/
 
+    return errors
+  end
+
+  def present_errors ary=nil
+    return nil if ary.blank?
+
+    errors = "<ul>".html_safe
+    ary.each do |e|
+      errors += "<li>".html_safe + e + "</li>".html_safe
+    end
+    errors += "</ul>".html_safe
     return errors
   end
 

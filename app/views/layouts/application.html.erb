@@ -26,18 +26,17 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div id="header" class="row">
-        <div id="logo" class="span3 visible-desktop"></div>
-        <div id="logo" class="span4 visible-tablet visible-phone"></div>
+      <header class="row">
+        <div id="logo" class="span5"></div>
         <div id="sublogo" class="span6 pull-right hidden-phone"></div>
-      </div>
+      </header>
       <div class="row-fluid">
-        <div class="span2">
-          <div class="sidebar-nav">
+        <div id="sidebar" class="span2">
+          <nav class="sidebar-nav">
 <%= render :partial => (user_signed_in? ? "layouts/admin_links" : "layouts/public_links") -%>
-          </div>
+          </nav>
         </div>
-        <div class="content span10">
+        <article class="content span10">
           <%- if content_for?(:title) -%><h2><%= yield :title %></h2><%- end -%>
           <%- if flash[:error]  -%><div class="error"><%= flash[:error]  %></div><%- end -%>
           <%- if flash[:alert]  -%><div class="error"><%= flash[:alert]  %></div><%- end -%>
@@ -45,7 +44,7 @@
           <%- if flash[:info]   -%><div class="info "><%= flash[:info]   %></div><%- end -%>
           <%- flash.discard -%>
           <%= yield %>
-        </div>
+        </article>
       </div>
 
       <hr>

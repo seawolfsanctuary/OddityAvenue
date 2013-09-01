@@ -17,6 +17,7 @@ en:
     none_found: "Sorry, no items were found."
     none_found_category: "Sorry, no items were found in that category."
   shop:
+    delivery_opts: "Delivery Options"
     quantity_available: "%{q} available, "
     none_found: "Sorry, no items were found."
     none_found_category: "Sorry, no items were found in that category."
@@ -24,6 +25,8 @@ en:
     success: "Your message has been sent, thankyou!"
     failures:
       missing_info: "Please complete all the information required."
+      blank_field: "Please fill in the %{i} field."
+      email_invalid: "The e-mail address supplied doesn't look right. It must be like: name@domain.tld"
   admin:
     create_successful: "Successfully created %{page} content."
     create_failed: "Unable to create %{page} content."
@@ -52,3 +55,4 @@ en:
       edit: "Edit"
       update: "Update"
       destroy: "Remove"
+      update_delivery_opts: "Update Delivery Options"
