@@ -6,21 +6,33 @@ header {
   margin-right: -19px ! important;
   margin-left:  -19px ! important;
   margin-bottom:  1em ! important;
-  padding:      1em 0 ! important;
+  padding:          0 ! important;
   border-bottom: solid black 5px;
 }
 
 #logo {
-  height: 125px;
+  height: 150px;
   background-image: url(<%= asset_path('header/logo.png') %>);
   background-repeat: no-repeat;
-  background-position: center;
 }
+@media (max-width: 767px) {
+  #logo {
+    background-position: center;
+  }
+}
+@media (min-width: 767px) {
+  #logo {
+    background-position: left;
+  }
+}
+
 #sublogo {
   height: 125px;
   background-image: url(<%= asset_path('header/logo_right.png') %>);
   background-repeat: no-repeat;
   background-position: right;
+  margin-top: 1em;
+  margin-bottom: -1em;
 }
 
 h1, h2, h3, h4, h5, h6, .sidebar-nav ul li a {
