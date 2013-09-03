@@ -6,4 +6,8 @@ module Item
     count += 1 if self.image_filename_3.present?
     return count
   end
+
+  def move
+    raise NotImplementedError
+  end
 end
