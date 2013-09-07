@@ -46,6 +46,7 @@ en:
       edit: "Edit"
       update: "Update"
       destroy: "Remove"
+      move: "Move"
     shop:
       id: "ID"
       title: "Name"

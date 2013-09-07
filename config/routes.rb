@@ -26,7 +26,7 @@ OddityAvenue::Application.routes.draw do
     post "content/contact", controller: :static_pages, action: :update_contact
 
     resources :portfolio
-    post "portfolio/move_to_shop", controller: :portfolio, action: :move_to_shop
+    match 'portfolio/:id/move_to_shop' => 'portfolio#move_to_shop', :as => 'move_portfolio_to_shop'
 
     resources :shop
     post "shop/update_delivery_opts", controller: :shop, action: :update_delivery_opts
