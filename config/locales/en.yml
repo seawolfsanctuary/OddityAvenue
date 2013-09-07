@@ -46,7 +46,7 @@ en:
       edit: "Edit"
       update: "Update"
       destroy: "Remove"
-      move: "Move"
+      move: "Move to Shop"
     shop:
       id: "ID"
       title: "Name"
@@ -57,4 +57,4 @@ en:
       update: "Update"
       destroy: "Remove"
       update_delivery_opts: "Update Delivery Options"
-      move: "Move"
+      move: "Move to Portfolio"
