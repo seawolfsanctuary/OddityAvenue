@@ -67,7 +67,6 @@ describe ShopItem do
       PortfolioItem.delete_all
       ShopItem.delete_all
       @i = FactoryGirl.create(:shop_item)
-      @i.save
     end
 
     it "should override Item#move" do

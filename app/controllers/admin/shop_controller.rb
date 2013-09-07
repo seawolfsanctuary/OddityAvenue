@@ -75,4 +75,24 @@ class Admin::ShopController < ApplicationController
 
     redirect_to admin_shop_index_path
   end
+
+  def move_to_portfolio
+    source = begin
+      ShopItem.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      nil
+    end
+
+    if source.present? && source.is_a?(ShopItem)
+      case source.move
+        when -1 then flash[:error] = "Unable to create portfolio item. Please create and delete manually."
+        when  0 then flash[:error] = "Item copied, but unable to delete shop item. Please delete manually."
+        when  1 then flash[:info]  = "Item moved successfully."
+        else flash[:error] = "Sorry, but something went wrong."
+      end
+    else
+      flash[:error] = "Unable to find that shop item."
+    end
+    redirect_to admin_shop_index_path
+  end
 end

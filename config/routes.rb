@@ -29,6 +29,7 @@ OddityAvenue::Application.routes.draw do
 
     resources :shop
     post "shop/update_delivery_opts", controller: :shop, action: :update_delivery_opts
+    post "shop/move_to_portfolio", controller: :shop, action: :move_to_portfolio
   end
 
   # The priority is based upon order of creation:
