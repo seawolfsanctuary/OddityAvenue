@@ -50,9 +50,9 @@ describe Admin::ShopController do
       end
     end
 
-    context "POST 'move_to_portfolio'" do
+    context "GET 'move_to_portfolio'" do
       it "should redirect to the login page" do
-        delete 'move_to_portfolio', id: @item.id
+        get 'move_to_portfolio', id: @item.id
         response.should redirect_to new_user_session_path
       end
     end
@@ -169,7 +169,7 @@ describe Admin::ShopController do
       end
     end
 
-    context "POST move_to_portfolio" do
+    context "GET move_to_portfolio" do
       before(:each) do
         PortfolioItem.delete_all
         ShopItem.delete_all
@@ -178,12 +178,12 @@ describe Admin::ShopController do
       it "should not call ShopItem#move when the ShopItem cannot be found" do
         i = FactoryGirl.create(:shop_item)
         ShopItem.any_instance.should_not_receive(:move)
-        post :move_to_portfolio, { "id" => -1 }
+        get :move_to_portfolio, { "id" => -1 }
       end
 
       it "should show an error message when unsuccessful because the ShopItem cannot be found" do
         i = FactoryGirl.create(:shop_item)
-        post :move_to_portfolio, { "id" => -1 }
+        get :move_to_portfolio, { "id" => -1 }
         flash[:error].should == "Unable to find that shop item."
         flash[:info].should be_blank
       end
@@ -191,7 +191,7 @@ describe Admin::ShopController do
       it "should show an error message when unsuccessful because the PortfolioItem cannot be created" do
         i = FactoryGirl.create(:shop_item)
         ShopItem.any_instance.should_receive(:move).once.and_return(-1)
-        post :move_to_portfolio, { "id" => i[:id] }
+        get :move_to_portfolio, { "id" => i[:id] }
         flash[:error].should == "Unable to create portfolio item. Please create and delete manually."
         flash[:info].should be_blank
       end
@@ -199,7 +199,7 @@ describe Admin::ShopController do
       it "should show an error message when unsuccessful because the ShopItem cannot be destroyed" do
         i = FactoryGirl.create(:shop_item)
         ShopItem.any_instance.should_receive(:move).once.and_return(0)
-        post :move_to_portfolio, { "id" => i[:id] }
+        get :move_to_portfolio, { "id" => i[:id] }
         flash[:error].should == "Item copied, but unable to delete shop item. Please delete manually."
         flash[:info].should be_blank
       end
@@ -207,7 +207,7 @@ describe Admin::ShopController do
       it "should show an info message when successful" do
         i = FactoryGirl.create(:shop_item)
         ShopItem.any_instance.should_receive(:move).once.and_return(1)
-        post :move_to_portfolio, { "id" => i[:id] }
+        get :move_to_portfolio, { "id" => i[:id] }
         flash[:error].should be_blank
         flash[:info].should == "Item moved successfully."
       end

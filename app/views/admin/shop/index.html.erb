@@ -19,6 +19,7 @@
       <td><%= i.images_count %></td>
       <td>
         <%= link_to I18n.t('admin.shop.edit'), edit_admin_shop_path(i.id), { class: "btn btn-primary", type: "button" } %>
+        <%= link_to I18n.t('admin.shop.move'), admin_move_shop_to_portfolio_path(i.id), { class: "btn btn-primary", type: "button" } %>
         <%= link_to I18n.t('admin.shop.destroy'), admin_shop_path(i.id), { class: "btn btn-primary", type: "button", method: :delete } %>
       </td>
     </tr>

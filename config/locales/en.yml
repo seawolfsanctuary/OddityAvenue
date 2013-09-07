@@ -56,3 +56,4 @@ en:
       update: "Update"
       destroy: "Remove"
       update_delivery_opts: "Update Delivery Options"
+      move: "Move"
