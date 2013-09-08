@@ -39,4 +39,19 @@ describe Item do
       i.images_count.should == 3
     end
   end
+
+  context "#move" do
+    it "should raise a NotImplementedError unless overridden" do
+      i = DummyItem.new
+      lambda { i.move }.should raise_error(NotImplementedError)
+
+      class SomeItem
+        include Item
+        def move ; end
+      end
+
+      s = SomeItem.new
+      lambda { s.move }.should_not raise_error(NotImplementedError)
+    end
+  end
 end
