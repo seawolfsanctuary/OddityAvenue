@@ -15,7 +15,7 @@ class PortfolioItem < ActiveRecord::Base
 
     attributes.each do |key, value|
       begin
-        destination.send("#{key}=".to_sym, value)
+        destination.send("#{key}=".to_sym, value) unless key.to_sym == :id
       rescue NoMethodError ; end
     end
 
