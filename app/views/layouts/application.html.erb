@@ -56,6 +56,7 @@
 
     </div>
 
+    <%= render :partial => 'layouts/google_analytics' if ENV['GA_CODE'].present? %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "jquery" %>
     <%- if controller.controller_path.starts_with?("admin") -%>
