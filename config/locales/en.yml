@@ -14,9 +14,13 @@ en:
     blog: "Blog"
     contact: "Contact Me"
   portfolio:
+    subhead_categories: "Click on a category to see the items inside."
+    subhead_category: "Click on a item to see more photos, information and pricing."
     none_found: "Sorry, no items were found."
     none_found_category: "Sorry, no items were found in that category."
   shop:
+    subhead_categories: "Click on a category to see the items inside."
+    subhead_category: "Click on a item to see more photos, information and pricing."
     delivery_opts: "Delivery Options"
     quantity_available: "%{q} available, "
     none_found: "Sorry, no items were found."

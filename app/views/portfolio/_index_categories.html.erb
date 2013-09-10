@@ -2,6 +2,7 @@
 
 <div id="portfolio-gallery" class="span12">
 <%- if @items.present? -%>
+  <p><%= I18n.t('portfolio.subhead_categories') %></p>
   <%- @items.each_with_index do |item, index| -%>
     <div id="portfolio-thumb" class="span3">
       <%= link_to image_tag(item.thumbnail_filename.to_s), portfolio_item_category_path(URI::escape(@titles.at(index).to_s)) %>
