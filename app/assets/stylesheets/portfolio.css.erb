@@ -1,3 +1,18 @@
+#portfolio-gallery, #portfolio-gallery div.row-fluid {
+  margin:  0 ! important;
+}
+
+@media (max-width: 767px) {
+  .portfolio-thumb {
+    padding-top: 2em;
+  }
+}
+
+@media (max-width: 767px) {
+  #portfolio-images img {
+    padding-bottom: 2em;
+  }
+}
 @media (min-width: 767px) {
   #portfolio-gallery div {
     margin: 2em;
@@ -8,7 +23,7 @@
   }
 }
 
-div#portfolio-thumb img {
+div.portfolio-thumb img {
   width: inherit;
   border: 1px solid black;
 }
@@ -28,7 +43,7 @@ div#portfolio-thumb img {
   }
 }
 
-div#portfolio-thumb img {
+div.portfolio-thumb img {
   height: auto;
   border: 1px solid black;
   margin-bottom: 1em;
@@ -42,6 +57,7 @@ div#portfolio-images img {
 span.item-price {
   font-style: italic;
   float: right;
+  padding-left: 1em;
 }
 
 table#portfolio-admin thead tr th:last-child,

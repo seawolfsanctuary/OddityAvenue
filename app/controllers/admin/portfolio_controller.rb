@@ -23,11 +23,11 @@ class Admin::PortfolioController < ApplicationController
   end
 
   def edit
-    @item = PortfolioItem.find(params["id"])
+    @item = PortfolioItem.find_by_id(params["id"])
   end
 
   def update
-    i = PortfolioItem.find(params["id"])
+    i = PortfolioItem.find_by_id(params["id"])
     if i.update_attributes!(params["portfolio_item"])
       flash[:info] = I18n.t('admin.update_successful', :page => "portfolio item")
       @items = PortfolioItem.all
@@ -52,7 +52,7 @@ class Admin::PortfolioController < ApplicationController
 
   def move_to_shop
     source = begin
-      PortfolioItem.find(params[:id])
+      PortfolioItem.find_by_id(params[:id])
     rescue ActiveRecord::RecordNotFound
       nil
     end

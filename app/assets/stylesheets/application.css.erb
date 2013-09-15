@@ -16,12 +16,11 @@ hr {
   background-color: grey;
 }
 
-@media (max-width: 767px) {
-  img { max-width: 90%; }
+img {
+  max-width: 100%;
 }
-@media (min-width: 767px) {
-  img { max-width: 100%; }
 
+@media (min-width: 767px) {
   body {
     background-image: url(<%= asset_path('gradient.png') %>);
     background-repeat: repeat-y;
