@@ -4,6 +4,7 @@ class ContactMailer < ActionMailer::Base
     @time = Time.now.strftime("%d/%m/%Y %H:%M")
     @from_name = name.to_s
     @from_email = email.to_s
+    @subject = subject.to_s
     @message = message.to_s
 
     to = StaticContent.load("contact", "email")
