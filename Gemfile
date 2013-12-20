@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~> 3.2.16'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', '0.15.1'
+gem 'pg', '~> 0.15.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,9 +23,9 @@ end
 gem 'jquery-rails', '2.2.1'
 gem 'tinymce-rails', '~> 3.5.8.2'
 
-gem 'devise', '2.2.4'
+gem 'devise', '~> 2.2.4'
 
-gem 'acts-as-taggable-on', '2.4.1'
+gem 'acts-as-taggable-on', '~> 2.4.1'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
