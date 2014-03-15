@@ -9,7 +9,7 @@
     </div>
     <div class="row-fluid">
     <%- end -%>
-    <div clas="portfolio-thumb span3">
+    <div class="portfolio-thumb span3">
       <%= link_to image_tag(item.thumbnail_filename.to_s), portfolio_item_category_path(URI::escape(@titles.at(index).to_s)) %>
       <p><%= @titles.at(index).to_s.capitalize -%></p>
     </div>
