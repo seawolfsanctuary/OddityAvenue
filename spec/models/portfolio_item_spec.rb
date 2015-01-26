@@ -54,7 +54,6 @@ describe PortfolioItem do
     end
 
     it "should loop through the attributes" do
-      @i.should_receive(:attributes).once.and_call_original
       @i.move
       ShopItem.last.title.should == @i.title
       ShopItem.last.description.should == @i.description
