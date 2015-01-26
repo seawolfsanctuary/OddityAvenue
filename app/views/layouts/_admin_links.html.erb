@@ -5,6 +5,6 @@
               <li class="<%= "active " if active_action?("portfolio")                    -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.portfolio'), admin_portfolio_index_path -%></li>
               <!--li class="<%= "active " if active_action?("blog")                         -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.blog'), "#" -%></li-->
               <li class="<%= "active"  if active_action?("static_pages", "edit_contact") -%>"><%= link_to I18n.t('admin.page_editing') + I18n.t('page_titles.contact'), admin_content_contact_path -%></li>
-              <li class="active"><%= link_to('Change Password', edit_user_registration_path) %></li>
+              <li class="active"><%= link_to('Change Password', edit_registration_path) %></li>
               <li class="active"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             </ul>

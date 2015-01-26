@@ -10,10 +10,10 @@ OddityAvenue::Application.routes.draw do
   resources :shop
     get 'shop/category/:category',       to: 'shop#index',       as: :shop_item_category
 
-  devise_for :users, :class_name => "Admin::User", :skip => [:registrations]
+  devise_for :users, path: 'admin', class_name: "Admin::User", skip: [:registrations]
     as :user do
-      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-      put 'users' => 'devise/registrations#update', :as => 'user_registration'
+      get 'users/edit' => 'devise/registrations#edit', as: 'edit_registration'
+      put 'users' => 'devise/registrations#update', as: 'registration'
     end
 
   get "admin" => "application#admin"
@@ -26,11 +26,11 @@ OddityAvenue::Application.routes.draw do
     post "content/contact", controller: :static_pages, action: :update_contact
 
     resources :portfolio
-    get 'portfolio/:id/move_to_shop' => 'portfolio#move_to_shop', :as => 'move_portfolio_to_shop'
+    get 'portfolio/:id/move_to_shop' => 'portfolio#move_to_shop', as: 'move_portfolio_to_shop'
 
     resources :shop
     post "shop/update_delivery_opts", controller: :shop, action: :update_delivery_opts
-    get 'shop/:id/move_to_portfolio' => 'shop#move_to_portfolio', :as => 'move_shop_to_portfolio'
+    get 'shop/:id/move_to_portfolio' => 'shop#move_to_portfolio', as: 'move_shop_to_portfolio'
   end
 
   # The priority is based upon order of creation:

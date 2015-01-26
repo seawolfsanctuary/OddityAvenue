@@ -8,7 +8,7 @@ describe ApplicationController do
     end
 
     it "should have the correct routing" do
-      new_user_session_path.should == "/users/sign_in"
+      new_user_session_path.should == "/admin/sign_in"
     end
   end
 end
