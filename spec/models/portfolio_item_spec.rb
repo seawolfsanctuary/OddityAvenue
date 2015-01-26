@@ -21,7 +21,7 @@ describe PortfolioItem do
     end
 
     it "should override Item#move" do
-      lambda { @i.move }.should_not raise_error
+      lambda { @i.move }.should_not raise_error # NoMethodError
     end
 
     it "should return -1 when the PortfolioItem could not be created" do

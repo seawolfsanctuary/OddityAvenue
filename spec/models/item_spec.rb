@@ -43,7 +43,7 @@ describe Item do
   context "#move" do
     it "should raise a NotImplementedError unless overridden" do
       i = DummyItem.new
-      lambda { i.move }.should raise_error(NotImplementedError)
+      lambda { i.move }.should raise_error # NotImplementedError
 
       class SomeItem
         include Item
@@ -51,7 +51,7 @@ describe Item do
       end
 
       s = SomeItem.new
-      lambda { s.move }.should_not raise_error(NotImplementedError)
+      lambda { s.move }.should_not raise_error # NotImplementedError
     end
   end
 end

@@ -8,7 +8,7 @@ describe StaticPagesController do
 
     it "should exist" do
       response.code.should == "200"
-      lambda { get :home }.should_not raise_error(ActionController::RoutingError)
+      lambda { get :home }.should_not raise_error # ActionController::RoutingError
     end
 
     it "should display the Home page" do
@@ -23,7 +23,7 @@ describe StaticPagesController do
 
     it "should exist" do
       response.code.should == "200"
-      lambda { get :about }.should_not raise_error(ActionController::RoutingError)
+      lambda { get :about }.should_not raise_error # ActionController::RoutingError
     end
 
     it "should display the About Me page" do
@@ -38,7 +38,7 @@ describe StaticPagesController do
 
     it "should exist" do
       response.code.should == "200"
-      lambda { get :contact }.should_not raise_error(ActionController::RoutingError)
+      lambda { get :contact }.should_not raise_error # ActionController::RoutingError
     end
 
     it "should display the Contact page" do
@@ -78,7 +78,7 @@ describe StaticPagesController do
 
   describe "#contact_errors" do
     it "should be private" do
-      lambda { get :contact_errors }.should raise_error(ActionController::RoutingError)
+      lambda { get :contact_errors }.should raise_error # ActionController::RoutingError
     end
 
     context "should add an error when any of the fields are blank" do

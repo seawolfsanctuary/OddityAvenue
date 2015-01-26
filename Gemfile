@@ -8,20 +8,20 @@ gem 'protected_attributes'  # TODO: temp while upgrading to Rails 4
 gem 'unicorn'
 
 # Views
-gem 'jquery-rails', '2.2.1'
-gem 'tinymce-rails', '~> 3.5.8.2'
+gem 'jquery-rails', '~> 3.1.2'
+gem 'tinymce-rails', '~> 4.1.6'
 
 # Models
-gem 'pg', '~> 0.15.1'
+gem 'pg', '~> 0.18.1'
 gem 'devise', '~> 3.0.0'
-gem 'acts-as-taggable-on', '~> 2.4.1'
+gem 'acts-as-taggable-on', '~> 3.4.3'
 
 group :test do
-  gem 'rspec-rails', '~> 2.13.1'
-  gem 'factory_girl', '~> 4.2.0'
+  gem 'rspec-rails', '~> 2.14.2'
+  gem 'factory_girl', '~> 4.5.0'
 end
 
 group :staging, :production do
   gem 'newrelic_rpm'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 2.7.0'
 end

@@ -112,7 +112,7 @@ describe Admin::PortfolioController do
             description: @item.description,
             hacker_attempt: "foiled!"
           }
-        }.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+        }.should raise_error # ActiveModel::MassAssignmentSecurity::Error
       end
     end
 
@@ -141,9 +141,9 @@ describe Admin::PortfolioController do
 
     context "POST delete" do
       it "should delete the given PortfolioItem" do
-        lambda { PortfolioItem.find(@item_id) }.should_not raise_error(ActiveRecord::RecordNotFound)
+        lambda { PortfolioItem.find(@item_id) }.should_not raise_error # ActiveRecord::RecordNotFound
         delete 'destroy', id: @item_id
-        lambda { PortfolioItem.find(@item_id) }.should     raise_error(ActiveRecord::RecordNotFound)
+        lambda { PortfolioItem.find(@item_id) }.should     raise_error # ActiveRecord::RecordNotFound
       end
     end
 

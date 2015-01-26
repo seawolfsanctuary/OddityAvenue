@@ -80,7 +80,7 @@ describe PortfolioController do
 
     it "should not load the given disabled PortfolioItem" do
       item = FactoryGirl.create :portfolio_item, enabled: false
-      lambda { get 'show', id: item.id }.should raise_error(ActionController::RoutingError)
+      lambda { get 'show', id: item.id }.should raise_error # ActionController::RoutingError
     end
   end
 end

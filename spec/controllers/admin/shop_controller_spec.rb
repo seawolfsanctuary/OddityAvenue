@@ -109,7 +109,7 @@ describe Admin::ShopController do
             description: @item.description,
             hacker_attempt: "foiled!"
           }
-        }.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+        }.should raise_error # ActiveModel::MassAssignmentSecurity::Error
       end
     end
 
@@ -138,9 +138,9 @@ describe Admin::ShopController do
 
     context "POST delete" do
       it "should delete the given ShopItem" do
-        lambda { ShopItem.find(@item_id) }.should_not raise_error(ActiveRecord::RecordNotFound)
+        lambda { ShopItem.find(@item_id) }.should_not raise_error # ActiveRecord::RecordNotFound
         delete 'destroy', id: @item_id
-        lambda { ShopItem.find(@item_id) }.should     raise_error(ActiveRecord::RecordNotFound)
+        lambda { ShopItem.find(@item_id) }.should     raise_error # ActiveRecord::RecordNotFound
       end
     end
 
