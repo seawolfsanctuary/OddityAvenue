@@ -25,12 +25,12 @@ describe PortfolioItem do
     end
 
     it "should return -1 when the PortfolioItem could not be created" do
-      ShopItem.any_instance.should_receive(:create).and_return(false)
+      ShopItem.any_instance.should_receive(:save).and_return(false)
       @i.move.should == -1
     end
 
     it "should not attempt to remove the ShopItem when the PortfolioItem could not be created" do
-      ShopItem.any_instance.should_receive(:create).and_return(false)
+      ShopItem.any_instance.should_receive(:save).and_return(false)
       PortfolioItem.any_instance.should_not_receive(:destroy)
       PortfolioItem.any_instance.should_not_receive(:delete)
       @i.move
