@@ -1,1 +1,1 @@
-rvm use ruby-2.1.5-p0@oddity_avenue --create
+rvm use ruby-2.1.5@oddity_avenue --create
