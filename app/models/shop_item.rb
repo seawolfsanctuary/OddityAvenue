@@ -14,11 +14,6 @@ class ShopItem < ActiveRecord::Base
   include Item
   acts_as_taggable_on :categories
 
-  attr_accessible :title, :description,
-    :image_filename_1, :image_filename_2, :image_filename_3,
-    :thumbnail_filename, :enabled,
-    :quantity, :price, :category_list
-
   validates_with PriceValidator
   validates_with QuantityValidator
 

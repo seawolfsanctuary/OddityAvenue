@@ -60,8 +60,6 @@ GEM
     newrelic_rpm (3.9.9.275)
     orm_adapter (0.5.0)
     pg (0.18.1)
-    protected_attributes (1.0.8)
-      activemodel (>= 4.0.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -128,7 +126,6 @@ DEPENDENCIES
   jquery-rails (~> 3.1.2)
   newrelic_rpm
   pg (~> 0.18.1)
-  protected_attributes
   rails (~> 4.0.0)
   rspec-rails (~> 2.14.2)
   tinymce-rails (~> 4.1.6)

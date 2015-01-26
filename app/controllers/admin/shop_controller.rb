@@ -11,7 +11,7 @@ class Admin::ShopController < ApplicationController
   end
 
   def create
-    @item = ShopItem.create(params["shop_item"])
+    @item = ShopItem.create(shop_item_params)
 
     if @item.save
       flash[:info] = I18n.t('admin.create_successful', :page => "shop item")
@@ -28,20 +28,20 @@ class Admin::ShopController < ApplicationController
   end
 
   def update
-    i = ShopItem.find_by_id(params["id"])
-    if i.update_attributes!(params["shop_item"])
+    i = ShopItem.find_by_id(params[:id])
+    if i.update_attributes!(shop_item_params)
       flash[:info] = I18n.t('admin.update_successful', :page => "shop item")
       @items = ShopItem.all
       redirect_to admin_shop_index_path
     else
       flash[:error] = I18n.t('admin.update_failed', :page => "shop item")
-      @item = params["shop_item"]
+      @item = params[:shop_item]
       redirect_to edit_admin_shop_path(i.id)
     end
   end
 
   def destroy
-    if ShopItem.delete(params["id"])
+    if ShopItem.delete(params[:id])
       flash[:info] = I18n.t('admin.delete_successful', :page => "shop item")
     else
       flash[:error] = I18n.t('admin.delete_failed', :page => "shop item")
@@ -52,7 +52,7 @@ class Admin::ShopController < ApplicationController
   end
 
   def update_delivery_opts
-    new_opts = params["delivery_opts"]
+    new_opts = params[:delivery_opts]
     content = StaticContent.find_by_page_and_part("shop", "delivery_opts")
     if content
       content.body = new_opts
@@ -94,5 +94,20 @@ class Admin::ShopController < ApplicationController
       flash[:error] = "Unable to find that shop item."
     end
     redirect_to admin_shop_index_path
+  end
+
+  private
+
+  # Using a private method to encapsulate the permissible parameters
+  # is just a good pattern since you'll be able to reuse the same
+  # permit list between create and update. Also, you can specialize
+  # this method with per-user checking of permissible attributes.
+  def shop_item_params
+    params.require(:shop_item).permit(
+        :title, :description,
+        :image_filename_1, :image_filename_2, :image_filename_3,
+        :thumbnail_filename, :enabled,
+        :quantity, :price, :category_list
+    )
   end
 end

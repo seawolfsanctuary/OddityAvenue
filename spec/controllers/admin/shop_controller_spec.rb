@@ -101,16 +101,6 @@ describe Admin::ShopController do
         response.status.should == 302
         ShopItem.all.should include(@item)
       end
-
-      it "should protect against mass-assignment" do
-        lambda {
-          put 'create', shop_item: {
-            title: @item.title,
-            description: @item.description,
-            hacker_attempt: "foiled!"
-          }
-        }.should raise_error # ActiveModel::MassAssignmentSecurity::Error
-      end
     end
 
     context "GET edit" do

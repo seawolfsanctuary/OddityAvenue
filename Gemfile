@@ -4,7 +4,6 @@ ruby '2.1.5'
 # Application
 gem 'airbrake', '~> 4.0.0'
 gem 'rails', '~> 4.0.0'
-gem 'protected_attributes'  # TODO: temp while upgrading to Rails 4
 gem 'unicorn'
 
 # Views

@@ -2,10 +2,6 @@ class PortfolioItem < ActiveRecord::Base
   include Item
   acts_as_taggable_on :categories
 
-  attr_accessible :title, :description,
-    :image_filename_1, :image_filename_2, :image_filename_3,
-    :thumbnail_filename, :category_list, :enabled
-
   def move
     # -1 couldn't create
     #  0 couldn't destroy

@@ -104,16 +104,6 @@ describe Admin::PortfolioController do
         response.status.should == 302
         PortfolioItem.all.should include(@item)
       end
-
-      it "should protect against mass-assignment" do
-        lambda {
-          put 'create', portfolio_item: {
-            title: @item.title,
-            description: @item.description,
-            hacker_attempt: "foiled!"
-          }
-        }.should raise_error # ActiveModel::MassAssignmentSecurity::Error
-      end
     end
 
     context "GET edit" do

@@ -6,7 +6,7 @@ class Admin::StaticPagesController < ApplicationController
   end
 
   def update_home
-    body_text = params["content"]
+    body_text = params[:content]
     content = StaticContent.find_by_page_and_part("home", "text")
     if content
       content.body = body_text
@@ -36,7 +36,7 @@ class Admin::StaticPagesController < ApplicationController
   end
 
   def update_about
-    body_text = params["content"]
+    body_text = params[:content]
     content = StaticContent.find_by_page_and_part("about", "text")
     if content
       content.body = body_text
@@ -67,8 +67,8 @@ class Admin::StaticPagesController < ApplicationController
   end
 
   def update_contact
-    email_address = params["email_address"]
-    body_text = params["content"]
+    email_address = params[:email_address]
+    body_text = params[:content]
 
     email   = StaticContent.find_by_page_and_part("contact", "email")
     content = StaticContent.find_by_page_and_part("contact", "text")

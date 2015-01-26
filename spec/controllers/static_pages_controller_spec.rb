@@ -47,6 +47,11 @@ describe StaticPagesController do
   end
 
   describe "POST #make_contact" do
+    before do
+      StaticContent.destroy_all
+      StaticContent.create(page: "contact", part: "email", body: "test@example.com")
+    end
+
     it "should check for errors" do
       controller.should_receive(:contact_errors).once.and_return([])
       post :make_contact, {
