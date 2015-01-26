@@ -12,8 +12,8 @@ OddityAvenue::Application.routes.draw do
 
   devise_for :users, path: 'admin', class_name: "Admin::User", skip: [:registrations]
     as :user do
-      get 'users/edit' => 'devise/registrations#edit', as: 'edit_registration'
-      put 'users' => 'devise/registrations#update', as: 'registration'
+      get 'admin/users/edit' => 'devise/registrations#edit', as: 'edit_registration'
+      put 'admin/users/:id' => 'devise/registrations#update', :as => 'registration'
     end
 
   get "admin" => "application#admin"
