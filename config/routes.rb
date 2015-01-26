@@ -26,11 +26,11 @@ OddityAvenue::Application.routes.draw do
     post "content/contact", controller: :static_pages, action: :update_contact
 
     resources :portfolio
-    match 'portfolio/:id/move_to_shop' => 'portfolio#move_to_shop', :as => 'move_portfolio_to_shop'
+    get 'portfolio/:id/move_to_shop' => 'portfolio#move_to_shop', :as => 'move_portfolio_to_shop'
 
     resources :shop
     post "shop/update_delivery_opts", controller: :shop, action: :update_delivery_opts
-    match 'shop/:id/move_to_portfolio' => 'shop#move_to_portfolio', :as => 'move_shop_to_portfolio'
+    get 'shop/:id/move_to_portfolio' => 'shop#move_to_portfolio', :as => 'move_shop_to_portfolio'
   end
 
   # The priority is based upon order of creation:

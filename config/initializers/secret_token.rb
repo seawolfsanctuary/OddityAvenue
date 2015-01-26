@@ -6,5 +6,8 @@
 # no regular words or you'll be exposed to dictionary attacks.
 
 require 'securerandom'
-ENV['secret_token'] = SecureRandom.hex(64) unless ENV['secret_token'].present?
-OddityAvenue::Application.config.secret_token = ENV['secret_token']
+
+%w{secret_token secret_key_base}.each do |key|
+  ENV[key] = SecureRandom.hex(64) unless ENV[key].present?
+  OddityAvenue::Application.config.send("#{key}=".to_sym, ENV[key])
+end
