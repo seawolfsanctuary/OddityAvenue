@@ -7,6 +7,10 @@ class StaticPagesController < ApplicationController
     @body_text = StaticContent.load("about", "text")
   end
 
+  def delivery_info
+    @body_text = StaticContent.load("delivery_info", "text")
+  end
+
   def contact
     @contact_email = StaticContent.load("contact", "email")
     @body_text = StaticContent.load("contact", "text")

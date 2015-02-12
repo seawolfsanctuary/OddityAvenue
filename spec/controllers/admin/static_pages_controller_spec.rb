@@ -17,6 +17,13 @@ describe Admin::StaticPagesController do
       end
     end
 
+    describe "GET 'edit_delivery_info'" do
+      it "should redirect to the login page" do
+        get 'edit_delivery_info'
+        response.should redirect_to new_user_session_path
+      end
+    end
+
     describe "GET 'edit_contact'" do
       it "should redirect to the login page" do
         get 'edit_contact'
@@ -26,21 +33,28 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_home'" do
       it "should redirect to the login page" do
-        post 'edit_contact'
+        post 'update_home'
         response.should redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_about'" do
       it "should redirect to the login page" do
-        post 'edit_contact'
+        post 'update_about'
+        response.should redirect_to new_user_session_path
+      end
+    end
+
+    describe "POST 'update_delivery_info'" do
+      it "should redirect to the login page" do
+        post 'update_delivery_info'
         response.should redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_contact'" do
       it "should redirect to the login page" do
-        post 'edit_contact'
+        post 'update_contact'
         response.should redirect_to new_user_session_path
       end
     end
@@ -79,6 +93,19 @@ describe Admin::StaticPagesController do
       end
     end
 
+    describe "GET 'edit_delivery_info'" do
+      it "should render the template" do
+        get 'edit_delivery_info'
+        response.should be_success
+        response.should render_template :edit_delivery_info
+      end
+
+      it "should load the body text" do
+        StaticContent.should_receive(:load).with("delivery_info", "text").once
+        get 'edit_delivery_info'
+      end
+    end
+
     describe "GET 'edit_contact'" do
       it "should render the template" do
         get 'edit_contact'
@@ -95,7 +122,7 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_home'" do
       it "should not redirect to the login page" do
-        post 'edit_contact'
+        post 'update_home'
         response.should_not redirect_to new_user_session_path
       end
 
@@ -123,7 +150,7 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_about'" do
       it "should not redirect to the login page" do
-        post 'edit_contact'
+        post 'update_about'
         response.should_not redirect_to new_user_session_path
       end
 
@@ -149,9 +176,37 @@ describe Admin::StaticPagesController do
       end
     end
 
+    describe "POST 'update_delivery_info'" do
+      it "should not redirect to the login page" do
+        post 'update_delivery_info'
+        response.should_not redirect_to new_user_session_path
+      end
+
+      it "should set a new body text" do
+        StaticContent.delete_all
+        post :update_delivery_info, { "content" => "New Content" }
+        flash[:info].should == "Successfully created delivery info content."
+        c = StaticContent.last
+        c.page.should == "delivery_info"
+        c.part.should == "text"
+        c.body.should == "New Content"
+      end
+
+      it "should update the body text" do
+        StaticContent.delete_all
+        post :update_delivery_info, { "content" => "New Content" }
+        post :update_delivery_info, { "content" => "Newer Content" }
+        flash[:info].should == "Successfully updated delivery info content."
+        c = StaticContent.last
+        c.page.should == "delivery_info"
+        c.part.should == "text"
+        c.body.should == "Newer Content"
+      end
+    end
+
     describe "POST 'update_contact'" do
       it "should not redirect to the login page" do
-        post 'edit_contact'
+        post 'update_contact'
         response.should_not redirect_to new_user_session_path
       end
 

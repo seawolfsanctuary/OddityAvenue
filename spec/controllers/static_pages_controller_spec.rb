@@ -16,7 +16,7 @@ describe StaticPagesController do
     end
   end
 
-   describe "GET #about" do
+  describe "GET #about" do
     before :each do
       get :about
     end
@@ -28,6 +28,21 @@ describe StaticPagesController do
 
     it "should display the About Me page" do
       response.should render_template("about")
+    end
+  end
+
+  describe "GET #delivery_info" do
+    before :each do
+      get :delivery_info
+    end
+
+    it "should exist" do
+      response.code.should == "200"
+      lambda { get :about }.should_not raise_error(ActionController::RoutingError)
+    end
+
+    it "should display the Delivery Info page" do
+      response.should render_template("delivery_info")
     end
   end
 

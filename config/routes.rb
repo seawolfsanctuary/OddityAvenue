@@ -4,6 +4,7 @@ OddityAvenue::Application.routes.draw do
   post "make_contact" => "static_pages#make_contact"
 
   get "about" => "static_pages#about"
+  get "delivery_info" => "static_pages#delivery_info"
 
   resources :portfolio
     get 'portfolio/category/:category',  to: 'portfolio#index',  as: :portfolio_item_category
@@ -18,18 +19,19 @@ OddityAvenue::Application.routes.draw do
 
   get "admin" => "application#admin"
   namespace :admin do
-    get  "content/home",    controller: :static_pages, action: :edit_home
-    post "content/home",    controller: :static_pages, action: :update_home
-    get  "content/about",   controller: :static_pages, action: :edit_about
-    post "content/about",   controller: :static_pages, action: :update_about
-    get  "content/contact", controller: :static_pages, action: :edit_contact
-    post "content/contact", controller: :static_pages, action: :update_contact
+    get  "content/home",          controller: :static_pages, action: :edit_home
+    post "content/home",          controller: :static_pages, action: :update_home
+    get  "content/about",         controller: :static_pages, action: :edit_about
+    post "content/about",         controller: :static_pages, action: :update_about
+    get  "content/delivery_info", controller: :static_pages, action: :edit_delivery_info
+    post "content/delivery_info", controller: :static_pages, action: :update_delivery_info
+    get  "content/contact",       controller: :static_pages, action: :edit_contact
+    post "content/contact",       controller: :static_pages, action: :update_contact
 
     resources :portfolio
     get 'portfolio/:id/move_to_shop' => 'portfolio#move_to_shop', as: 'move_portfolio_to_shop'
 
     resources :shop
-    post "shop/update_delivery_opts", controller: :shop, action: :update_delivery_opts
     get 'shop/:id/move_to_portfolio' => 'shop#move_to_portfolio', as: 'move_shop_to_portfolio'
   end
 
