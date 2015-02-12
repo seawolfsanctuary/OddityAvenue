@@ -3,6 +3,7 @@
               <li class="<%= "active"  if active_action?("static_pages", "about")   -%>"><%= link_to I18n.t('page_titles.about'), about_path -%></li>
               <li class="<%= "active " if active_action?("shop")                    -%>"><%= link_to I18n.t('page_titles.shop'), shop_index_path -%></li>
                 <%= render partial: "shop_categories" if active_action?("shop") -%>
+              <li class="<%= "active"  if active_action?("static_pages", "delivery_info") -%>"><%= link_to I18n.t('page_titles.delivery_info'), delivery_info_path -%></li>
               <li class="<%= "active " if active_action?("portfolio")               -%>"><%= link_to I18n.t('page_titles.portfolio'), portfolio_index_path -%></li>
                 <%= render partial: "portfolio_categories" if active_action?("portfolio") -%>
               <!--li class="<%= "active " if active_action?("blog")                    -%>"><%= link_to  I18n.t('page_titles.blog'), root_path -%></li-->

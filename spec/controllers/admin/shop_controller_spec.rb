@@ -144,31 +144,6 @@ describe Admin::ShopController do
       end
     end
 
-    context "POST update_delivery_opts" do
-      it "should create delivery options when none exist" do
-        StaticContent.delete_all
-        post :update_delivery_opts, { "delivery_opts" => "New Content" }
-        flash[:info].should == "Successfully created delivery content."
-        c = StaticContent.last
-        c.page.should == "shop"
-        c.part.should == "delivery_opts"
-        c.body.should == "New Content"
-        response.should redirect_to(admin_shop_index_path)
-      end
-
-      it "should update delivery options when some exist" do
-        StaticContent.delete_all
-        post :update_delivery_opts, { "delivery_opts" => "New Content" }
-        post :update_delivery_opts, { "delivery_opts" => "Newer Content" }
-        flash[:info].should == "Successfully updated delivery content."
-        c = StaticContent.last
-        c.page.should == "shop"
-        c.part.should == "delivery_opts"
-        c.body.should == "Newer Content"
-        response.should redirect_to(admin_shop_index_path)
-      end
-    end
-
     context "GET move_to_portfolio" do
       before(:each) do
         PortfolioItem.delete_all

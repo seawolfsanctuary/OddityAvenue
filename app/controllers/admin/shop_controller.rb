@@ -51,31 +51,6 @@ class Admin::ShopController < ApplicationController
     redirect_to admin_shop_index_path
   end
 
-  def update_delivery_opts
-    new_opts = params["delivery_opts"]
-    content = StaticContent.find_by_page_and_part("shop", "delivery_opts")
-    if content
-      content.body = new_opts
-      if content.save
-        flash[:info] = I18n.t('admin.update_successful', :page => "delivery")
-      else
-        flash[:error] = I18n.t('admin.update_failed', :page => "delivery")
-      end
-    else
-      content = StaticContent.new
-      content.page = "shop"
-      content.part = "delivery_opts"
-      content.body = new_opts
-      if content.save
-        flash[:info] = I18n.t('admin.create_successful', :page => "delivery")
-      else
-        flash[:error] = I18n.t('admin.create_failed', :page => "delivery")
-      end
-    end
-
-    redirect_to admin_shop_index_path
-  end
-
   def move_to_portfolio
     source = begin
       ShopItem.find_by_id(params[:id])

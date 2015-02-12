@@ -61,6 +61,36 @@ class Admin::StaticPagesController < ApplicationController
     render :edit_about
   end
 
+  def edit_delivery_info
+    @body_text = StaticContent.load("delivery_info", "text")
+  end
+
+  def update_delivery_info
+    body_text = params["content"]
+    content = StaticContent.find_by_page_and_part("delivery_info", "text")
+    if content
+      content.body = body_text
+      if content.save
+        flash[:info] = I18n.t('admin.update_successful', :page => "delivery info")
+      else
+        flash[:error] = I18n.t('admin.update_failed', :page => "delivery info")
+      end
+    else
+      content = StaticContent.new
+      content.page = "delivery_info"
+      content.part = "text"
+      content.body = body_text
+      if content.save
+        flash[:info] = I18n.t('admin.create_successful', :page => "delivery info")
+      else
+        flash[:error] = I18n.t('admin.create_failed', :page => "delivery info")
+      end
+    end
+
+    @body_text = content.body
+    render :edit_delivery_info
+  end
+
   def edit_contact
     @email_address = StaticContent.load("contact", "email")
     @body_text = StaticContent.load("contact", "text")
