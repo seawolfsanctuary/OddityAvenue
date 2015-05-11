@@ -21,6 +21,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'rails_12factor'
   gem 'newrelic_rpm'
   gem 'uglifier', '>= 2.7.0'
 end
