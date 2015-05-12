@@ -26,21 +26,21 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_home'" do
       it "should redirect to the login page" do
-        post 'edit_contact'
+        post 'update_home'
         response.should redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_about'" do
       it "should redirect to the login page" do
-        post 'edit_contact'
+        post 'update_about'
         response.should redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_contact'" do
       it "should redirect to the login page" do
-        post 'edit_contact'
+        post 'update_contact'
         response.should redirect_to new_user_session_path
       end
     end
@@ -95,13 +95,13 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_home'" do
       it "should not redirect to the login page" do
-        post 'edit_contact'
-        response.should_not redirect_to new_user_session_path
+        post 'update_home'
+        response.should_not be_redirect
       end
 
       it "should set a new body text" do
         StaticContent.delete_all
-        post :update_home, { "content" => "New Content" }
+        post 'update_home', { "content" => "New Content" }
         flash[:info].should == "Successfully created home content."
         c = StaticContent.last
         c.page.should == "home"
@@ -111,8 +111,8 @@ describe Admin::StaticPagesController do
 
       it "should update the body text" do
         StaticContent.delete_all
-        post :update_home, { "content" => "New Content" }
-        post :update_home, { "content" => "Newer Content" }
+        post 'update_home', { "content" => "New Content" }
+        post 'update_home', { "content" => "Newer Content" }
         flash[:info].should == "Successfully updated home content."
         c = StaticContent.last
         c.page.should == "home"
@@ -123,13 +123,13 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_about'" do
       it "should not redirect to the login page" do
-        post 'edit_contact'
-        response.should_not redirect_to new_user_session_path
+        post 'update_about'
+        response.should_not be_redirect
       end
 
       it "should set a new body text" do
         StaticContent.delete_all
-        post :update_about, { "content" => "New Content" }
+        post 'update_about', { "content" => "New Content" }
         flash[:info].should == "Successfully created about content."
         c = StaticContent.last
         c.page.should == "about"
@@ -139,8 +139,8 @@ describe Admin::StaticPagesController do
 
       it "should update the body text" do
         StaticContent.delete_all
-        post :update_about, { "content" => "New Content" }
-        post :update_about, { "content" => "Newer Content" }
+        post 'update_about', { "content" => "New Content" }
+        post 'update_about', { "content" => "Newer Content" }
         flash[:info].should == "Successfully updated about content."
         c = StaticContent.last
         c.page.should == "about"
@@ -151,13 +151,13 @@ describe Admin::StaticPagesController do
 
     describe "POST 'update_contact'" do
       it "should not redirect to the login page" do
-        post 'edit_contact'
-        response.should_not redirect_to new_user_session_path
+        post 'update_contact'
+        response.should_not be_redirect
       end
 
       it "should set a new body text and email" do
         StaticContent.delete_all
-        post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
+        post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
         flash[:info].should == "Successfully created contact content."
         c = StaticContent.last
         c.page.should == "contact"
@@ -167,8 +167,8 @@ describe Admin::StaticPagesController do
 
       it "should update the body text and email" do
         StaticContent.delete_all
-        post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
-        post :update_contact, { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
+        post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
+        post 'update_contact', { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
         flash[:info].should == "Successfully updated contact content."
         c = StaticContent.last
         c.page.should == "contact"
@@ -178,8 +178,8 @@ describe Admin::StaticPagesController do
 
       it "should show a message about successfully updating both the body text and email" do
         StaticContent.delete_all
-        post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
-        post :update_contact, { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
+        post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
+        post 'update_contact', { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
       end
 
       context "creation failures" do
@@ -194,15 +194,15 @@ describe Admin::StaticPagesController do
         end
 
         it "should show a message when either the body text and email" do
-          post :update_contact, { "email_address" => "user" , "content" => "New Content" }
+          post 'update_contact', { "email_address" => "user" , "content" => "New Content" }
           flash[:error].should == "Unable to create contact content."
 
-          post :update_contact, { "email_address" => "user@site.com" , "content" => "" }
+          post 'update_contact', { "email_address" => "user@site.com" , "content" => "" }
           flash[:error].should == "Unable to create contact content."
         end
 
         it "should show a message when both the body text and email" do
-          post :update_contact, { "email_address" => "user" , "content" => "" }
+          post 'update_contact', { "email_address" => "user" , "content" => "" }
           flash[:error].should == "Unable to create contact content."
         end
       end
@@ -213,16 +213,16 @@ describe Admin::StaticPagesController do
         end
 
         it "should show a message when either the body text and email" do
-          post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
+          post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
           flash[:error].should_not == "Unable to create contact content."
 
           StaticContent.stub(:save).with(false)
           StaticContent.any_instance.stub(:save).and_return(false)
 
-          post :update_contact, { "email_address" => "user" , "content" => "New Content" }
+          post 'update_contact', { "email_address" => "user" , "content" => "New Content" }
           flash[:error].should == "Unable to update contact content."
 
-          post :update_contact, { "email_address" => "user@site.com" , "content" => "" }
+          post 'update_contact', { "email_address" => "user@site.com" , "content" => "" }
           flash[:error].should == "Unable to update contact content."
 
           StaticContent.any_instance.unstub(:save)
@@ -230,13 +230,13 @@ describe Admin::StaticPagesController do
         end
 
         it "should show a message when both the body text and email" do
-          post :update_contact, { "email_address" => "user@site.com" , "content" => "New Content" }
+          post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
           flash[:error].should_not == "Unable to create contact content."
 
           StaticContent.stub(:save).with(false)
           StaticContent.any_instance.stub(:save).and_return(false)
 
-          post :update_contact, { "email_address" => "user" , "content" => "" }
+          post 'update_contact', { "email_address" => "user" , "content" => "" }
           flash[:error].should == "Unable to update contact content."
 
           StaticContent.any_instance.unstub(:save)
