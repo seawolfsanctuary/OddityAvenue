@@ -2,4 +2,19 @@ language: ruby
 rvm:
   - 2.1.5
   - 2.2.2
+gemfile:
+  - Gemfile
+  - Gemfile.next
+matrix:
+  exclude:
+    - rvm: 2.1.5
+      gemfile: Gemfile.next
+    - rvm: 2.2.2
+      gemfile: Gemfile
+
 bundler_args: --without production
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
