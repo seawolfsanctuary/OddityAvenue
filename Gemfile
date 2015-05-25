@@ -4,7 +4,7 @@ ruby '2.1.5'
 # Application
 gem 'airbrake', '~> 4.0.0'
 gem 'rails', '~> 4.0.0'
-gem 'unicorn'
+gem 'puma'
 
 # Views
 gem 'jquery-rails', '~> 3.1.2'
