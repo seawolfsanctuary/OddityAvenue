@@ -1,7 +1,7 @@
-  <%- categories = ShopItem.where(enabled:true).collect(&:categories).reject(&:blank?).flatten.uniq.sort ; if categories.present? -%>
+  <%- categories = ShopItem.tag_names_from_active_taggings(ShopItem.active_taggings) ; if categories.present? -%>
     <ul>
-    <%- categories.each do |c| -%>
-      <li><%= link_to c.name, shop_item_category_path(URI::escape(c.name)) %></li>
+    <%- categories.each do |name| -%>
+      <li><%= link_to name, shop_item_category_path(URI::escape(name)) %></li>
     <%- end -%>
     </ul>
   <%- end -%>

@@ -50,7 +50,7 @@ describe ShopController do
       end
 
       it "should, when no category is given, show a list of enabled categories" do
-        get :index
+        get :index, category: ""
         response.status.should == 200
         response.body.should =~ /cat 1(.*)\n(.*)cat 2/
         response.body.should_not =~ /cat 3/

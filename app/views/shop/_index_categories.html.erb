@@ -1,16 +1,16 @@
 <%- content_for :title do I18n.t('page_titles.shop') end -%>
 
 <div id="portfolio-gallery" class="span12">
-<%- if @items.present? -%>
+<%- if @titles.present? -%>
   <p><%= I18n.t('shop.subhead_categories') %></p>
     <div class="row-fluid">
-  <%- @items.each_with_index do |item, index| -%>
+  <%- @titles.each_with_index do |tag_name, index| -%>
     <%- if (index % 3 == 0) && (index > 0) -%>
     </div>
     <div class="row-fluid">
     <%- end -%>
     <div class="portfolio-thumb span3">
-      <%= link_to image_tag(item.thumbnail_filename.to_s), shop_item_category_path(URI::escape(@titles.at(index).to_s)) %>
+      <%= link_to image_tag(@items.at(index).thumbnail_filename.to_s), shop_item_category_path(URI::escape(tag_name)) %>
       <p><%= @titles.at(index).to_s.capitalize -%></p>
     </div>
   <%- end -%>

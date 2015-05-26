@@ -10,12 +10,9 @@ class ShopController < ApplicationController
         @titles << i.title
       end
     else
-      @items =  []
-      @titles = []
-      ShopItem.where(enabled: true).collect(&:categories).reject(&:blank?).flatten.collect(&:name).sort.uniq.each do |c|
-        @items  << ShopItem.tagged_with(c).where(enabled: true).order("id").first
-        @titles << c
-      end
+      taggings  = ShopItem.active_taggings
+      @titles   = ShopItem.tag_names_from_active_taggings(taggings)
+      @items    = ShopItem.one_item_for_active_taggings(taggings)
     end
   end
 
