@@ -117,4 +117,154 @@ describe ShopItem do
       true ## not applicable
     end
   end
+
+  context "tagged ShopItem lookup" do
+    before(:all) do
+      @model = ShopItem
+    end
+
+    context ".active_taggings" do
+      context "when empty" do
+        before(:all) do
+          tagged_model_delete_all(@model)
+        end
+
+        before(:each) do
+          Rails.logger.debug "\nStarting test."
+        end
+        after(:each) do
+          Rails.logger.debug "Test finished.\n"
+        end
+
+        it "should hit the database only once per Item, Tagging and Tag" do
+          expect { @model.active_taggings }.to make_database_queries({
+            count: 3, matching: /^SELECT "(shop_items|taggings|tags)"\.\*/ })
+        end
+
+        it "should return every tagging" do
+          @model.active_taggings.should be_empty
+        end
+      end
+
+      context "when one tag contains only active items" do
+        before(:all) do
+          tagged_model_delete_all(@model)
+          2.times do
+            item = FactoryGirl.create(:shop_item)
+            item.category_list.add("tag_one")
+            item.save
+          end
+        end
+
+        before(:each) do
+          Rails.logger.debug "\nStarting test."
+        end
+        after(:each) do
+          Rails.logger.debug "Test finished.\n"
+        end
+
+        it "should hit the database only once per Item, Tagging and Tag" do
+          expect { @model.active_taggings }.to make_database_queries({
+            count: 3, matching: /^SELECT "(shop_items|taggings|tags)"\.\*/ })
+        end
+
+        it "should return one tagging per (two) item" do
+          @model.active_taggings.collect(&:class).should == [
+            ActsAsTaggableOn::Tagging,
+            ActsAsTaggableOn::Tagging
+          ]
+        end
+      end
+
+      context "when one tag contains only inactive items" do
+        before(:all) do
+          tagged_model_delete_all(@model)
+          2.times do
+            item = FactoryGirl.create(:shop_item, enabled: false)
+            item.category_list.add("tag_one")
+            item.save
+          end
+        end
+
+        before(:each) do
+          Rails.logger.debug "\nStarting test."
+        end
+        after(:each) do
+          Rails.logger.debug "Test finished.\n"
+        end
+
+        it "should hit the database only once per Item, Tagging and Tag" do
+          expect { @model.active_taggings }.to make_database_queries({
+            count: 3, matching: /^SELECT "(shop_items|taggings|tags)"\.\*/ })
+        end
+
+        it "should return zero taggings per item" do
+          @model.active_taggings.collect(&:class).should == []
+        end
+      end
+
+      context "when one tag contains some inactive items" do
+        before(:all) do
+          tagged_model_delete_all(@model)
+
+          one = FactoryGirl.create(:shop_item)
+          one.category_list.add("tag_one")
+          one.save
+          two = FactoryGirl.create(:shop_item, enabled: false)
+          two.category_list.add("tag_one")
+          two.save
+        end
+
+        before(:each) do
+          Rails.logger.debug "\nStarting test."
+        end
+        after(:each) do
+          Rails.logger.debug "Test finished.\n"
+        end
+
+        it "should hit the database only once per Item, Tagging and Tag" do
+          expect { @model.active_taggings }.to make_database_queries({
+            count: 3, matching: /^SELECT "(shop_items|taggings|tags)"\.\*/ })
+        end
+
+        it "should return one taggings per (two) item" do
+          @model.active_taggings.collect(&:class).should == [
+            ActsAsTaggableOn::Tagging
+          ]
+        end
+      end
+
+      context "when multiple tags contain the same items" do
+        before(:all) do
+          tagged_model_delete_all(@model)
+
+          item = FactoryGirl.create(:shop_item)
+          item.category_list.add("tag_one")
+          item.category_list.add("tag_two")
+          item.category_list.add("tag_three")
+          item.save
+        end
+
+        before(:each) do
+          Rails.logger.debug "\nStarting test."
+        end
+        after(:each) do
+          Rails.logger.debug "Test finished.\n"
+        end
+
+        it "should hit the database only once per Item, Tagging and Tag" do
+          expect { @model.active_taggings }.to make_database_queries({
+            count: 3, matching: /^SELECT "(shop_items|taggings|tags)"\.\*/ })
+        end
+
+        it "should return one taggings per (two) item" do
+          @model.active_taggings.collect(&:class).should == [
+            ActsAsTaggableOn::Tagging,
+            ActsAsTaggableOn::Tagging,
+            ActsAsTaggableOn::Tagging
+          ]
+        end
+      end
+    end
+  end
 end

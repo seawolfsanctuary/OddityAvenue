@@ -40,3 +40,13 @@ RSpec.configure do |config|
 end
 
 FactoryGirl.find_definitions
+
+def tagged_model_delete_all(model)
+  model_str = model.name.underscore
+  ActsAsTaggableOn::Tagging.where(context: model_str).delete_all
+  ActsAsTaggableOn::Tag.find_each do |tag|
+    ActsAsTaggableOn::Tag.reset_counters(tag.id, :taggings)
+  end
+  ActsAsTaggableOn::Tag.where(taggings_count: 0).delete_all
+  model.delete_all
+end
