@@ -23,6 +23,7 @@ end
 group :test do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'factory_girl', '~> 4.5.0'
+  gem 'db-query-matchers', '~> 0.4.0'
 end
 
 group :staging, :production do
