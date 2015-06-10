@@ -15,6 +15,11 @@ gem 'pg', '~> 0.18.1'
 gem 'devise', '~> 3.0.0'
 gem 'acts-as-taggable-on', '~> 3.4.3'
 
+group :development, :test do
+  gem 'debase'
+  gem 'ruby-debug-ide'
+end
+
 group :test do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'factory_girl', '~> 4.5.0'

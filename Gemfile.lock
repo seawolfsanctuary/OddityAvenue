@@ -35,6 +35,9 @@ GEM
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
     builder (3.1.4)
+    debase (0.1.4)
+      debase-ruby_core_source
+    debase-ruby_core_source (0.7.9)
     devise (3.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -95,6 +98,8 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    ruby-debug-ide (0.4.32)
+      rake (>= 0.8.1)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -122,6 +127,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4.3)
   airbrake (~> 4.0.0)
+  debase
   devise (~> 3.0.0)
   factory_girl (~> 4.5.0)
   jquery-rails (~> 3.1.2)
@@ -131,5 +137,6 @@ DEPENDENCIES
   rails (~> 4.0.0)
   rails_12factor
   rspec-rails (~> 2.14.2)
+  ruby-debug-ide
   tinymce-rails (~> 4.1.6)
   uglifier (>= 2.7.0)
