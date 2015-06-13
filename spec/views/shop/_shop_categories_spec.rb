@@ -17,6 +17,7 @@ describe 'shop/_shop_categories' do
     before do
       FactoryGirl.create :shop_item, category_list: [ "cat 1", "cat 2" ]
       FactoryGirl.create :shop_item, category_list: [ "cat 2", "cat 3" ], enabled: false
+      @categories = ShopItem.tag_names_from_taggings(ShopItem.active_taggings)
     end
 
     it "should create a new list" do

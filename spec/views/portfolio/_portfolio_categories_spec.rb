@@ -17,6 +17,7 @@ describe 'portfolio/_portfolio_categories' do
     before do
       FactoryGirl.create :portfolio_item, category_list: [ "cat 1", "cat 2" ]
       FactoryGirl.create :portfolio_item, category_list: [ "cat 2", "cat 3" ], enabled: false
+      @categories = PortfolioItem.tag_names_from_taggings(PortfolioItem.active_taggings)
     end
 
     it "should create a new list" do

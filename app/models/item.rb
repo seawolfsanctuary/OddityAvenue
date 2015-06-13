@@ -13,25 +13,38 @@ module Item
 
   module ClassMethods
     def active_taggings
-      ActsAsTaggableOn::Tagging.where(taggable_type: self.name, context: 'categories').includes(:taggable, :tag)
+      ActsAsTaggableOn::Tagging.where(taggable_type: self.name, context: 'categories')
+        .includes(:taggable, :tag)
         .select {|tag| tag.try(:taggable).try(:enabled) }
         .reject(&:blank?)
+        .sort_by {|tagging| tagging.taggable.id }
     end
 
-    def tagged_items_from_active_taggings(ary)
+    def tagged_items_from_taggings(ary)
       ary.collect(&:taggable).reject(&:blank?)
     end
 
-    def tags_from_active_taggings(ary)
-      ary.collect(&:tag).flatten.reject(&:blank?).uniq.sort_by(&:name)
+    def tags_from_taggings(ary)
+      ary.collect(&:tag)
+          .flatten
+          .reject(&:blank?)
+          .uniq
+          .sort_by(&:name)
     end
 
-    def tag_names_from_active_taggings(ary)
-      tags_from_active_taggings(ary).reject(&:blank?).collect(&:name).sort
+    def tag_names_from_taggings(ary)
+      tags_from_taggings(ary).reject(&:blank?).collect(&:name).sort
     end
 
-    def one_item_for_active_taggings(ary)
-      ary.uniq { |tagging| tagging.tag_id }.collect {|tagging| tagging.taggable }
+    def first_items_from_tags_from_taggings(ary)
+      items = {}
+      previous_tag = nil
+      ary.each do |tagging|
+        current_tag_name = tagging.tag.name
+        items[current_tag_name] = tagging.taggable unless items.keys.include?(current_tag_name)
+        previous_tag = current_tag_name
+      end
+      return items.sort.to_h
     end
   end
   def self.included(base)

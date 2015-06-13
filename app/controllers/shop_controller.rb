@@ -11,8 +11,8 @@ class ShopController < ApplicationController
       end
     else
       taggings  = ShopItem.active_taggings
-      @titles   = ShopItem.tag_names_from_active_taggings(taggings)
-      @items    = ShopItem.one_item_for_active_taggings(taggings)
+      @titles   = ShopItem.tag_names_from_taggings(taggings)
+      @items    = ShopItem.first_items_from_tags_from_taggings(taggings)
     end
   end
 

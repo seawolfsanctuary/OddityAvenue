@@ -1,6 +1,6 @@
-  <%- categories = ShopItem.tag_names_from_active_taggings(ShopItem.active_taggings) ; if categories.present? -%>
+  <%- if @categories.present? -%>
     <ul>
-    <%- categories.each do |name| -%>
+    <%- @categories.each do |name| -%>
       <li><%= link_to name, shop_item_category_path(URI::escape(name)) %></li>
     <%- end -%>
     </ul>

@@ -10,7 +10,7 @@
     <div class="row-fluid">
     <%- end -%>
     <div class="portfolio-thumb span3">
-      <%= link_to image_tag(@items.at(index).thumbnail_filename.to_s), shop_item_category_path(URI::escape(tag_name)) %>
+      <%= link_to image_tag(@items[tag_name].thumbnail_filename.to_s), shop_item_category_path(URI::escape(tag_name)) %>
       <p><%= @titles.at(index).to_s.capitalize -%></p>
     </div>
   <%- end -%>

@@ -6,12 +6,13 @@ describe PortfolioController do
       before(:each) do
         PortfolioItem.delete_all
         ActsAsTaggableOn::Tag.delete_all
+        @titles = PortfolioItem.tag_names_from_taggings(PortfolioItem.active_taggings)
       end
 
       it "should, when no category is given, show a list of categories" do
         get :index
         response.status.should == 200
-        assigns[:items].should == []
+        assigns[:items].should == {}
         response.body.should be_include("Sorry, no items were found.")
       end
 
@@ -32,7 +33,7 @@ describe PortfolioController do
       it "not raise any exception when no PortfolioItems exist, when not giving a category" do
         get :index
         response.status.should == 200
-        assigns[:items].should == []
+        assigns[:items].should == {}
         response.body.should be_include("Sorry, no items were found.")
       end
     end
@@ -47,6 +48,7 @@ describe PortfolioController do
         FactoryGirl.create :portfolio_item, title: "Three", category_list: [ "cat 1", "cat 2" ]
         FactoryGirl.create :portfolio_item, title: "Four",  category_list: [ "cat 2" ]
         FactoryGirl.create :portfolio_item, title: "Five",  category_list: [ "cat 2", "cat 3" ], enabled: false
+        @titles = PortfolioItem.tag_names_from_taggings(PortfolioItem.active_taggings)
       end
 
       it "should, when no category is given, show a list of enabled categories" do
