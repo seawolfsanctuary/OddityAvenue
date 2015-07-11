@@ -7,6 +7,7 @@ en:
   page_titles:
     home: "Home"
     about: "About Me"
+    delivery_info: "Purchase and Delivery Info"
     shop: "For Sale"
     shop_category: "For Sale - %{category}"
     portfolio_category: "Past Work - %{category}"
@@ -21,7 +22,6 @@ en:
   shop:
     subhead_categories: "Click on a category to see the items inside."
     subhead_category: "Click on a item to see more photos, information and pricing."
-    delivery_opts: "Delivery Options"
     quantity_available: "%{q} available, "
     none_found: "Sorry, no items were found."
     none_found_category: "Sorry, no items were found in that category."
@@ -60,5 +60,4 @@ en:
       edit: "Edit"
       update: "Update"
       destroy: "Remove"
-      update_delivery_opts: "Update Delivery Options"
       move: "Move to Portfolio"

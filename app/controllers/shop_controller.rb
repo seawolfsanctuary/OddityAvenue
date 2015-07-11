@@ -1,7 +1,5 @@
 class ShopController < ApplicationController
   def index
-    @delivery_opts = StaticContent.load("shop", "delivery_opts")
-
     if params[:category]
       @items  = []
       @titles = []
