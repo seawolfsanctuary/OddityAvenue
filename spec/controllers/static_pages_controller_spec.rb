@@ -38,7 +38,7 @@ describe StaticPagesController do
 
     it "should exist" do
       response.code.should == "200"
-      lambda { get :about }.should_not raise_error(ActionController::RoutingError)
+      lambda { get :about }.should_not raise_error # ActionController::RoutingError
     end
 
     it "should display the Delivery Info page" do

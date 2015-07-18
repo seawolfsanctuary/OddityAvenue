@@ -60,8 +60,9 @@ describe PortfolioItem do
     end
 
     it "should handle source-only attributes" do
-      pending "how do we test the begin/rescue?"
-      @i.move
+      @i.should_receive(:attributes).and_return({"sourceOnlyAttr" => "Hello"})
+      ShopItem.new.should_not be_respond_to(:sourceOnlyAttr=)
+      lambda { @i.move }.should_not raise_exception
     end
 
     it "should set default destination-only attributes" do
@@ -92,7 +93,7 @@ describe PortfolioItem do
 
         it "should hit the database only once per Item, Tagging and Tag" do
           expect { @model.active_taggings }.to make_database_queries({
-            count: 3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
+            count: 1..3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
         end
 
         it "should return every tagging" do
@@ -119,7 +120,7 @@ describe PortfolioItem do
 
         it "should hit the database only once per Item, Tagging and Tag" do
           expect { @model.active_taggings }.to make_database_queries({
-            count: 3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
+            count: 1..3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
         end
 
         it "should return one tagging per (two) item" do
@@ -149,7 +150,7 @@ describe PortfolioItem do
 
         it "should hit the database only once per Item, Tagging and Tag" do
           expect { @model.active_taggings }.to make_database_queries({
-            count: 3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
+            count: 1..3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
         end
 
         it "should return zero taggings per item" do
@@ -178,7 +179,7 @@ describe PortfolioItem do
 
         it "should hit the database only once per Item, Tagging and Tag" do
           expect { @model.active_taggings }.to make_database_queries({
-            count: 3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
+            count: 1..3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
         end
 
         it "should return one taggings per (two) item" do
@@ -208,7 +209,7 @@ describe PortfolioItem do
 
         it "should hit the database only once per Item, Tagging and Tag" do
           expect { @model.active_taggings }.to make_database_queries({
-            count: 3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
+            count: 1..3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
         end
 
         it "should return one taggings per (two) item" do
@@ -256,7 +257,7 @@ describe PortfolioItem do
 
         it "should hit the database only once per Item, Tagging and Tag" do
           expect { @model.active_taggings }.to make_database_queries({
-            count: 3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
+            count: 1..3, matching: /^SELECT "(#{@model.table_name}|taggings|tags)"\.\*/ })
         end
 
         it "should return the correct number of taggings" do
