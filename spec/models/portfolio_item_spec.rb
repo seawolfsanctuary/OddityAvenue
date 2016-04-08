@@ -72,22 +72,15 @@ describe PortfolioItem do
   end
 
   context "tagged lookup" do
-    before(:all) do
+    before do
       @model = PortfolioItem
       @model_sym = @model.name.underscore.to_sym
     end
 
     context ".active_taggings" do
       context "when empty" do
-        before(:all) do
+        before do
           tagged_model_delete_all(@model)
-        end
-
-        before(:each) do
-          Rails.logger.debug "\nStarting test."
-        end
-        after(:each) do
-          Rails.logger.debug "Test finished.\n"
         end
 
         it "should hit the database only once per Item, Tagging and Tag" do
@@ -101,20 +94,13 @@ describe PortfolioItem do
       end
 
       context "when one tag contains only active items" do
-        before(:all) do
+        before do
           tagged_model_delete_all(@model)
           2.times do
             item = FactoryGirl.create(@model_sym)
             item.category_list.add("tag_one")
             item.save
           end
-        end
-
-        before(:each) do
-          Rails.logger.debug "\nStarting test."
-        end
-        after(:each) do
-          Rails.logger.debug "Test finished.\n"
         end
 
         it "should hit the database only once per Item, Tagging and Tag" do
@@ -131,20 +117,13 @@ describe PortfolioItem do
       end
 
       context "when one tag contains only inactive items" do
-        before(:all) do
+        before do
           tagged_model_delete_all(@model)
           2.times do
             item = FactoryGirl.create(@model_sym, enabled: false)
             item.category_list.add("tag_one")
             item.save
           end
-        end
-
-        before(:each) do
-          Rails.logger.debug "\nStarting test."
-        end
-        after(:each) do
-          Rails.logger.debug "Test finished.\n"
         end
 
         it "should hit the database only once per Item, Tagging and Tag" do
@@ -158,7 +137,7 @@ describe PortfolioItem do
       end
 
       context "when one tag contains some inactive items" do
-        before(:all) do
+        before do
           tagged_model_delete_all(@model)
 
           one = FactoryGirl.create(@model_sym)
@@ -167,13 +146,6 @@ describe PortfolioItem do
           two = FactoryGirl.create(@model_sym, enabled: false)
           two.category_list.add("tag_one")
           two.save
-        end
-
-        before(:each) do
-          Rails.logger.debug "\nStarting test."
-        end
-        after(:each) do
-          Rails.logger.debug "Test finished.\n"
         end
 
         it "should hit the database only once per Item, Tagging and Tag" do
@@ -189,7 +161,7 @@ describe PortfolioItem do
       end
 
       context "when multiple tags contain the same items" do
-        before(:all) do
+        before do
           tagged_model_delete_all(@model)
 
           item = FactoryGirl.create(@model_sym)
@@ -197,13 +169,6 @@ describe PortfolioItem do
           item.category_list.add("tag_two")
           item.category_list.add("tag_three")
           item.save
-        end
-
-        before(:each) do
-          Rails.logger.debug "\nStarting test."
-        end
-        after(:each) do
-          Rails.logger.debug "Test finished.\n"
         end
 
         it "should hit the database only once per Item, Tagging and Tag" do
@@ -221,7 +186,7 @@ describe PortfolioItem do
       end
 
       context "when things are really complicated" do
-        before(:all) do
+        before do
           tagged_model_delete_all(@model)
 
           @one   = FactoryGirl.create(@model_sym); @model.all
@@ -245,13 +210,6 @@ describe PortfolioItem do
           [@one, @two, @three, @four, @five, @six, @seven, @eight].each do |item|
             item.save
           end
-        end
-
-        before(:each) do
-          Rails.logger.debug "\nStarting test."
-        end
-        after(:each) do
-          Rails.logger.debug "Test finished.\n"
         end
 
         it "should hit the database only once per Item, Tagging and Tag" do
@@ -294,7 +252,7 @@ describe PortfolioItem do
     end
 
     context ".tagged_items_from_taggings" do
-      before(:all) do
+      before do
         tagged_model_delete_all(@model)
       end
 
@@ -347,7 +305,7 @@ describe PortfolioItem do
     end
 
     context ".tags_from_taggings" do
-      before(:all) do
+      before do
         tagged_model_delete_all(@model)
       end
 
@@ -446,7 +404,7 @@ describe PortfolioItem do
     end
 
     context ".tag_names_from_taggings" do
-      before(:all) do
+      before do
         tagged_model_delete_all(@model)
       end
 
@@ -539,7 +497,7 @@ describe PortfolioItem do
     end
 
     context ".first_items_from_tags_from_taggings" do
-      before(:all) do
+      before do
         tagged_model_delete_all(@model)
       end
 
