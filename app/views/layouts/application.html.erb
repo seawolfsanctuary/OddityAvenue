@@ -38,10 +38,10 @@
         </div>
         <article class="content span10">
           <%- if content_for?(:title) -%><h2><%= yield :title %></h2><%- end -%>
-          <%- if flash[:error]  -%><div class="error"><%= flash[:error]  %></div><%- end -%>
-          <%- if flash[:alert]  -%><div class="error"><%= flash[:alert]  %></div><%- end -%>
-          <%- if flash[:notice] -%><div class="info "><%= flash[:notice] %></div><%- end -%>
-          <%- if flash[:info]   -%><div class="info "><%= flash[:info]   %></div><%- end -%>
+          <%- if flash["error"]  -%><div class="error"><%= flash["error"]  %></div><%- end -%>
+          <%- if flash["alert"]  -%><div class="error"><%= flash["alert"]  %></div><%- end -%>
+          <%- if flash["notice"] -%><div class="info "><%= flash["notice"] %></div><%- end -%>
+          <%- if flash["info"]   -%><div class="info "><%= flash["info"]   %></div><%- end -%>
           <%- flash.discard -%>
           <%= yield %>
         </article>

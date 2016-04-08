@@ -11,9 +11,9 @@ class Admin::StaticPagesController < ApplicationController
     if content
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.update_successful', :page => "home")
+        flash["info"] = I18n.t('admin.update_successful', :page => "home")
       else
-        flash[:error] = I18n.t('admin.update_failed', :page => "home")
+        flash["error"] = I18n.t('admin.update_failed', :page => "home")
       end
     else
       content = StaticContent.new
@@ -21,9 +21,9 @@ class Admin::StaticPagesController < ApplicationController
       content.part = "text"
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.create_successful', :page => "home")
+        flash["info"] = I18n.t('admin.create_successful', :page => "home")
       else
-        flash[:error] = I18n.t('admin.create_failed', :page => "home")
+        flash["error"] = I18n.t('admin.create_failed', :page => "home")
       end
     end
 
@@ -41,9 +41,9 @@ class Admin::StaticPagesController < ApplicationController
     if content
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.update_successful', :page => "about")
+        flash["info"] = I18n.t('admin.update_successful', :page => "about")
       else
-        flash[:error] = I18n.t('admin.update_failed', :page => "about")
+        flash["error"] = I18n.t('admin.update_failed', :page => "about")
       end
     else
       content = StaticContent.new
@@ -51,9 +51,9 @@ class Admin::StaticPagesController < ApplicationController
       content.part = "text"
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.create_successful', :page => "about")
+        flash["info"] = I18n.t('admin.create_successful', :page => "about")
       else
-        flash[:error] = I18n.t('admin.create_failed', :page => "about")
+        flash["error"] = I18n.t('admin.create_failed', :page => "about")
       end
     end
 
@@ -71,9 +71,9 @@ class Admin::StaticPagesController < ApplicationController
     if content
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.update_successful', :page => "delivery info")
+        flash["info"] = I18n.t('admin.update_successful', :page => "delivery info")
       else
-        flash[:error] = I18n.t('admin.update_failed', :page => "delivery info")
+        flash["error"] = I18n.t('admin.update_failed', :page => "delivery info")
       end
     else
       content = StaticContent.new
@@ -81,9 +81,9 @@ class Admin::StaticPagesController < ApplicationController
       content.part = "text"
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.create_successful', :page => "delivery info")
+        flash["info"] = I18n.t('admin.create_successful', :page => "delivery info")
       else
-        flash[:error] = I18n.t('admin.create_failed', :page => "delivery info")
+        flash["error"] = I18n.t('admin.create_failed', :page => "delivery info")
       end
     end
 
@@ -106,9 +106,9 @@ class Admin::StaticPagesController < ApplicationController
     if email
       email.body = email_address
       if email.save
-        flash[:info] = I18n.t('admin.update_successful', :page => "contact e-mail address")
+        flash["info"] = I18n.t('admin.update_successful', :page => "contact e-mail address")
       else
-        flash[:error] = I18n.t('admin.update_failed', :page => "contact e-mail address")
+        flash["error"] = I18n.t('admin.update_failed', :page => "contact e-mail address")
       end
     else
       email = StaticContent.new
@@ -116,18 +116,18 @@ class Admin::StaticPagesController < ApplicationController
       email.part = "email"
       email.body = email_address
       if email.save
-        flash[:info] = I18n.t('admin.create_successful', :page => "contact e-mail address")
+        flash["info"] = I18n.t('admin.create_successful', :page => "contact e-mail address")
       else
-        flash[:error] = I18n.t('admin.create_failed', :page => "contact e-mail address")
+        flash["error"] = I18n.t('admin.create_failed', :page => "contact e-mail address")
       end
     end
 
     if content
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.update_successful', :page => "contact")
+        flash["info"] = I18n.t('admin.update_successful', :page => "contact")
       else
-        flash[:error] = I18n.t('admin.update_failed', :page => "contact")
+        flash["error"] = I18n.t('admin.update_failed', :page => "contact")
       end
     else
       content = StaticContent.new
@@ -135,9 +135,9 @@ class Admin::StaticPagesController < ApplicationController
       content.part = "text"
       content.body = body_text
       if content.save
-        flash[:info] = I18n.t('admin.create_successful', :page => "contact")
+        flash["info"] = I18n.t('admin.create_successful', :page => "contact")
       else
-        flash[:error] = I18n.t('admin.create_failed', :page => "contact")
+        flash["error"] = I18n.t('admin.create_failed', :page => "contact")
       end
     end
 
