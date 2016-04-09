@@ -96,6 +96,14 @@ describe StaticPagesController do
     end
   end
 
+  describe "#encode_params" do
+    it "should replace non-UTF-8 characters with an underscore" do
+      raw = { name: "name", email: "", subject: nil, message: "> \xC2 絵文字 ð€" }
+      safe = controller.send(:encode_params, raw)
+      safe.should == { name: "name", email: "", subject: "", message: "> _ 絵文字 ð€" }
+    end
+  end
+
   describe "#contact_errors" do
     it "should be private" do
       lambda { get :contact_errors }.should raise_error # ActionController::RoutingError
