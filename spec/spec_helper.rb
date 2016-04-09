@@ -41,15 +41,13 @@ end
 
 FactoryGirl.find_definitions
 
-def tagged_model_delete_all(model)
-  model_str = model.name.underscore
+def tagged_model_delete_all(model_obj)
+  model_str = model_obj.name.underscore
   ActsAsTaggableOn::Tagging.where(context: model_str).delete_all
   ActsAsTaggableOn::Tag.find_each do |tag|
     tag.taggings.destroy_all
-    tag.taggings_count = 0
     tag.save
-    #ActsAsTaggableOn::Tag.reset_counters(tag.id, :taggings)
   end
   ActsAsTaggableOn::Tag.where(taggings_count: 0).delete_all
-  model.delete_all
+  model_obj.delete_all
 end

@@ -20,9 +20,9 @@ class StaticPagesController < ApplicationController
     errors = contact_errors(params)
     if errors.empty?
       send_message! params[:message].to_s, params[:name].to_s, params[:email].to_s, params[:subject].to_s
-      flash[:info] = I18n.t('contact.success')
+      flash["info"] = I18n.t('contact.success')
     else
-      flash[:error] = present_errors(errors)
+      flash["error"] = present_errors(errors)
     end
 
     redirect_to :contact

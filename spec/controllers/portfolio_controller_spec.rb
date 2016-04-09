@@ -39,7 +39,7 @@ describe PortfolioController do
     end
 
     context "when categorised items exist" do
-      before(:all) do
+      before do
         PortfolioItem.delete_all
         ActsAsTaggableOn::Tag.delete_all
 

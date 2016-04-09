@@ -39,7 +39,7 @@ describe ShopController do
     end
 
     context "when categorised items exist" do
-      before(:all) do
+      before do
         ShopItem.delete_all
         ActsAsTaggableOn::Tag.delete_all
 
