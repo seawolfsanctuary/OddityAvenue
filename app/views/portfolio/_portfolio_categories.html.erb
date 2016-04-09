@@ -1,7 +1,7 @@
   <%- if @categories.present? -%>
     <ul>
     <%- @categories.each do |name| -%>
-      <li><%= link_to name, portfolio_item_category_path(URI::escape(name)) %></li>
+      <li><%= link_to name, portfolio_item_category_path(name) %></li>
     <%- end -%>
     </ul>
   <%- end -%>
