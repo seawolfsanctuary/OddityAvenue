@@ -3,7 +3,7 @@ ruby '2.1.5'
 
 # Application
 gem 'airbrake', '~> 4.0'
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.0'
 gem 'puma'
 
 # Views
@@ -12,7 +12,7 @@ gem 'tinymce-rails', '~> 4.0'
 
 # Models
 gem 'pg', '~> 0.18.0'
-gem 'devise', '~> 3.5.0'
+gem 'devise', '~> 4.0.0'
 gem 'acts-as-taggable-on', '~> 3.0'
 
 group :development, :test do
