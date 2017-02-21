@@ -61,6 +61,6 @@ class StaticPagesController < ApplicationController
   end
 
   def send_message! message, name, email, subject
-    ContactMailer.contact_email(message, name, email, subject).deliver
+    ContactMailer.contact_email(message, name, email, subject).deliver_now
   end
 end

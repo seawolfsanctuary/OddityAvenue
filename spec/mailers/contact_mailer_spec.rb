@@ -11,7 +11,7 @@ describe ContactMailer do
   end
 
   it "should create an e-mail message" do
-    @email.should be_a(Mail::Message)
+    @email.should be_a(ActionMailer::MessageDelivery)
     @email.should_not be_multipart
   end
 
