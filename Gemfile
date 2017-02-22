@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 
 # Application
+gem 'rake', '< 11.0'
 gem 'airbrake', '~> 4.0'
 gem 'rails', '~> 4.2.0'
 gem 'puma'
