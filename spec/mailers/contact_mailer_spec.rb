@@ -11,15 +11,15 @@ describe ContactMailer do
   end
 
   it "should create an e-mail message" do
-    @email.should be_a(Mail::Message)
-    @email.should_not be_multipart
+    expect(@email).to be_a(Mail::Message)
+    expect(@email).not_to be_multipart
   end
 
   it "should have a sender e-mail address" do
-    @email.from.should == [ "webmaster@seawolfsanctuary.com" ]
+    expect(@email.from).to eq([ "webmaster@seawolfsanctuary.com" ])
   end
 
   it "should have the correct subject" do
-    @email.subject.should == "OddityAvenue Contact - Test Message"
+    expect(@email.subject).to eq("OddityAvenue Contact - Test Message")
   end
 end

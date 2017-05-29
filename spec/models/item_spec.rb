@@ -15,35 +15,35 @@ describe Item do
       i.image_filename_2 = nil
       i.image_filename_3 = nil
       i.thumbnail_filename = nil
-      i.images_count.should == 0
+      expect(i.images_count).to eq(0)
 
       i = DummyItem.new
       i.image_filename_1 = "1.jpg"
       i.image_filename_2 = nil
       i.image_filename_3 = nil
       i.thumbnail_filename = nil
-      i.images_count.should == 1
+      expect(i.images_count).to eq(1)
 
       i = DummyItem.new
       i.image_filename_1 = nil
       i.image_filename_2 = "2.jpg"
       i.image_filename_3 = "3.jpg"
       i.thumbnail_filename = nil
-      i.images_count.should == 2
+      expect(i.images_count).to eq(2)
 
       i = DummyItem.new
       i.image_filename_1 = "1.jpg"
       i.image_filename_2 = "2.jpg"
       i.image_filename_3 = "3.jpg"
       i.thumbnail_filename = "t.jpg"
-      i.images_count.should == 3
+      expect(i.images_count).to eq(3)
     end
   end
 
   context "#move" do
     it "should raise a NotImplementedError unless overridden" do
       i = DummyItem.new
-      lambda { i.move }.should raise_error # NotImplementedError
+      expect { i.move }.to raise_error # NotImplementedError
 
       class SomeItem
         include Item
@@ -51,7 +51,7 @@ describe Item do
       end
 
       s = SomeItem.new
-      lambda { s.move }.should_not raise_error # NotImplementedError
+      expect { s.move }.not_to raise_error # NotImplementedError
     end
   end
 end

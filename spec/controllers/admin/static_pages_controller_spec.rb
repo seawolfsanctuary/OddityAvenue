@@ -1,61 +1,60 @@
 require 'spec_helper'
 
-describe Admin::StaticPagesController do
-
+describe Admin::StaticPagesController, type: :controller do
   context "when not logged in" do
     describe "GET 'edit_home'" do
       it "should redirect to the login page" do
         get 'edit_home'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "GET 'edit_about'" do
       it "should redirect to the login page" do
         get 'edit_about'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "GET 'edit_delivery_info'" do
       it "should redirect to the login page" do
         get 'edit_delivery_info'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "GET 'edit_contact'" do
       it "should redirect to the login page" do
         get 'edit_contact'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_home'" do
       it "should redirect to the login page" do
         post 'update_home'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_about'" do
       it "should redirect to the login page" do
         post 'update_about'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_delivery_info'" do
       it "should redirect to the login page" do
         post 'update_delivery_info'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "POST 'update_contact'" do
       it "should redirect to the login page" do
         post 'update_contact'
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -70,12 +69,12 @@ describe Admin::StaticPagesController do
     describe "GET 'edit_home'" do
       it "should render the template" do
         get 'edit_home'
-        response.should be_success
-        response.should render_template :edit_home
+        expect(response).to be_success
+        expect(response).to render_template :edit_home
       end
 
       it "should load the body text" do
-        StaticContent.should_receive(:load).with("home", "text").once
+        expect(StaticContent).to receive(:load).with("home", "text").once
         get 'edit_home'
       end
     end
@@ -83,12 +82,12 @@ describe Admin::StaticPagesController do
     describe "GET 'edit_about'" do
       it "should render the template" do
         get 'edit_about'
-        response.should be_success
-        response.should render_template :edit_about
+        expect(response).to be_success
+        expect(response).to render_template :edit_about
       end
 
       it "should load the body text" do
-        StaticContent.should_receive(:load).with("about", "text").once
+        expect(StaticContent).to receive(:load).with("about", "text").once
         get 'edit_about'
       end
     end
@@ -96,12 +95,12 @@ describe Admin::StaticPagesController do
     describe "GET 'edit_delivery_info'" do
       it "should render the template" do
         get 'edit_delivery_info'
-        response.should be_success
-        response.should render_template :edit_delivery_info
+        expect(response).to be_success
+        expect(response).to render_template :edit_delivery_info
       end
 
       it "should load the body text" do
-        StaticContent.should_receive(:load).with("delivery_info", "text").once
+        expect(StaticContent).to receive(:load).with("delivery_info", "text").once
         get 'edit_delivery_info'
       end
     end
@@ -109,13 +108,13 @@ describe Admin::StaticPagesController do
     describe "GET 'edit_contact'" do
       it "should render the template" do
         get 'edit_contact'
-        response.should be_success
-        response.should render_template :edit_contact
+        expect(response).to be_success
+        expect(response).to render_template :edit_contact
       end
 
       it "should load the body text and e-mail address" do
-        StaticContent.should_receive(:load).with("contact", "text").once
-        StaticContent.should_receive(:load).with("contact", "email").once
+        expect(StaticContent).to receive(:load).with("contact", "text").once
+        expect(StaticContent).to receive(:load).with("contact", "email").once
         get 'edit_contact'
       end
     end
@@ -123,112 +122,112 @@ describe Admin::StaticPagesController do
     describe "POST 'update_home'" do
       it "should not redirect to the login page" do
         post 'update_home'
-        response.should_not be_redirect
+        expect(response).not_to be_redirect
       end
 
       it "should set a new body text" do
         StaticContent.delete_all
         post 'update_home', { "content" => "New Content" }
-        flash[:info].should == "Successfully created home content."
+        expect(flash[:info]).to eq("Successfully created home content.")
         c = StaticContent.last
-        c.page.should == "home"
-        c.part.should == "text"
-        c.body.should == "New Content"
+        expect(c.page).to eq("home")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("New Content")
       end
 
       it "should update the body text" do
         StaticContent.delete_all
         post 'update_home', { "content" => "New Content" }
         post 'update_home', { "content" => "Newer Content" }
-        flash[:info].should == "Successfully updated home content."
+        expect(flash[:info]).to eq("Successfully updated home content.")
         c = StaticContent.last
-        c.page.should == "home"
-        c.part.should == "text"
-        c.body.should == "Newer Content"
+        expect(c.page).to eq("home")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("Newer Content")
       end
     end
 
     describe "POST 'update_about'" do
       it "should not redirect to the login page" do
         post 'update_about'
-        response.should_not be_redirect
+        expect(response).not_to be_redirect
       end
 
       it "should set a new body text" do
         StaticContent.delete_all
         post 'update_about', { "content" => "New Content" }
-        flash[:info].should == "Successfully created about content."
+        expect(flash[:info]).to eq("Successfully created about content.")
         c = StaticContent.last
-        c.page.should == "about"
-        c.part.should == "text"
-        c.body.should == "New Content"
+        expect(c.page).to eq("about")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("New Content")
       end
 
       it "should update the body text" do
         StaticContent.delete_all
         post 'update_about', { "content" => "New Content" }
         post 'update_about', { "content" => "Newer Content" }
-        flash[:info].should == "Successfully updated about content."
+        expect(flash[:info]).to eq("Successfully updated about content.")
         c = StaticContent.last
-        c.page.should == "about"
-        c.part.should == "text"
-        c.body.should == "Newer Content"
+        expect(c.page).to eq("about")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("Newer Content")
       end
     end
 
     describe "POST 'update_delivery_info'" do
       it "should not redirect to the login page" do
         post 'update_delivery_info'
-        response.should_not redirect_to new_user_session_path
+        expect(response).not_to redirect_to new_user_session_path
       end
 
       it "should set a new body text" do
         StaticContent.delete_all
         post 'update_delivery_info', { "content" => "New Content" }
-        flash[:info].should == "Successfully created delivery info content."
+        expect(flash[:info]).to eq("Successfully created delivery info content.")
         c = StaticContent.last
-        c.page.should == "delivery_info"
-        c.part.should == "text"
-        c.body.should == "New Content"
+        expect(c.page).to eq("delivery_info")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("New Content")
       end
 
       it "should update the body text" do
         StaticContent.delete_all
         post 'update_delivery_info', { "content" => "New Content" }
         post 'update_delivery_info', { "content" => "Newer Content" }
-        flash[:info].should == "Successfully updated delivery info content."
+        expect(flash[:info]).to eq("Successfully updated delivery info content.")
         c = StaticContent.last
-        c.page.should == "delivery_info"
-        c.part.should == "text"
-        c.body.should == "Newer Content"
+        expect(c.page).to eq("delivery_info")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("Newer Content")
       end
     end
 
     describe "POST 'update_contact'" do
       it "should not redirect to the login page" do
         post 'update_contact'
-        response.should_not be_redirect
+        expect(response).not_to be_redirect
       end
 
       it "should set a new body text and email" do
         StaticContent.delete_all
         post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
-        flash[:info].should == "Successfully created contact content."
+        expect(flash[:info]).to eq("Successfully created contact content.")
         c = StaticContent.last
-        c.page.should == "contact"
-        c.part.should == "text"
-        c.body.should == "New Content"
+        expect(c.page).to eq("contact")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("New Content")
       end
 
       it "should update the body text and email" do
         StaticContent.delete_all
         post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
         post 'update_contact', { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
-        flash[:info].should == "Successfully updated contact content."
+        expect(flash[:info]).to eq("Successfully updated contact content.")
         c = StaticContent.last
-        c.page.should == "contact"
-        c.part.should == "text"
-        c.body.should == "Newer Content"
+        expect(c.page).to eq("contact")
+        expect(c.part).to eq("text")
+        expect(c.body).to eq("Newer Content")
       end
 
       it "should show a message about successfully updating both the body text and email" do
@@ -240,25 +239,25 @@ describe Admin::StaticPagesController do
       context "creation failures" do
         before :each do
           StaticContent.delete_all
-          StaticContent.stub(:save).with(false)
-          StaticContent.any_instance.stub(:save).and_return(false)
+          allow(StaticContent).to receive(:save).with(false)
+          allow_any_instance_of(StaticContent).to receive(:save).and_return(false)
         end
         after :each do
-          StaticContent.any_instance.unstub(:save)
-          StaticContent.unstub(:save)
+          allow_any_instance_of(StaticContent).to receive(:save).and_call_original
+          allow(StaticContent).to receive(:save).and_call_original
         end
 
         it "should show a message when either the body text and email" do
           post 'update_contact', { "email_address" => "user" , "content" => "New Content" }
-          flash[:error].should == "Unable to create contact content."
+          expect(flash[:error]).to eq("Unable to create contact content.")
 
           post 'update_contact', { "email_address" => "user@site.com" , "content" => "" }
-          flash[:error].should == "Unable to create contact content."
+          expect(flash[:error]).to eq("Unable to create contact content.")
         end
 
         it "should show a message when both the body text and email" do
           post 'update_contact', { "email_address" => "user" , "content" => "" }
-          flash[:error].should == "Unable to create contact content."
+          expect(flash[:error]).to eq("Unable to create contact content.")
         end
       end
 
@@ -269,33 +268,33 @@ describe Admin::StaticPagesController do
 
         it "should show a message when either the body text and email" do
           post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
-          flash[:error].should_not == "Unable to create contact content."
+          expect(flash[:error]).not_to eq("Unable to create contact content.")
 
-          StaticContent.stub(:save).with(false)
-          StaticContent.any_instance.stub(:save).and_return(false)
+          allow(StaticContent).to receive(:save).with(false)
+          allow_any_instance_of(StaticContent).to receive(:save).and_return(false)
 
           post 'update_contact', { "email_address" => "user" , "content" => "New Content" }
-          flash[:error].should == "Unable to update contact content."
+          expect(flash[:error]).to eq("Unable to update contact content.")
 
           post 'update_contact', { "email_address" => "user@site.com" , "content" => "" }
-          flash[:error].should == "Unable to update contact content."
+          expect(flash[:error]).to eq("Unable to update contact content.")
 
-          StaticContent.any_instance.unstub(:save)
-          StaticContent.unstub(:save)
+          allow_any_instance_of(StaticContent).to receive(:save).and_call_original
+          allow(StaticContent).to receive(:save).and_call_original
         end
 
         it "should show a message when both the body text and email" do
           post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
-          flash[:error].should_not == "Unable to create contact content."
+          expect(flash[:error]).not_to eq("Unable to create contact content.")
 
-          StaticContent.stub(:save).with(false)
-          StaticContent.any_instance.stub(:save).and_return(false)
+          allow(StaticContent).to receive(:save).with(false)
+          allow_any_instance_of(StaticContent).to receive(:save).and_return(false)
 
           post 'update_contact', { "email_address" => "user" , "content" => "" }
-          flash[:error].should == "Unable to update contact content."
+          expect(flash[:error]).to eq("Unable to update contact content.")
 
-          StaticContent.any_instance.unstub(:save)
-          StaticContent.unstub(:save)
+          allow_any_instance_of(StaticContent).to receive(:save).and_call_original
+          allow(StaticContent).to receive(:save).and_call_original
         end
       end
     end

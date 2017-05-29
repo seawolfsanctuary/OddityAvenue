@@ -9,7 +9,7 @@ describe 'shop/_shop_categories' do
   context "with no ShopItem categories" do
     it "should not create a new list" do
       render
-      rendered.should_not be_include("<ul>")
+      expect(rendered).not_to be_include("<ul>")
     end
   end
 
@@ -22,19 +22,19 @@ describe 'shop/_shop_categories' do
 
     it "should create a new list" do
       render
-      rendered.should be_include("<ul>")
-      rendered.should be_include("</ul>")
+      expect(rendered).to be_include("<ul>")
+      expect(rendered).to be_include("</ul>")
     end
 
     it "should create a new list item for each category where enabled items exist" do
       render
-      rendered.should be_include("<li>" + link_to("cat 1", shop_item_category_path("cat 1"))  + "</li>")
-      rendered.should be_include("<li>" + link_to("cat 2", shop_item_category_path("cat 2"))  + "</li>")
+      expect(rendered).to be_include("<li>" + link_to("cat 1", shop_item_category_path("cat 1"))  + "</li>")
+      expect(rendered).to be_include("<li>" + link_to("cat 2", shop_item_category_path("cat 2"))  + "</li>")
     end
 
    it "should not create a new list item for each category where only disabled items exist" do
       render
-      rendered.should_not be_include("cat 3")
+      expect(rendered).not_to be_include("cat 3")
     end
   end
 end

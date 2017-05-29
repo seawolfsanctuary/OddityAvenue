@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PortfolioController do
+describe PortfolioController, type: :controller do
   context "GET index" do
     context "when no items exist" do
       before(:each) do
@@ -11,30 +11,30 @@ describe PortfolioController do
 
       it "should, when no category is given, show a list of categories" do
         get :index
-        response.status.should == 200
-        assigns[:items].should == {}
-        response.body.should be_include("Sorry, no items were found.")
+        expect(response.status).to eq(200)
+        expect(assigns[:items]).to eq({})
+        expect(response.body).to be_include("Sorry, no items were found.")
       end
 
       it "should, when a category is given, load all visible PortfolioItems in that category" do
         get :index, category: "cat 1"
-        response.status.should == 200
-        assigns[:items].should == []
-        response.body.should be_include("Sorry, no items were found in that category.")
+        expect(response.status).to eq(200)
+        expect(assigns[:items]).to eq([])
+        expect(response.body).to be_include("Sorry, no items were found in that category.")
       end
 
       it "not raise any exception when no PortfolioItems exist, when giving a category" do
         get :index, category: "cat 0"
-        response.status.should == 200
-        assigns[:items].should == []
-        response.body.should be_include("Sorry, no items were found in that category.")
+        expect(response.status).to eq(200)
+        expect(assigns[:items]).to eq([])
+        expect(response.body).to be_include("Sorry, no items were found in that category.")
       end
 
       it "not raise any exception when no PortfolioItems exist, when not giving a category" do
         get :index
-        response.status.should == 200
-        assigns[:items].should == {}
-        response.body.should be_include("Sorry, no items were found.")
+        expect(response.status).to eq(200)
+        expect(assigns[:items]).to eq({})
+        expect(response.body).to be_include("Sorry, no items were found.")
       end
     end
 
@@ -53,17 +53,17 @@ describe PortfolioController do
 
       it "should, when no category is given, show a list of enabled categories" do
         get :index, category: ""
-        response.status.should == 200
-        response.body.should =~ /cat 1(.*)\n(.*)cat 2/
-        response.body.should_not =~ /cat 3/
+        expect(response.status).to eq(200)
+        expect(response.body).to match(/cat 1(.*)\n(.*)cat 2/)
+        expect(response.body).not_to match(/cat 3/)
       end
 
       it "should, when a category is given, load all visible PortfolioItems in that category" do
         get :index, category: "cat 1"
-        response.status.should == 200
-        assigns[:items].collect(&:title).should == [
+        expect(response.status).to eq(200)
+        expect(assigns[:items].collect(&:title)).to eq([
           "One", "Three"
-        ]
+        ])
       end
     end
   end
@@ -77,12 +77,12 @@ describe PortfolioController do
     it "should load the given PortfolioItem" do
       item = FactoryGirl.create :portfolio_item
       get 'show', id: item.id
-      assigns[:item].should == item
+      expect(assigns[:item]).to eq(item)
     end
 
     it "should not load the given disabled PortfolioItem" do
       item = FactoryGirl.create :portfolio_item, enabled: false
-      lambda { get 'show', id: item.id }.should raise_error # ActionController::RoutingError
+      expect { get 'show', id: item.id }.to raise_error # ActionController::RoutingError
     end
   end
 end
