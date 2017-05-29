@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.4.1', patchlevel: '111'
 
 # Application
 gem 'airbrake', '~> 4.0'
