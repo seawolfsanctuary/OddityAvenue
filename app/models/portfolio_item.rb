@@ -1,6 +1,8 @@
-class PortfolioItem < ActiveRecord::Base
+class PortfolioItem < ApplicationRecord
   include Item
-  acts_as_taggable_on :categories
+
+  include TaggableItem
+  # acts_as_taggable_on :categories  # TODO: upgrade for Rails 5
 
   def move
     # -1 couldn't create

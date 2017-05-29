@@ -39,7 +39,7 @@ class StaticPagesController < ApplicationController
     return safe_params
   end
 
-  def contact_errors safe_params
+  def contact_errors(safe_params)
     errors = []
     [:name, :email, :subject, :message].each do |i|
       errors << I18n.t('contact.failures.blank_field' , i: i.to_s) if safe_params[i].blank?
@@ -49,18 +49,11 @@ class StaticPagesController < ApplicationController
     return errors
   end
 
-  def present_errors ary=nil
-    return nil if ary.blank?
-
-    errors = "<ul>".html_safe
-    ary.each do |e|
-      errors += "<li>".html_safe + e + "</li>".html_safe
-    end
-    errors += "</ul>".html_safe
-    return errors
+  def present_errors(ary=nil)
+    return ary.join(" ")
   end
 
-  def send_message! message, name, email, subject
+  def send_message!(message, name, email, subject)
     ContactMailer.contact_email(message, name, email, subject).deliver
   end
 end

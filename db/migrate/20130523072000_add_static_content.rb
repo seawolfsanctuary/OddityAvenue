@@ -1,4 +1,4 @@
-class AddStaticContent < ActiveRecord::Migration
+class AddStaticContent < ActiveRecord::Migration[5.0]
   def change
     create_table :static_contents do |t|
       t.string :page

@@ -1,28 +1,42 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
+ruby '2.4.1', patchlevel: '111'
 
 # Application
-gem 'airbrake', '~> 4.0'
-gem 'rails', '~> 4.1.0'
-gem 'puma'
+# gem 'airbrake', '~> 4.0'  # TODO: upgrade for Rails 5
+gem 'rails', '~> 5.1.1'
+gem 'puma', '~> 3.7'
 
 # Views
-gem 'jquery-rails', '~> 3.1'
-gem 'tinymce-rails', '~> 4.0'
+gem 'jquery-rails', '~> 4.3.0'  # TODO: upgrade for Rails 5
+# gem 'tinymce-rails', '~> 4.0'  # TODO: upgrade for Rails 5
 
 # Models
-gem 'pg', '~> 0.18.0'
-gem 'devise', '~> 3.5.0'
-gem 'acts-as-taggable-on', '~> 3.0'
+gem 'pg', '~> 0.18'
+# gem 'devise', '~> 3.5.0'  # TODO: upgrade for Rails 5
+# gem 'acts-as-taggable-on', '~> 3.0'  # TODO: upgrade for Rails 5
 
+# Debugging
+group :development, :test do
+  gem 'debase'
+  gem 'ruby-debug-ide'
+end
+
+# Development Tools
+group :development do
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+end
+
+# Testing
 group :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl', '~> 4.0'
   gem 'db-query-matchers', '~> 0.4.0'
 end
 
+# Deployment
 group :staging, :production do
-  gem 'rails_12factor'
   gem 'newrelic_rpm'
-  gem 'uglifier', '>= 2.7.0'
+  gem 'rails_12factor'
+  gem 'uglifier'
 end

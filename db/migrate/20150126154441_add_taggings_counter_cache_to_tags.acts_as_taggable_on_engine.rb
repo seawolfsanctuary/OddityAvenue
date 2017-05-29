@@ -1,6 +1,6 @@
 # This migration comes from acts_as_taggable_on_engine (originally 3)
-class AddTaggingsCounterCacheToTags < ActiveRecord::Migration
-  def self.up
+class AddTaggingsCounterCacheToTags < ActiveRecord::Migration[5.0]
+  def up
     add_column :tags, :taggings_count, :integer, default: 0
 
     ActsAsTaggableOn::Tag.reset_column_information
@@ -9,7 +9,7 @@ class AddTaggingsCounterCacheToTags < ActiveRecord::Migration
     end
   end
 
-  def self.down
+  def down
     remove_column :tags, :taggings_count
   end
 end

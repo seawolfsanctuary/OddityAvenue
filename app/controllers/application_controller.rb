@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
 
   before_action :load_categories_for_portfolio
   before_action :load_categories_for_shop

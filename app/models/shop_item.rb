@@ -1,20 +1,13 @@
-class PriceValidator < ActiveModel::Validator
-  def validate(record)
-    record.errors[:price] << 'cannot be less than zero' unless record[:price] >= 0.00
-  end
-end
-
-class QuantityValidator < ActiveModel::Validator
-  def validate(record)
-    record.errors[:quantity] << 'cannot be less than zero' unless record[:quantity] >= 0
-  end
-end
-
-class ShopItem < ActiveRecord::Base
+class ShopItem < ApplicationRecord
   include Item
-  acts_as_taggable_on :categories
 
+  include TaggableItem
+#  acts_as_taggable_on :categories  # TODO: upgrade for Rails 5
+
+  require 'validators/price_validator.rb'
   validates_with PriceValidator
+
+  require 'validators/quantity_validator.rb'
   validates_with QuantityValidator
 
   def price

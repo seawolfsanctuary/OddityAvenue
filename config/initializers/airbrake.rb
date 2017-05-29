@@ -1,3 +1,4 @@
+=begin  TODO: upgrade for Rails 5
 Airbrake.configure do |config|
   config.api_key = {:project => 'oddityavenue',                 # the identifier you specified for your project in Redmine
                     :tracker => 'Bug',                          # the name of your Tracker of choice in Redmine
@@ -10,3 +11,4 @@ Airbrake.configure do |config|
   config.port = ENV['HOPTOAD_PORTNUM']                          # the port your Redmine runs at
   config.secure = (config.port == 443)                          # sends data to your server via SSL (optional.)
 end
+=end
