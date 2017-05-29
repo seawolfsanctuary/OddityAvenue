@@ -2,7 +2,7 @@ class ShopItem < ApplicationRecord
   include Item
 
   include TaggableItem
-#  acts_as_taggable_on :categories  # TODO: upgrade for Rails 5
+  acts_as_taggable_on :categories
 
   require 'validators/price_validator.rb'
   validates_with PriceValidator

@@ -2,7 +2,7 @@ class PortfolioItem < ApplicationRecord
   include Item
 
   include TaggableItem
-  # acts_as_taggable_on :categories  # TODO: upgrade for Rails 5
+  acts_as_taggable_on :categories
 
   def move
     # -1 couldn't create
