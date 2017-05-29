@@ -7,8 +7,8 @@ gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.7'
 
 # Views
-gem 'jquery-rails', '~> 4.3.0'  # TODO: upgrade for Rails 5
-# gem 'tinymce-rails', '~> 4.0'  # TODO: upgrade for Rails 5
+gem 'jquery-rails', '~> 4.3.0'
+gem 'tinymce-rails', '~> 4.6.0'
 
 # Models
 gem 'pg', '~> 0.18'
