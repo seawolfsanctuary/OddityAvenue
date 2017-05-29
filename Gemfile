@@ -12,7 +12,7 @@ gem 'jquery-rails', '~> 4.3.0'  # TODO: upgrade for Rails 5
 
 # Models
 gem 'pg', '~> 0.18'
-# gem 'devise', '~> 3.5.0'  # TODO: upgrade for Rails 5
+gem 'devise', '~> 4.3.0'
 gem 'acts-as-taggable-on', '~> 5.0'
 
 # Debugging

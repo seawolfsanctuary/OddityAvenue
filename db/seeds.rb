@@ -6,11 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-=begin  TODO: upgrade for Rails 5
-
 u = Admin::User.new
 u.email = "webmaster@#{Rails.configuration.action_mailer.default_url_options[:host]}"
 u.password = "@hangeMe!"
 u.save
-
-=end

@@ -43,8 +43,6 @@ RSpec.configure do |config|
   config.render_views
 end
 
-FactoryGirl.find_definitions
-
 def tagged_model_delete_all(model_obj)
   model_str = model_obj.name.underscore
   ActsAsTaggableOn::Tagging.where(context: model_str).delete_all

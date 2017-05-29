@@ -86,13 +86,13 @@ Rails.application.configure do
 
   # Mailer config
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'oddityavenue.com' }
+  config.action_mailer.default_url_options = { :host => 'oddityavenue-test.herokuapp.com' }
   config.action_mailer.smtp_settings = {
     :port           => '25',
     :address        => ENV['POSTMARK_SMTP_SERVER'],
     :user_name      => ENV['POSTMARK_API_KEY'],
     :password       => ENV['POSTMARK_API_KEY'],
-    :domain         => 'oddityavenue.com',
+    :domain         => 'oddityavenue-test.herokuapp.com',
     :authentication => :plain
   }
 end

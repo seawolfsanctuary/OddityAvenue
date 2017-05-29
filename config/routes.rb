@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :shop
     get 'shop/category/:category',       to: 'shop#index',       as: :shop_item_category
 
-=begin  TODO: upgrade for Rails 5
   devise_for :users, path: 'admin', class_name: "Admin::User", skip: [:registrations]
     as :user do
       get 'admin/users/edit' => 'devise/registrations#edit', as: 'edit_registration'
@@ -36,7 +35,6 @@ Rails.application.routes.draw do
     resources :shop
     get 'shop/:id/move_to_portfolio' => 'shop#move_to_portfolio', as: 'move_shop_to_portfolio'
   end
-=end
 
   root :to => 'static_pages#home'
 end
