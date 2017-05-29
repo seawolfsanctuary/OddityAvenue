@@ -29,8 +29,9 @@ end
 
 # Testing
 group :test do
-  gem 'rspec-rails', '~> 2.14.0'
-  gem 'factory_girl', '~> 4.0'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.6.0'
+  gem 'factory_girl_rails', '~> 4.8'
   gem 'db-query-matchers', '~> 0.4.0'
 end
 

@@ -17,14 +17,14 @@ describe PortfolioController, type: :controller do
       end
 
       it "should, when a category is given, load all visible PortfolioItems in that category" do
-        get :index, category: "cat 1"
+        get :index, params: { category: "cat 1" }
         expect(response.status).to eq(200)
         expect(assigns[:items]).to eq([])
         expect(response.body).to be_include("Sorry, no items were found in that category.")
       end
 
       it "not raise any exception when no PortfolioItems exist, when giving a category" do
-        get :index, category: "cat 0"
+        get :index, params: { category: "cat 0" }
         expect(response.status).to eq(200)
         expect(assigns[:items]).to eq([])
         expect(response.body).to be_include("Sorry, no items were found in that category.")
@@ -52,14 +52,14 @@ describe PortfolioController, type: :controller do
       end
 
       it "should, when no category is given, show a list of enabled categories" do
-        get :index, category: ""
+        get :index, params: { category: "" }
         expect(response.status).to eq(200)
         expect(response.body).to match(/cat 1(.*)\n(.*)cat 2/)
         expect(response.body).not_to match(/cat 3/)
       end
 
       it "should, when a category is given, load all visible PortfolioItems in that category" do
-        get :index, category: "cat 1"
+        get :index, params: { category: "cat 1" }
         expect(response.status).to eq(200)
         expect(assigns[:items].collect(&:title)).to eq([
           "One", "Three"
@@ -76,13 +76,13 @@ describe PortfolioController, type: :controller do
 
     it "should load the given PortfolioItem" do
       item = FactoryGirl.create :portfolio_item
-      get 'show', id: item.id
+      get 'show', params: { id: item.id }
       expect(assigns[:item]).to eq(item)
     end
 
     it "should not load the given disabled PortfolioItem" do
       item = FactoryGirl.create :portfolio_item, enabled: false
-      expect { get 'show', id: item.id }.to raise_error # ActionController::RoutingError
+      expect { get 'show', params: { id: item.id } }.to raise_error(ActionController::RoutingError)
     end
   end
 end

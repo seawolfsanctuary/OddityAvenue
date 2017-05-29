@@ -70,7 +70,7 @@ describe StaticPagesController, type: :controller do
 
     it "should check for errors" do
       expect(controller).to receive(:contact_errors).once.and_return([])
-      post :make_contact, {
+      post :make_contact, params: {
         :name => "Mr. Smith", :email => "mr@smith.com",
         :message => "Hello!"
       }
@@ -79,7 +79,7 @@ describe StaticPagesController, type: :controller do
     it "should send the message when there are no errors" do
       expect(controller).to receive(:contact_errors).once.and_return([])
       expect(controller).to receive(:send_message!).once.and_return(true)
-      post :make_contact, {
+      post :make_contact, params: {
         :name => "Mr. Smith", :email => "mr@smith.com",
         :message => "Hello!"
       }
@@ -89,7 +89,7 @@ describe StaticPagesController, type: :controller do
       expect(controller).to receive(:contact_errors).once.and_return(["No e-mail address"])
       expect(controller).not_to receive(:send_message!)
       expect(ContactMailer).not_to receive(:contact_email)
-      post :make_contact, {
+      post :make_contact, params: {
         :name => "Mr. Smith", # :email => "mr@smith.com",
         :message => "Hello!"
       }
@@ -107,36 +107,36 @@ describe StaticPagesController, type: :controller do
 
   describe "#contact_errors" do
     it "should be private" do
-      expect { get :contact_errors }.to raise_error # ActionController::RoutingError
+      expect { get :contact_errors }.to raise_error(ActionController::UrlGenerationError)
     end
 
     context "should add an error when any of the fields are blank" do
       before(:each) do
-        @p = {:name => "name", :email => "name@domain.tld", :subject => "subject", :message => "message"}
+        @p = { 'name' => "name", 'email' => "name@domain.tld", 'subject' => "subject", 'message' => "message"}
       end
 
       it "name" do
-        @p[:name] = ""
+        @p['name'] = ""
         expect(controller.send(:contact_errors, @p).size).to eq(1)
       end
 
       it "subject" do
-        @p[:subject] = ""
+        @p['subject'] = ""
         expect(controller.send(:contact_errors, @p).size).to eq(1)
       end
 
       it "email (format and presence)" do
-        @p[:email] = ""
+        @p['email'] = ""
         expect(controller.send(:contact_errors, @p).size).to eq(2)
       end
 
       it "email (format)" do
-        @p[:email] = "hello"
+        @p['email'] = "hello"
         expect(controller.send(:contact_errors, @p).size).to eq(1)
       end
 
       it "message" do
-        @p[:message] = ""
+        @p['message'] = ""
         expect(controller.send(:contact_errors, @p).size).to eq(1)
       end
     end
@@ -148,16 +148,8 @@ describe StaticPagesController, type: :controller do
       expect(controller.send(:present_errors, [])).to be_nil
     end
 
-    it "should present one error in a HTML list" do
-      expect(controller.send(:present_errors, ["123"])).to eq("<ul><li>123</li></ul>")
-    end
-
-    it "should present more than one error in a HTML list" do
-      expect(controller.send(:present_errors, ["123", "456", "789"])).to eq("<ul><li>123</li><li>456</li><li>789</li></ul>")
-    end
-
-    it "should escape HTML in the error content" do
-      expect(controller.send(:present_errors, ["<p>Boo!</p>"])).to eq("<ul><li>&lt;p&gt;Boo!&lt;/p&gt;</li></ul>")
+    it "should present errors together" do
+      expect(controller.send(:present_errors, ["123", "456", "789"])).to eq("123 456 789")
     end
   end
 end

@@ -43,7 +43,7 @@ describe Item do
   context "#move" do
     it "should raise a NotImplementedError unless overridden" do
       i = DummyItem.new
-      expect { i.move }.to raise_error # NotImplementedError
+      expect { i.move }.to raise_error(NotImplementedError)
 
       class SomeItem
         include Item

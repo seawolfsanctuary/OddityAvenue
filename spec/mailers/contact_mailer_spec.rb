@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ContactMailer do
+describe ContactMailer, type: :mailer do
   before do
     name = "RSpec Test"
     from = "rspec@test.it"
@@ -11,7 +11,7 @@ describe ContactMailer do
   end
 
   it "should create an e-mail message" do
-    expect(@email).to be_a(Mail::Message)
+    expect(@email).to be_a(ActionMailer::MessageDelivery)
     expect(@email).not_to be_multipart
   end
 

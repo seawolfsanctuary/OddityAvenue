@@ -7,8 +7,8 @@ gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.7'
 
 # Views
-gem 'jquery-rails', '~> 4.3.0'  # TODO: upgrade for Rails 5
-# gem 'tinymce-rails', '~> 4.0'  # TODO: upgrade for Rails 5
+gem 'jquery-rails', '~> 4.3.0'
+gem 'tinymce-rails', '~> 4.6.0'
 
 # Models
 gem 'pg', '~> 0.18'
@@ -29,8 +29,9 @@ end
 
 # Testing
 group :test do
-  gem 'rspec-rails', '~> 2.14.0'
-  gem 'factory_girl', '~> 4.0'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.6.0'
+  gem 'factory_girl_rails', '~> 4.8'
   gem 'db-query-matchers', '~> 0.4.0'
 end
 

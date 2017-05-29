@@ -127,7 +127,7 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should set a new body text" do
         StaticContent.delete_all
-        post 'update_home', { "content" => "New Content" }
+        post 'update_home', params: { "content" => "New Content" }
         expect(flash[:info]).to eq("Successfully created home content.")
         c = StaticContent.last
         expect(c.page).to eq("home")
@@ -137,8 +137,8 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should update the body text" do
         StaticContent.delete_all
-        post 'update_home', { "content" => "New Content" }
-        post 'update_home', { "content" => "Newer Content" }
+        post 'update_home', params: { "content" => "New Content" }
+        post 'update_home', params: { "content" => "Newer Content" }
         expect(flash[:info]).to eq("Successfully updated home content.")
         c = StaticContent.last
         expect(c.page).to eq("home")
@@ -155,7 +155,7 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should set a new body text" do
         StaticContent.delete_all
-        post 'update_about', { "content" => "New Content" }
+        post 'update_about', params: { "content" => "New Content" }
         expect(flash[:info]).to eq("Successfully created about content.")
         c = StaticContent.last
         expect(c.page).to eq("about")
@@ -165,8 +165,8 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should update the body text" do
         StaticContent.delete_all
-        post 'update_about', { "content" => "New Content" }
-        post 'update_about', { "content" => "Newer Content" }
+        post 'update_about', params: { "content" => "New Content" }
+        post 'update_about', params: { "content" => "Newer Content" }
         expect(flash[:info]).to eq("Successfully updated about content.")
         c = StaticContent.last
         expect(c.page).to eq("about")
@@ -183,7 +183,7 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should set a new body text" do
         StaticContent.delete_all
-        post 'update_delivery_info', { "content" => "New Content" }
+        post 'update_delivery_info', params: { "content" => "New Content" }
         expect(flash[:info]).to eq("Successfully created delivery info content.")
         c = StaticContent.last
         expect(c.page).to eq("delivery_info")
@@ -193,8 +193,8 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should update the body text" do
         StaticContent.delete_all
-        post 'update_delivery_info', { "content" => "New Content" }
-        post 'update_delivery_info', { "content" => "Newer Content" }
+        post 'update_delivery_info', params: { "content" => "New Content" }
+        post 'update_delivery_info', params: { "content" => "Newer Content" }
         expect(flash[:info]).to eq("Successfully updated delivery info content.")
         c = StaticContent.last
         expect(c.page).to eq("delivery_info")
@@ -211,7 +211,7 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should set a new body text and email" do
         StaticContent.delete_all
-        post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
+        post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "New Content" }
         expect(flash[:info]).to eq("Successfully created contact content.")
         c = StaticContent.last
         expect(c.page).to eq("contact")
@@ -221,8 +221,8 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should update the body text and email" do
         StaticContent.delete_all
-        post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
-        post 'update_contact', { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
+        post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "New Content" }
+        post 'update_contact', params: { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
         expect(flash[:info]).to eq("Successfully updated contact content.")
         c = StaticContent.last
         expect(c.page).to eq("contact")
@@ -232,8 +232,8 @@ describe Admin::StaticPagesController, type: :controller do
 
       it "should show a message about successfully updating both the body text and email" do
         StaticContent.delete_all
-        post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
-        post 'update_contact', { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
+        post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "New Content" }
+        post 'update_contact', params: { "email_address" => "newuser@site.com" , "content" => "Newer Content" }
       end
 
       context "creation failures" do
@@ -248,15 +248,15 @@ describe Admin::StaticPagesController, type: :controller do
         end
 
         it "should show a message when either the body text and email" do
-          post 'update_contact', { "email_address" => "user" , "content" => "New Content" }
+          post 'update_contact', params: { "email_address" => "user" , "content" => "New Content" }
           expect(flash[:error]).to eq("Unable to create contact content.")
 
-          post 'update_contact', { "email_address" => "user@site.com" , "content" => "" }
+          post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "" }
           expect(flash[:error]).to eq("Unable to create contact content.")
         end
 
         it "should show a message when both the body text and email" do
-          post 'update_contact', { "email_address" => "user" , "content" => "" }
+          post 'update_contact', params: { "email_address" => "user" , "content" => "" }
           expect(flash[:error]).to eq("Unable to create contact content.")
         end
       end
@@ -267,16 +267,16 @@ describe Admin::StaticPagesController, type: :controller do
         end
 
         it "should show a message when either the body text and email" do
-          post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
+          post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "New Content" }
           expect(flash[:error]).not_to eq("Unable to create contact content.")
 
           allow(StaticContent).to receive(:save).with(false)
           allow_any_instance_of(StaticContent).to receive(:save).and_return(false)
 
-          post 'update_contact', { "email_address" => "user" , "content" => "New Content" }
+          post 'update_contact', params: { "email_address" => "user" , "content" => "New Content" }
           expect(flash[:error]).to eq("Unable to update contact content.")
 
-          post 'update_contact', { "email_address" => "user@site.com" , "content" => "" }
+          post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "" }
           expect(flash[:error]).to eq("Unable to update contact content.")
 
           allow_any_instance_of(StaticContent).to receive(:save).and_call_original
@@ -284,13 +284,13 @@ describe Admin::StaticPagesController, type: :controller do
         end
 
         it "should show a message when both the body text and email" do
-          post 'update_contact', { "email_address" => "user@site.com" , "content" => "New Content" }
+          post 'update_contact', params: { "email_address" => "user@site.com" , "content" => "New Content" }
           expect(flash[:error]).not_to eq("Unable to create contact content.")
 
           allow(StaticContent).to receive(:save).with(false)
           allow_any_instance_of(StaticContent).to receive(:save).and_return(false)
 
-          post 'update_contact', { "email_address" => "user" , "content" => "" }
+          post 'update_contact', params: { "email_address" => "user" , "content" => "" }
           expect(flash[:error]).to eq("Unable to update contact content.")
 
           allow_any_instance_of(StaticContent).to receive(:save).and_call_original

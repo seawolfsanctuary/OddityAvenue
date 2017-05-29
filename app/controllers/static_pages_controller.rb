@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
     safe_params = encode_params(params)
     errors = contact_errors(safe_params)
     if errors.empty?
-      send_message! safe_params[:message].to_s, safe_params[:name].to_s, safe_params[:email].to_s, safe_params[:subject].to_s
+      send_message! *%w{ message name email subject }.map {|p| safe_params[p].to_s }
       flash["info"] = I18n.t('contact.success')
     else
       flash["error"] = present_errors(errors)
@@ -30,7 +30,7 @@ class StaticPagesController < ApplicationController
   end
 
   private
-
+  
   def encode_params(p)
     safe_params = {}
     p.each do |k, v|
@@ -41,19 +41,19 @@ class StaticPagesController < ApplicationController
 
   def contact_errors(safe_params)
     errors = []
-    [:name, :email, :subject, :message].each do |i|
-      errors << I18n.t('contact.failures.blank_field' , i: i.to_s) if safe_params[i].blank?
+    %w{ name email subject message }.each do |i|
+      errors << I18n.t('contact.failures.blank_field' , i: i) if safe_params[i].blank?
     end
-    errors << I18n.t('contact.failures.email_invalid') unless safe_params[:email] =~ /(.*)@(.*)\.(.*)/
+    errors << I18n.t('contact.failures.email_invalid') unless safe_params['email'] =~ /(.+)@(.+)\.(.+)/
 
     return errors
   end
 
   def present_errors(ary=nil)
-    return ary.join(" ")
+    return Array(ary).empty? ? nil : ary.join(" ")
   end
 
   def send_message!(message, name, email, subject)
-    ContactMailer.contact_email(message, name, email, subject).deliver
+    ContactMailer.contact_email(message, name, email, subject).deliver_now
   end
 end

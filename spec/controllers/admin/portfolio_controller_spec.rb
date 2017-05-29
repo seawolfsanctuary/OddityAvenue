@@ -23,21 +23,21 @@ describe Admin::PortfolioController, type: :controller do
 
     context "PUT 'create'" do
       it "should redirect to the login page" do
-        put 'create', portfolio_item: @item
+        put 'create', params: { portfolio_item: @item }
         expect(response).to redirect_to new_user_session_path
       end
     end
 
     context "GET 'edit'" do
       it "should redirect to the login page" do
-        get 'edit', id: @item.id
+        get 'edit', params: { id: @item.id }
         expect(response).to redirect_to new_user_session_path
       end
     end
 
     context "POST 'update'" do
       it "should redirect to the login page" do
-        post 'update', id: @item.id
+        post 'update', params: { id: @item.id }
         expect(response).to redirect_to new_user_session_path
         expect(PortfolioItem.find(@item.id)).to eq(@item)
       end
@@ -45,7 +45,7 @@ describe Admin::PortfolioController, type: :controller do
 
     context "POST 'delete'" do
       it "should redirect to the login page" do
-        delete 'destroy', id: @item.id
+        delete 'destroy', params: { id: @item.id }
         expect(response).to redirect_to new_user_session_path
         expect(PortfolioItem.find(@item.id)).to eq(@item)
       end
@@ -53,7 +53,7 @@ describe Admin::PortfolioController, type: :controller do
 
     context "GET 'move_to_shop'" do
       it "should redirect to the login page" do
-        get 'move_to_shop', id: @item.id
+        get 'move_to_shop', params: { id: @item.id }
         expect(response).to redirect_to new_user_session_path
         expect(PortfolioItem.find(@item.id)).to eq(@item)
       end
@@ -92,14 +92,14 @@ describe Admin::PortfolioController, type: :controller do
 
     context "PUT 'create'" do
       it "should create the given PortfolioItem" do
-        put 'create', portfolio_item: {
+        put 'create', params: { portfolio_item: {
           title: @item.title,
           description: @item.description,
           image_filename_1: @item.image_filename_1,
           image_filename_2: @item.image_filename_2,
           image_filename_3: @item.image_filename_3,
           thumbnail_filename: @item.thumbnail_filename
-        }
+        } }
         expect(response.status).to eq(302)
         expect(PortfolioItem.all).to include(@item)
       end
@@ -107,14 +107,14 @@ describe Admin::PortfolioController, type: :controller do
 
     context "GET edit" do
       it "should load the given PortfolioItem" do
-        get 'edit', id: @item.id
+        get 'edit', params: { id: @item.id }
         expect(assigns[:item]).to eq(@item)
       end
     end
 
     context "POST update" do
       it "should update the given PortfolioItem with the given values" do
-        post 'update', {
+        post 'update', params: {
           id: @item.id,
           portfolio_item: {
             title: "My New Title",
@@ -131,8 +131,8 @@ describe Admin::PortfolioController, type: :controller do
     context "POST delete" do
       it "should delete the given PortfolioItem" do
         expect { PortfolioItem.find(@item_id) }.not_to raise_error # ActiveRecord::RecordNotFound
-        delete 'destroy', id: @item_id
-        expect { PortfolioItem.find(@item_id) }.to     raise_error # ActiveRecord::RecordNotFound
+        delete 'destroy', params: { id: @item_id }
+        expect { PortfolioItem.find(@item_id) }.to     raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -145,12 +145,12 @@ describe Admin::PortfolioController, type: :controller do
       it "should not call PortfolioItem#move when the PortfolioItem cannot be found" do
         i = FactoryGirl.create(:portfolio_item)
         expect_any_instance_of(PortfolioItem).not_to receive(:move)
-        get :move_to_shop, { "id" => -1 }
+        get :move_to_shop, params: { "id" => -1 }
       end
 
       it "should show an error message when unsuccessful because the PortfolioItem cannot be found" do
         i = FactoryGirl.create(:portfolio_item)
-        get :move_to_shop, { "id" => -1 }
+        get :move_to_shop, params: { "id" => -1 }
         expect(flash[:error]).to eq("Unable to find that portfolio item.")
         expect(flash[:info]).to be_blank
       end
@@ -158,7 +158,7 @@ describe Admin::PortfolioController, type: :controller do
       it "should show an error message when unsuccessful because the ShopItem cannot be created" do
         i = FactoryGirl.create(:portfolio_item)
         expect_any_instance_of(PortfolioItem).to receive(:move).once.and_return(-1)
-        get :move_to_shop, { "id" => i[:id] }
+        get :move_to_shop, params: { "id" => i[:id] }
         expect(flash[:error]).to eq("Unable to create shop item. Please create and delete manually.")
         expect(flash[:info]).to be_blank
       end
@@ -166,7 +166,7 @@ describe Admin::PortfolioController, type: :controller do
       it "should show an error message when unsuccessful because the PortfolioItem cannot be destroyed" do
         i = FactoryGirl.create(:portfolio_item)
         expect_any_instance_of(PortfolioItem).to receive(:move).once.and_return(0)
-        get :move_to_shop, { "id" => i[:id] }
+        get :move_to_shop, params: { "id" => i[:id] }
         expect(flash[:error]).to eq("Item copied, but unable to delete portfolio item. Please delete manually.")
         expect(flash[:info]).to be_blank
       end
@@ -174,7 +174,7 @@ describe Admin::PortfolioController, type: :controller do
       it "should show an info message when successful" do
         i = FactoryGirl.create(:portfolio_item)
         expect_any_instance_of(PortfolioItem).to receive(:move).once.and_return(1)
-        get :move_to_shop, { "id" => i[:id] }
+        get :move_to_shop, params: { "id" => i[:id] }
         expect(flash[:error]).to be_blank
         expect(flash[:info]).to eq("Item moved successfully.")
       end
