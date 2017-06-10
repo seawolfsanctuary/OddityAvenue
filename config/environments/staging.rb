@@ -96,4 +96,11 @@ Rails.application.configure do
     :domain               => 'oddityavenue.com',
     :authentication       => :plain
   }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[ERROR] ",
+      :sender_address => %{"Exception Notifier (Beta)" <notifier@beta.oddityavenue.com>},
+      :exception_recipients => %w{webmaster@seawolfsanctuary.com}
+    }
 end

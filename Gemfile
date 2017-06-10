@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 ruby '2.4.1', patchlevel: '111'
 
 # Application
-# gem 'airbrake', '~> 4.0'  # TODO: upgrade for Rails 5
 gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.7'
+# gem 'airbrake', '~> 6.1'
+gem 'exception_notification', '~> 4.2.0'
 
 # Views
 gem 'jquery-rails', '~> 4.3.0'

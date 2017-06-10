@@ -44,4 +44,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.smtp_settings = { :domain => 'localhost:3000' }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[ERROR] ",
+      :sender_address => %{"Exception Notifier" <notifier@oddityavenue.com>},
+      :exception_recipients => %w{webmaster@seawolfsanctuary.com}
+    }
 end
