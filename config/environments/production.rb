@@ -88,11 +88,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'oddityavenue.com' }
   config.action_mailer.smtp_settings = {
-    :port           => '25',
-    :address        => ENV['POSTMARK_SMTP_SERVER'],
-    :user_name      => ENV['POSTMARK_API_KEY'],
-    :password       => ENV['POSTMARK_API_KEY'],
-    :domain         => 'oddityavenue.com',
-    :authentication => :plain
+    :port                 => '587',
+    :enable_starttls_auto => true,
+    :address              => ENV['smtp.sendgrid.net'],
+    :user_name            => ENV['SENDGRID_USERNAME'],
+    :password             => ENV['SENDGRID_PASSWORD'],
+    :domain               => 'oddityavenue.com',
+    :authentication       => :plain
   }
 end

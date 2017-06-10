@@ -15,6 +15,9 @@ gem 'pg', '~> 0.18'
 gem 'devise', '~> 4.3.0'
 gem 'acts-as-taggable-on', '~> 5.0'
 
+# Services
+gem 'sendgrid-ruby', '~> 5.0.0'
+
 # Debugging
 group :development, :test do
   gem 'debase'
