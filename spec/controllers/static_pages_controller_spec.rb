@@ -70,6 +70,7 @@ describe StaticPagesController, type: :controller do
 
     it "should check for errors" do
       expect(controller).to receive(:contact_errors).once.and_return([])
+      allow(controller).to receive(:send_message!)
       post :make_contact, params: {
         :name => "Mr. Smith", :email => "mr@smith.com",
         :message => "Hello!"
