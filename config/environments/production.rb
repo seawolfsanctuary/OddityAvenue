@@ -90,7 +90,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :port                 => '587',
     :enable_starttls_auto => true,
-    :address              => ENV['smtp.sendgrid.net'],
+    :address              => 'smtp.sendgrid.net',
     :user_name            => ENV['SENDGRID_USERNAME'],
     :password             => ENV['SENDGRID_PASSWORD'],
     :domain               => 'oddityavenue.com',

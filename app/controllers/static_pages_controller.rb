@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     @body_text = StaticContent.load("home", "text")
+    raise "Error raised at #{Time.now}" if params["raise_error"]
   end
 
   def about
