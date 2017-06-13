@@ -12,10 +12,12 @@ class ContactMailer
     to = StaticContent.load("contact", "email")
 
     mail = ::SendGridMailer.new(
-      "OddityAvenue E-Mail Robot <webmaster@seawolfsanctuary.com>",
+      "webmaster@seawolfsanctuary.com",
+      "OddityAvenue E-Mail Robot",
       to,
       "OddityAvenue Contact - #{@subject}",
-      @message
+      message_plain,
+      message_html
     )
     mail.send! if mail.valid?
 
@@ -24,10 +26,13 @@ class ContactMailer
 
   private
 
+  def message_html
+    template = File.read('./app/views/contact_mailer/contact_email.html.erb')
+    return ERB.new(template).result(binding)
+  end
+
   def message_plain
-
-  template = File.read('./app/views/contact_mailer/contact_email.txt.erb')
-  puts output = ERB.new(template).result(binding)
-
+    template = File.read('./app/views/contact_mailer/contact_email.txt.erb')
+    return ERB.new(template).result(binding)
   end
 end
