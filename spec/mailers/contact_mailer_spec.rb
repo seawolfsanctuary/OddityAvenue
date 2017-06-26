@@ -14,8 +14,12 @@ describe ContactMailer, type: :mailer do
     expect(@email).to be_a(SendGridMailer)
   end
 
+  it "should have a sender e-mail name" do
+    expect(@email.from_name).to eq("OddityAvenue E-Mail Robot")
+  end
+
   it "should have a sender e-mail address" do
-    expect(@email.from).to eq("OddityAvenue E-Mail Robot <webmaster@seawolfsanctuary.com>")
+    expect(@email.from_email).to eq("webmaster@seawolfsanctuary.com")
   end
 
   it "should have the correct subject" do

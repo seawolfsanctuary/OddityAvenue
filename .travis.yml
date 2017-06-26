@@ -1,16 +1,15 @@
 language: ruby
 rvm:
-  - 2.1.5
-  - 2.2.2
+  - 2.4.1
 gemfile:
   - Gemfile
   - Gemfile.next
-matrix:
-  exclude:
-    - rvm: 2.1.5
-      gemfile: Gemfile.next
-    - rvm: 2.2.2
-      gemfile: Gemfile
+#matrix:
+#  exclude:
+#    - rvm: 2.1.5
+#      gemfile: Gemfile.next
+#    - rvm: 2.2.2
+#      gemfile: Gemfile
 bundler_args: --without production
 addons:
   postgresql: "9.3"

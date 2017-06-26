@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 ruby '2.4.1', patchlevel: '111'
 
 # Application
-# gem 'airbrake', '~> 4.0'  # TODO: upgrade for Rails 5
 gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.7'
+# gem 'airbrake', '~> 6.1'
+gem 'exception_notification', '~> 4.2.0'
 
 # Views
 gem 'jquery-rails', '~> 4.3.0'
@@ -14,6 +15,9 @@ gem 'tinymce-rails', '~> 4.6.0'
 gem 'pg', '~> 0.18'
 gem 'devise', '~> 4.3.0'
 gem 'acts-as-taggable-on', '~> 5.0'
+
+# Services
+gem 'sendgrid-ruby', '~> 5.0.0'
 
 # Debugging
 group :development, :test do
